@@ -1,0 +1,49 @@
+body {
+  background-color: #FDA;
+}
+
+.charPortrait {
+  border: 2px solid #333;
+  stroke: #333;
+  stroke-width: 8;
+}
+
+g {
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+line, path {
+  stroke-width:10px;
+  stroke: #FF0;
+  stroke-linecap: round;
+  fill: transparent;
+}
+
+path.sibling {
+  stroke: #FC5;
+}
+
+path.parent {
+  stroke: #DA5;
+}
+
+path.friend {
+  stroke: #55F;
+}
+
+path.son {
+  stroke: #5F5;
+}
+
+path.lover {
+  stroke: #F55;
+}
+
+path.spouse {
+  stroke: #F99;
+}

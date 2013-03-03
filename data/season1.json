@@ -1,0 +1,67 @@
+[
+  { "name":"Jon Snow",
+    "portrait": "http://sharetv.org/images/game_of_thrones/cast/large/jon_snow.jpg",
+    "bio":"",
+    "parents": ["Ned Stark"],
+    "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
+    "closeFriends": ["Robb Stark", "Arya Stark"]
+  },
+  { "name":"Ned Stark",
+    "portrait": "http://somekindofchristian.files.wordpress.com/2012/03/lg_eddard_stark.jpg",
+    "bio":"",
+    "sons":["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
+    "marriage": ["Catelyn Tully"],
+    "lovers": ["Catelyn Tully"]
+  },
+  {
+    "name": "Arya Stark",
+    "portrait": "http://images5.fanpop.com/image/photos/31000000/Arya-Stark-tv-female-characters-31019695-292-400.jpg",
+    "bio": "",
+    "parents": ["Ned Stark", "Catelyn Tully"],
+    "siblings": ["Bran Stark", "Sansa Stark", "Jon Snow",  "Robb Stark", "Rickon Stark"],
+    "closeFriends": ["Jon Snow"]
+  },
+  {
+    "name": "Sansa Stark",
+    "portrait": "http://images5.fanpop.com/image/photos/25300000/Sansa-Stark-game-of-thrones-25314483-1266-1900.jpg",
+    "bio": "",
+    "parents": ["Ned Stark", "Catelyn Tully"],
+    "siblings": ["Robb Stark", "Arya Stark", "Bran Stark", "Robb Stark", "Rickon Stark", "Jon Snow"]
+  },
+  {
+    "name": "Robb Stark",
+    "portrait": "http://images2.wikia.nocookie.net/__cb20120223002523/gameofthrones/images/3/3d/Robb-stark-richard-madden-helen-sloan.jpeg",
+    "bio":"",
+    "parents": ["Ned Stark", "Catelyn Tully"],
+    "closeFriends": ["Theon Greyjoy"],
+    "siblings": ["Sansa Stark", "Arya Stark",  "Bran Stark", "Rickon Stark", "Jon Snow"]
+  },
+  {
+    "name": "Bran Stark",
+    "portrait":"http://media.screened.com/uploads/1/14624/520256-screenshot_game.of.thrones.s01e01.winter.is.coming.avi_1.png",
+    "bio":"",
+    "parents": ["Ned Stark", "Catelyn Tully"],
+    "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Jon Snow"]
+  },
+  {
+    "name": "Rickon Stark",
+    "portrait": "http://sharetv.org/images/game_of_thrones/cast/large/rickon_stark.jpg",
+    "bio":"",
+    "parents": ["Ned Stark", "Catelyn Tully"],
+    "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Jon Snow", "Bran Stark"]
+  },
+  {
+    "name": "Catelyn Tully",
+    "portrait": "http://img12.imageshack.us/img12/6302/catelyntully.jpg",
+    "bio": "",
+    "sons": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
+    "marriage": ["Ned Stark"],
+    "lovers": ["Ned Stark"]
+  },
+  {
+    "name": "Theon Greyjoy",
+    "portrait": "http://images2.wikia.nocookie.net/__cb20120328201352/hieloyfuego/images/7/73/Theon_Greyjoy.jpg",
+    "bio": "",
+    "closeFriends": ["Robb Stark"]
+  }
+]
