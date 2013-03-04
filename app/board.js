@@ -178,6 +178,8 @@
     var previousOccuper = this.filledPositions[position.y][position.x]
     var id = this.tokenize(char.name);
     this.svg.selectAll('.' + id).transition()
+      .duration(800)
+      .ease("back-out")
       .attr('x', position.x * (this.portraitWidth + this.margin) )
       .attr('y', position.y * (this.portraitHeight + this.margin) )
 
@@ -235,7 +237,8 @@
       "spouse": 20,
       "son": 30,
       "liege": -30,
-      "enemy": 5
+      "enemy": 5,
+      "courtesan": -5
     };
     var line = d3.svg.line()
       .x(function(d){
@@ -243,7 +246,12 @@
         return position;
       })
       .y(function(d){
-        var position = relationPositions[relationClass] + d.pos.y * (self.portraitHeight + self.margin) +(self.portraitHeight + self.margin) /2
+        var position = null;
+        if(d.name === char.name) {
+          position = relationPositions[relationClass] + d.pos.y * (self.portraitHeight + self.margin) +(self.portraitHeight + self.margin) /2
+        } else {
+          position = -10 + d.pos.y * (self.portraitHeight + self.margin) +(self.portraitHeight + self.margin) /2
+        }
         return position;
       })
       .interpolate('basis')
@@ -277,7 +285,7 @@
       path
         .attr("stroke-dasharray",  totalLength*3 + " " + totalLength*3)
         .attr("stroke-dashoffset", totalLength*3)
-        .transition().duration(800).delay(100)
+        .transition().duration(800).delay(700)
         .ease("linear")
         .attr("stroke-dashoffset", 0);
     }
@@ -288,6 +296,9 @@
 
     this.clearRelations();
 
+    if(char.court.length > 0) {
+      this.drawLine(char, char.court, "courtesan")
+    }
     if(char.liege.length > 0) {
       this.drawLine(char, char.liege, "liege")
     }

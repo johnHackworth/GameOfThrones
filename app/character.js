@@ -15,6 +15,7 @@
     this.sons = options.sons || [];
     this.liege = options.liege || [];
     this.enemies = options.enemies || [];
+    this.court = options.court || [];
   }
 
   window.Character = character;

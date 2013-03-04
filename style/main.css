@@ -34,6 +34,7 @@ path.parent {
 
 path.friend {
   stroke: #55F;
+  stroke-width:5px;
 }
 
 path.son {
@@ -50,11 +51,18 @@ path.spouse {
 
 path.enemy {
   stroke: #222;
+  stroke-width:5px;
 }
 
 path.liege {
   stroke: #FFD;
+  stroke-width:5px;
 }
+path.courtesan {
+  stroke: #CCC;
+  stroke-width:2px;
+}
+
 
 .portrait {
   width:80px;
