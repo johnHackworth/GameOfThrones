@@ -48,6 +48,14 @@ path.spouse {
   stroke: #F99;
 }
 
+path.enemy {
+  stroke: #222;
+}
+
+path.liege {
+  stroke: #FFD;
+}
+
 .portrait {
   width:80px;
   height:80px;

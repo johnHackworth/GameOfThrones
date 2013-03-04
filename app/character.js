@@ -13,6 +13,8 @@
     this.marriage = options.marriage || [];
     this.lovers = options.lovers || [];
     this.sons = options.sons || [];
+    this.liege = options.liege || [];
+    this.enemies = options.enemies || [];
   }
 
   window.Character = character;

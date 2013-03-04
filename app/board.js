@@ -233,7 +233,9 @@
       "friend": -10,
       "lover": 10,
       "spouse": 20,
-      "son": 30
+      "son": 30,
+      "liege": -30,
+      "enemy": 5
     };
     var line = d3.svg.line()
       .x(function(d){
@@ -286,6 +288,12 @@
 
     this.clearRelations();
 
+    if(char.liege.length > 0) {
+      this.drawLine(char, char.liege, "liege")
+    }
+    if(char.enemies.length > 0) {
+      this.drawLine(char, char.enemies, "enemy")
+    }
     if(char.siblings.length > 0) {
       this.drawLine(char, char.siblings, "sibling")
     }
@@ -305,6 +313,7 @@
     if(char.marriage.length > 0) {
       this.drawLine(char, char.marriage, "spouse");
     }
+
     // this.svg.selectAll('line').data(char.siblings).enter()
     //   .append('line')
     //   .attr('x1', (char.pos.x * (this.portraitWidth + this.margin)) +(this.portraitWidth + this.margin) /2)
