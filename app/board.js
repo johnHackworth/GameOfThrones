@@ -1,13 +1,11 @@
 (function() {
   var board = function(options) {
     this.visibleChars = {};
-    this.portraitWidth = 60;
+    this.portraitWidth = 100;
     this.portraitHeight = 100;
     this.margin = 30;
 
-
     this.initialize(options);
-
   }
 
   board.prototype.initialize = function(options) {
@@ -122,18 +120,31 @@
     character.pos = {x:position.x,y:position.y};
     this.visibleChars[character.name]
     character.view
-        .append('svg:image')
-        .attr("class", "charPortrait")
-        .attr("class", this.tokenize(character.name))
-        .attr("xlink:href", character.portrait)
+
+      .append("foreignObject")
+
         .attr("x", position.x * (this.portraitWidth + this.margin))
         .attr("width", this.portraitWidth)
         .attr("y",position.y * (this.portraitHeight + this.margin))
         .attr("height", this.portraitHeight)
+        .attr("class", this.tokenize(character.name))
+      .append("xhtml:body")
+        .html("<img class='portrait' src='"+ character.portrait +"'> </img>");
+
+
+        // .append('svg:image')
+        // .attr("class", "charPortrait")
+        // .attr("class", this.tokenize(character.name))
+        // .attr("xlink:href", character.portrait)
+        // .attr("x", position.x * (this.portraitWidth + this.margin))
+        // .attr("width", this.portraitWidth)
+        // .attr("y",position.y * (this.portraitHeight + this.margin))
+        // .attr("height", this.portraitHeight)
 
     $(character.view).data('name', character.name)
     character.view.data = character;
     character.view.on('click', function() {
+      console.log('aaa')
       self.clickPortrait(this);
     });
   },
