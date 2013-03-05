@@ -6,7 +6,13 @@
     this.totalHeight = window.innerHeight;
     this.totalArea = this.totalWidth * this.totalHeight;
     var factor = 90 * 90
-    if(this.totalArea > (900 * 800)) {
+    if(this.totalArea > (1300 * 1300)) {
+      factor = 130 * 130;
+    } else if(this.totalArea > (1200 * 1200)) {
+      factor = 115 * 115;
+    } else if(this.totalArea > (1000 * 1000)) {
+      factor = 105 * 105;
+    } else if(this.totalArea > (900 * 800)) {
       factor = 90 * 90;
     } else if(this.totalArea > (800 * 600)) {
       factor = 85 * 85;
