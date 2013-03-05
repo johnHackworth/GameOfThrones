@@ -337,7 +337,7 @@
         var chars = [char];
         var character = self.visibleChars[d];
         var middlePoint = { pos: {
-            x:  char.pos.x,
+            x:  char.pos.x + (relationPositions[relationClass] /100),
             y: (character.pos.y + char.pos.y) / 2
           }
         }
@@ -349,6 +349,19 @@
         }
 
         chars.push(middlePoint);
+        var middlePoint2 = { pos: {
+            x:  (relationPositions[relationClass] /300) + (character.pos.x ) ,
+            y: (character.pos.y + char.pos.y) / 2
+          }
+        }
+        if(middlePoint2.pos.y === char.pos.y &&
+          middlePoint2.pos.y === character.pos.y &&
+          Math.abs(character.pos.x - char.pos.x) >= 2
+        ) {
+          middlePoint2.pos.y += 0.4;
+        }
+
+        chars.push(middlePoint2);
         chars.push(character);
         return line(chars)
       })

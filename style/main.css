@@ -37,10 +37,11 @@ g:hover .charLabel {
 
 
 line, path {
-  stroke-width:10px;
+  stroke-width:8px;
   stroke: #FF0;
   stroke-linecap: round;
   fill: transparent;
+  opacity: 0.8;
 }
 
 path.sibling {
@@ -53,11 +54,11 @@ path.parent {
 
 path.friend {
   stroke: #55F;
-  stroke-width:5px;
+  stroke-width:0.5em;
 }
 
 path.son {
-  stroke: #5F5;
+  stroke: #595;
 }
 
 path.lover {
@@ -70,16 +71,16 @@ path.spouse {
 
 path.enemy {
   stroke: #222;
-  stroke-width:5px;
+  stroke-width:0.5em;
 }
 
 path.liege {
   stroke: #FFD;
-  stroke-width:5px;
+  stroke-width:0.5em;
 }
 path.courtesan {
   stroke: #CCC;
-  stroke-width:2px;
+  stroke-width:0.3em;
 }
 
 
