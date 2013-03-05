@@ -178,6 +178,17 @@
         .attr("width", Math.floor(this.portraitWidth / 3.5))
         .attr("y", (this.portraitHeight - this.portraitHeight/3.5))
         .attr("height", Math.floor(this.portraitHeight / 3.5))
+        .attr("class", "heraldic");
+    }
+
+    if(character.dead) {
+      g.append('svg:image')
+        .attr("xlink:href", 'assets/icons/death.png')
+        // .attr("x", (this.portraitWidth - this.portraitWidth / 3.5))
+        .attr("width", Math.floor(this.portraitWidth / 3.5))
+        .attr("y", (this.portraitHeight - this.portraitHeight/3.5))
+        .attr("height", Math.floor(this.portraitHeight / 3.5))
+        .attr("class", "icon dead");
     }
 
     g.append('svg:text')
@@ -235,7 +246,7 @@
     var character = this.visibleChars[$(char).attr('name')];
     this.clearCentric();
     this.svg.selectAll('.charSelected').classed('charSelected', false);
-    this.svg.selectAll('.charLabel.'+this.tokenize(character.name)).classed('charSelected', true);
+    this.svg.selectAll('g.'+this.tokenize(character.name)).classed('charSelected', true);
 
     this.moveCharTo(character, center);
 

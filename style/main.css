@@ -25,14 +25,24 @@ svg {
   color: #641;
   font-family: 'Open Sans', sans-serif;
   font-weight: lighter;
+  -webkit-transition: opacity .3s linear, fill .3s linear;
+  -moz-transition: opacity .3s linear, fill .3s linear;
+  -o-transition: opacity .3s linear, fill .3s linear;
+  -ms-transition: opacity .3s linear, fill .3s linear;
+  transition: opacity .3s linear, fill .3s linear;
+}
+
+g {
+  cursor: pointer;
 }
 
 g:hover .charLabel {
   opacity: 1;
 }
 
-.charSelected.charLabel {
+.charSelected .charLabel {
   opacity: 1;
+  font-weight:bold;
 }
 
 
@@ -90,4 +100,27 @@ path.courtesan {
 
 svg body {
   background-color: transparent;
+}
+
+g .heraldic {
+  opacity: 0.5;
+  -webkit-transition: opacity .3s linear, fill .3s linear;
+  -moz-transition: opacity .3s linear, fill .3s linear;
+  -o-transition: opacity .3s linear, fill .3s linear;
+  -ms-transition: opacity .3s linear, fill .3s linear;
+  transition: opacity .3s linear, fill .3s linear;
+}
+
+g:hover .heraldic {
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.charSelected .heraldic {
+  opacity: 1;
+}
+
+.icon.dead {
+  opacity: 0.8;
 }

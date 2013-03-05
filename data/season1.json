@@ -24,7 +24,7 @@
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Bran Stark", "Sansa Stark", "Jon Snow",  "Robb Stark", "Rickon Stark"],
     "closeFriends": ["Jon Snow"],
-    "enemies": ["Joffrey Baratheon"],
+    "enemies": ["Joffrey Baratheon", "Sandor Clegane", "Cersei Lannister"],
     "house": "stark"
   },
   {
@@ -84,6 +84,7 @@
   },
   {
     "name": "Robert Baratheon",
+    "dead": true,
     "portrait": "assets/robert.png",
     "bio": "",
     "closeFriends": ["Ned Stark"],
@@ -223,6 +224,7 @@
   },
   {
     "name": "Carl Drogo",
+    "dead": true,
     "portrait": "assets/drogo.png",
     "lovers": ["Daenerys Targaryen"],
     "marriage": ["Daenerys Targaryen"],

@@ -6,6 +6,7 @@
   character.prototype.initialize = function(options) {
     this.portrait = options.portrait;
     this.name = options.name;
+    this.dead = options.dead;
     this.alias = options.alias;
     this.house = options.house;
     this.bio = options.bio;
