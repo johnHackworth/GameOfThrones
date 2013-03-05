@@ -158,7 +158,11 @@
     //   .attr('stroke-width', 2)
     //   .attr('stroke', '#333333')
 
-    character.view
+    var g = character.view
+      .append('g')
+      .attr("transform", "translate(" + (position.x * (this.portraitWidth + this.margin)) +
+          "," + (position.y * (this.portraitHeight + this.margin)) + ")")
+      .attr("class", this.tokenize(character.name))
       // .append("foreignObject")
       //   .attr("x", position.x * (this.portraitWidth + this.margin))
       //   .attr("width", this.portraitWidth)
@@ -168,26 +172,21 @@
       // .append("xhtml:body")
       //   .html("<img class='portrait' src='"+ character.portrait +"'> </img>");
 
-        .append('svg:image')
-        .attr("class", this.tokenize(character.name))
+    g.append('svg:image')
         .attr("xlink:href", character.portrait)
-        .attr("x", position.x * (this.portraitWidth + this.margin))
+        // .attr("x", position.x * (this.portraitWidth + this.margin))
         .attr("width", this.portraitWidth)
-        .attr("y",position.y * (this.portraitHeight + this.margin))
+        // .attr("y",position.y * (this.portraitHeight + this.margin))
         .attr("height", this.portraitHeight)
-    character.view
-        .append('svg:text')
+    g.append('svg:text')
         .text(character.name)
-        .attr("class", "charLabel " + this.tokenize(character.name))
+        .attr("class", "charLabel ")
         .attr("name", this.tokenize(character.name))
         .attr('dx', function(d) {
-          var mod = 0;
-          if($(this).attr('name')) {
-            mod = -1 * character.name.length * 2 / 2;
-          }
-          return mod + position.x * (self.portraitWidth + self.margin)
+          var textWidth = this.getBBox().width;
+          return (self.portraitWidth - textWidth) / 2;
         })
-        .attr("dy",this.portraitHeight + 10 + position.y * (this.portraitHeight + this.margin))
+        .attr("dy",this.portraitHeight + 10)
         // .attr('clip-path', 'url(#clip)')
 
       //   .append('defs')
@@ -253,16 +252,8 @@
       // .attr('cx', position.x * (this.portraitWidth + this.margin) + this.portraitWidth / 2)
       // .attr('cy', position.y * (this.portraitHeight + this.margin) + this.portraitHeight /2 )
 
-      .attr('x', position.x * (this.portraitWidth + this.margin) )
-      .attr('y', position.y * (this.portraitHeight + this.margin) )
-      .attr('dx', function(d) {
-        if($(this).attr('name')) {
-          var textWidth = this.getBBox().width;
-          return (self.portraitWidth - textWidth) / 2;
-        }
-        return 0;
-      })
-      .attr('dy', this.portraitHeight + 10)
+      .attr("transform", "translate(" + (position.x * (this.portraitWidth + this.margin)) +
+          "," + (position.y * (this.portraitHeight + this.margin)) + ")")
       // .attr('xd', position.x * (this.portraitWidth + this.margin) )
       // .attr('dy', position.y * (this.portraitHeight + this.margin) )
     if(char.pos) {
