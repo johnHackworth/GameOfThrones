@@ -17,6 +17,25 @@ svg {
   display: block;
 }
 
+.charLabel {
+  font-size: 10px;
+  font-family: arial;
+  opacity:0.3;
+  text-align: center;
+  color: #641;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+}
+
+g:hover .charLabel {
+  opacity: 1;
+}
+
+.charSelected.charLabel {
+  opacity: 1;
+}
+
+
 line, path {
   stroke-width:10px;
   stroke: #FF0;
@@ -65,12 +84,6 @@ path.courtesan {
 
 
 .portrait {
-  width:80px;
-  height:80px;
-  border-radius:50px;
-  border: 2px solid #210;
-  padding: 2px;
-  background-color: #ccc;
 
 }
 

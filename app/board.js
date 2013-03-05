@@ -1,18 +1,36 @@
 (function() {
+
   var board = function(options) {
     this.visibleChars = {};
-    this.portraitWidth = 100;
-    this.portraitHeight = 100;
-    this.margin = 30;
+    this.totalWidth = window.innerWidth;
+    this.totalHeight = window.innerHeight;
+    this.totalArea = this.totalWidth * this.totalHeight;
+    var factor = 90 * 90
+    if(this.totalArea > (900 * 800)) {
+      factor = 90 * 90;
+    } else if(this.totalArea > (800 * 600)) {
+      factor = 85 * 85;
+    } else {
+      factor = 65 * 65;
+    }
+    this.cellSize = Math.floor(this.totalArea / factor);
+    this.portraitWidth = Math.floor(this.cellSize * 2 / 3);
+    this.portraitHeight = Math.floor(this.cellSize * 2 / 3);
+    this.margin =  Math.floor(this.cellSize * 1 / 3);
 
     this.initialize(options);
   }
 
+
+
   board.prototype.initialize = function(options) {
     this.characters = options.characters;
     this.selector = options.selector;
-    this.maxX = Math.floor(window.innerWidth / (this.portraitWidth + this.margin));
-    this.maxY = Math.floor(window.innerHeight / (this.portraitHeight + this.margin));
+    this.maxX = Math.floor(this.totalWidth / this.cellSize);
+    if(this.maxX % 2 === 0) {
+      this.maxX--;
+    }
+    this.maxY = Math.floor(this.totalHeight / this.cellSize);
     this.initEmptyPositions();
   }
 
@@ -27,8 +45,16 @@
   }
 
   board.prototype.initializeBoard = function() {
-    this.svg = d3.select(this.selector).append("svg");
-
+    this.svg = d3.select(this.selector).append("svg")
+    // this.svg.append('defs')
+    //   .append('rect')
+    //   .attr('id', 'circleCropper')
+    //   .attr('x', '25%').attr('y', '25%').attr('width', '50%')
+    //   .attr('height', '50%').attr('rx', '15')
+    // this.svg.append('clipPath')
+    //   .attr('id', 'clip')
+    //   .append('use')
+    //   .attr('xlink:href', '#circleCropper')
   }
 
   board.prototype.initializeSeason = function(nSeason) {
@@ -119,42 +145,77 @@
     this.filledPositions[position.y][position.x] = character.name;
     character.pos = {x:position.x,y:position.y};
     this.visibleChars[character.name]
+
+    // character.view
+    //   .append('use')
+    //   .attr('xlink:href', '#circleCropper')
+    //   .attr('stroke-width', 2)
+    //   .attr('stroke', '#333333')
+
     character.view
+      // .append("foreignObject")
+      //   .attr("x", position.x * (this.portraitWidth + this.margin))
+      //   .attr("width", this.portraitWidth)
+      //   .attr("y",position.y * (this.portraitHeight + this.margin))
+      //   .attr("height", this.portraitHeight)
+      //   .attr("class", this.tokenize(character.name))
+      // .append("xhtml:body")
+      //   .html("<img class='portrait' src='"+ character.portrait +"'> </img>");
 
-      .append("foreignObject")
-
+        .append('svg:image')
+        .attr("class", this.tokenize(character.name))
+        .attr("xlink:href", character.portrait)
         .attr("x", position.x * (this.portraitWidth + this.margin))
         .attr("width", this.portraitWidth)
         .attr("y",position.y * (this.portraitHeight + this.margin))
         .attr("height", this.portraitHeight)
-        .attr("class", this.tokenize(character.name))
-      .append("xhtml:body")
-        .html("<img class='portrait' src='"+ character.portrait +"'> </img>");
+    character.view
+        .append('svg:text')
+        .text(character.name)
+        .attr("class", "charLabel " + this.tokenize(character.name))
+        .attr("name", this.tokenize(character.name))
+        .attr('dx', function(d) {
+          var mod = 0;
+          if($(this).attr('name')) {
+            mod = -1 * character.name.length * 2 / 2;
+          }
+          return mod + position.x * (self.portraitWidth + self.margin)
+        })
+        .attr("dy",this.portraitHeight + 10 + position.y * (this.portraitHeight + this.margin))
+        // .attr('clip-path', 'url(#clip)')
 
+      //   .append('defs')
+      //   .append('pattern')
+      //   .attr('id', 'image_'+this.tokenize(character.name))
+      //   .attr('patternUnits', 'objectBoundingBox')
+      //   .attr('height', this.portraitHeight)
+      //   .attr('width', this.portraitWidth)
+      //   .attr('x', 0)
+      //   .attr('y', 0)
+      //   .append('image')
+      //   .attr('height', this.portraitHeight)
+      //   .attr('width', this.portraitWidth)
+      //   .attr("xlink:href", character.portrait)
 
-        // .append('svg:image')
-        // .attr("class", "charPortrait")
-        // .attr("class", this.tokenize(character.name))
-        // .attr("xlink:href", character.portrait)
-        // .attr("x", position.x * (this.portraitWidth + this.margin))
-        // .attr("width", this.portraitWidth)
-        // .attr("y",position.y * (this.portraitHeight + this.margin))
-        // .attr("height", this.portraitHeight)
+      // character.view
+      //   .append('circle')
+      //   .attr('r', this.portraitWidth / 2)
+      //   .attr("class", "charPortrait")
+      //   .attr("class", this.tokenize(character.name))
+      //   .attr("cx", position.x * (this.portraitWidth + this.margin ) + this.portraitWidth / 2)
+      //   .attr("cy",position.y * (this.portraitHeight + this.margin) + this.portraitHeight / 2)
+      //   .attr("fill", "url(#image_"+this.tokenize(character.name)+ ")")
 
     $(character.view).data('name', character.name)
     character.view.data = character;
     character.view.on('click', function() {
-      console.log('aaa')
       self.clickPortrait(this);
     });
   },
 
   board.prototype.calculateCenter = function() {
-    var middlePoint = window.innerWidth / 2;
-    var rows = window.innerWidth / (this.portraitWidth + this.margin)
-    var cols = window.innerHeight / (this.portraitHeight + this.margin)
-    var middleRow = Math.floor(rows / 2);
-    var middleCol = Math.floor(cols / 2)
+    var middleRow = Math.floor(this.maxX / 2) ;
+    var middleCol = Math.floor(this.maxY / 2) ;
     return {x: middleRow, y: middleCol};
   }
 
@@ -166,6 +227,8 @@
     var center = this.calculateCenter();
     var character = this.visibleChars[$(char).attr('name')];
     this.clearCentric();
+    this.svg.selectAll('.charSelected').classed('charSelected', false);
+    this.svg.selectAll('.charLabel.'+this.tokenize(character.name)).classed('charSelected', true);
 
     this.moveCharTo(character, center);
 
@@ -175,14 +238,27 @@
   }
 
   board.prototype.moveCharTo = function(char, position) {
+    var self = this;
     var previousOccuper = this.filledPositions[position.y][position.x]
     var id = this.tokenize(char.name);
     this.svg.selectAll('.' + id).transition()
       .duration(800)
       .ease("back-out")
+      // .attr('cx', position.x * (this.portraitWidth + this.margin) + this.portraitWidth / 2)
+      // .attr('cy', position.y * (this.portraitHeight + this.margin) + this.portraitHeight /2 )
+
       .attr('x', position.x * (this.portraitWidth + this.margin) )
       .attr('y', position.y * (this.portraitHeight + this.margin) )
-
+      .attr('dx', function(d) {
+        if($(this).attr('name')) {
+          var textWidth = this.getBBox().width;
+          return (self.portraitWidth - textWidth) / 2;
+        }
+        return 0;
+      })
+      .attr('dy', this.portraitHeight + 10)
+      // .attr('xd', position.x * (this.portraitWidth + this.margin) )
+      // .attr('dy', position.y * (this.portraitHeight + this.margin) )
     if(char.pos) {
       this.filledPositions[char.pos.y][char.pos.x] = null;
     }

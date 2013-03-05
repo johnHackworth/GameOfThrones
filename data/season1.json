@@ -1,13 +1,13 @@
 [
   { "name":"Jon Snow",
-    "portrait": "http://sharetv.org/images/game_of_thrones/cast/large/jon_snow.jpg",
+    "portrait": "/assets/jon.png",
     "bio":"",
     "parents": ["Ned Stark"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
     "closeFriends": ["Robb Stark", "Arya Stark", "Tyrion Lannister"]
   },
   { "name":"Ned Stark",
-    "portrait": "http://somekindofchristian.files.wordpress.com/2012/03/lg_eddard_stark.jpg",
+    "portrait": "assets/ned.png",
     "bio":"",
     "sons":["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
     "marriage": ["Catelyn Tully"],
@@ -18,7 +18,7 @@
   },
   {
     "name": "Arya Stark",
-    "portrait": "http://images5.fanpop.com/image/photos/31000000/Arya-Stark-tv-female-characters-31019695-292-400.jpg",
+    "portrait": "assets/arya.png",
     "bio": "",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Bran Stark", "Sansa Stark", "Jon Snow",  "Robb Stark", "Rickon Stark"],
@@ -27,14 +27,14 @@
   },
   {
     "name": "Sansa Stark",
-    "portrait": "http://images5.fanpop.com/image/photos/25300000/Sansa-Stark-game-of-thrones-25314483-1266-1900.jpg",
+    "portrait": "assets/sansa.png",
     "bio": "",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Robb Stark", "Arya Stark", "Bran Stark", "Robb Stark", "Rickon Stark", "Jon Snow"]
   },
   {
     "name": "Robb Stark",
-    "portrait": "http://images2.wikia.nocookie.net/__cb20120223002523/gameofthrones/images/3/3d/Robb-stark-richard-madden-helen-sloan.jpeg",
+    "portrait": "assets/robb.png",
     "bio":"",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "closeFriends": ["Theon Greyjoy"],
@@ -42,21 +42,21 @@
   },
   {
     "name": "Bran Stark",
-    "portrait":"http://media.screened.com/uploads/1/14624/520256-screenshot_game.of.thrones.s01e01.winter.is.coming.avi_1.png",
+    "portrait":"assets/bran.png",
     "bio":"",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Jon Snow"]
   },
   {
     "name": "Rickon Stark",
-    "portrait": "http://sharetv.org/images/game_of_thrones/cast/large/rickon_stark.jpg",
+    "portrait": "assets/rickon.png",
     "bio":"",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Jon Snow", "Bran Stark"]
   },
   {
     "name": "Catelyn Tully",
-    "portrait": "http://img12.imageshack.us/img12/6302/catelyntully.jpg",
+    "portrait": "assets/catelyn.png",
     "bio": "",
     "sons": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
     "marriage": ["Ned Stark"],
@@ -65,14 +65,14 @@
   },
   {
     "name": "Theon Greyjoy",
-    "portrait": "http://images2.wikia.nocookie.net/__cb20120328201352/hieloyfuego/images/7/73/Theon_Greyjoy.jpg",
+    "portrait": "assets/theon.png",
     "bio": "",
     "closeFriends": ["Robb Stark"],
     "liege": ["Ned Stark"]
   },
   {
     "name": "Robert Baratheon",
-    "portrait": "http://mimg.ugo.com/201103/6/6/9/183966/cuts/robert-baratheon-game-of-thrones-17629743-1280-720_288x288.jpg",
+    "portrait": "assets/robert.png",
     "bio": "",
     "closeFriends": ["Ned Stark"],
     "marriage": ["Cersei Lannister"],
@@ -81,7 +81,7 @@
   },
   {
     "name": "Cersei Lannister",
-    "portrait": "http://3.bp.blogspot.com/-OLp8w8JsUEw/T7VZdHXuRQI/AAAAAAAAAD0/bVkZViVMd30/s1600/cersei_lannister.jpg",
+    "portrait": "assets/cersei.png",
     "bio": "",
     "marriage": ["Robert Baratheon"],
     "lovers": ["Jaime Lannister"],
@@ -91,7 +91,7 @@
   },
   {
     "name": "Jaime Lannister",
-    "portrait": "http://1.bp.blogspot.com/-LQNoIBzCDjw/Tf52cqkKWqI/AAAAAAAAAd8/owfiHTYs0-g/s1600/gameofthrones.jpg",
+    "portrait": "assets/jaime.png",
     "bio": "",
     "lovers": ["Cersei Lannister"],
     "siblings":  ["Cersei Lannister", "Tyrion Lannister"],
@@ -100,14 +100,14 @@
   },
   {
     "name": "Tyrion Lannister",
-    "portrait": "http://afondo.elnortedecastilla.es/sites/afondo.elnortedecastilla.es/files/images/juego-de-tronos/personajes/tyrion-lannister-1024.jpg",
+    "portrait": "assets/tyrion.png",
     "bio": "",
     "siblings":  ["Cersei Lannister", "Jaime Lannister"],
     "closeFriends": ["Jon Snow"]
   },
   {
     "name": "Joffrey Baratheon",
-    "portrait": "http://images.wikia.com/gameofthrones/images/archive/5/5f/20110626031339!Joffrey_Baratheon_2.jpg",
+    "portrait": "assets/joffrey.png",
     "bio":"",
     "parents": ["Robert Baratheon", "Cersei Lannister", "Jaime Lannister"],
     "siblings": ["Tommen Baratheon", "Myrcella Baratheon"],
@@ -115,24 +115,117 @@
   },
   {
     "name": "Tommen Baratheon",
-    "portrait": "http://static.tumblr.com/yepbadd/JlVm7hl07/tommen_2x01.jpeg",
+    "portrait": "assets/tommen.png",
     "bio":"",
     "parents": ["Robert Baratheon", "Cersei Lannister", "Jaime Lannister"],
     "siblings": ["Joffrey Baratheon", "Myrcella Baratheon"]
   },
   {
     "name": "Myrcella Baratheon",
-    "portrait": "http://24.media.tumblr.com/tumblr_m7qpplTaLV1rp2zn0o1_250.gif",
+    "portrait": "assets/myrcella.png",
     "bio":"",
     "parents": ["Robert Baratheon", "Cersei Lannister", "Jaime Lannister"],
     "siblings": ["Joffrey Baratheon", "Tommen Baratheon"]
   },
   {
     "name": "Petyr Baelish",
-    "portrait":"https://si0.twimg.com/profile_images/1391388163/asdfas-littlefinger.png",
+    "portrait":"assets/petyr.png",
     "alias": "littlefinger",
     "closeFriends": ["Catelyn Tully"],
     "liege": ["Robert Baratheon"]
+  },
+  {
+    "name": "Varys",
+    "portrait": "assets/varys.png",
+    "liege": ["Robert Baratheon"]
+  },
+  {
+    "name": "Daenerys Targaryen",
+    "portrait": "assets/daenerys.png",
+    "siblings": ["Viserys Targaryen"],
+    "closeFriends": ["Jorah Mormonth"],
+    "enemies": ["Robert Baratheon"]
+  },
+  {
+    "name": "Jorah Mormonth",
+    "portrait": "assets/jorah.png",
+    "liege": ["Viserys Targaryen"],
+    "enemies": ["Ned Stark"]
+  },
+  {
+    "name": "Viserys Targaryen",
+    "portrait": "assets/viserys.png",
+    "enemies": ["Robert Baratheon"],
+    "siblings": ["Daenerys Targaryen"]
+  },
+  {
+    "name": "Benjen Stark",
+    "portrait":"assets/benjen.png",
+    "siblings": ["Ned Stark"],
+    "closeFriends": ["Aemon Targaryen"]
+  },
+  {
+    "name": "Aemon Targaryen",
+    "portrait": "assets/aemon.png",
+    "closeFriends": ["Benjen Stark"]
+  },
+  {
+    "name": "Stannis Baratheon",
+    "portrait": "assets/stannis.png",
+    "liege": ["Robert Baratheon"],
+    "siblings": ["Robert Baratheon", "Renly Baratheon"]
+  },
+  {
+    "name": "Renly Baratheon",
+    "portrait": "assets/renly.png",
+    "liege": ["Robert Baratheon"],
+    "siblings": ["Stannis Baratheon", "Renly Baratheon"]
+  },
+  {
+    "name": "Bronn",
+    "portrait": "assets/bronn.png"
+  },
+  {
+    "name": "Carl Drogo",
+    "portrait": "assets/drogo.png"
+  },
+  {
+    "name": "Hodor",
+    "portrait": "assets/hodor.png",
+    "liege": ["Ned Stark"]
+  },
+  {
+    "name": "Maester Luwin",
+    "portrait": "assets/luwin.png",
+    "liege": ["Ned Stark"]
+  },
+  {
+    "name": "Lysa Tully",
+    "portrait": "assets/lysa.png",
+    "siblings": ["Catelyn Tully"],
+    "closeFriends": ["Petyr Baelish"],
+    "enemies": ["Cersei Lannister"]
+  },
+  {
+    "name": "Illyrio Monpatis",
+    "portrait": "assets/illyrio.png",
+    "closeFriends": ["Carl Drogo", "Viserys Targaryen", "Daenerys Targaryen"]
+  },
+  {
+    "name": "Maester Pycelle",
+    "portrait": "assets/pycelle.png",
+    "liege": ["Robert Baratheon"],
+    "closeFriends": ["Cersei Lannister"]
+  },
+  {
+    "name": "Samwell Tarly",
+    "portrait": "assets/samwell.png",
+    "closeFriends": ["Jon Snow"]
+  },
+  {
+    "name": "Sandor Clegane",
+    "portrait": "assets/sandor.png",
+    "alias": "The Hound",
+    "liege": ["Robert Baratheon"]
   }
-
 ]
