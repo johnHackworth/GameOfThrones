@@ -163,14 +163,6 @@
       .attr("transform", "translate(" + (position.x * (this.portraitWidth + this.margin)) +
           "," + (position.y * (this.portraitHeight + this.margin)) + ")")
       .attr("class", this.tokenize(character.name))
-      // .append("foreignObject")
-      //   .attr("x", position.x * (this.portraitWidth + this.margin))
-      //   .attr("width", this.portraitWidth)
-      //   .attr("y",position.y * (this.portraitHeight + this.margin))
-      //   .attr("height", this.portraitHeight)
-      //   .attr("class", this.tokenize(character.name))
-      // .append("xhtml:body")
-      //   .html("<img class='portrait' src='"+ character.portrait +"'> </img>");
 
     g.append('svg:image')
         .attr("xlink:href", character.portrait)
@@ -178,8 +170,18 @@
         .attr("width", this.portraitWidth)
         // .attr("y",position.y * (this.portraitHeight + this.margin))
         .attr("height", this.portraitHeight)
+
+    if(character.house) {
+      g.append('svg:image')
+        .attr("xlink:href", 'assets/houses/' + character.house + '.png')
+        .attr("x", (this.portraitWidth - this.portraitWidth / 3.5))
+        .attr("width", Math.floor(this.portraitWidth / 3.5))
+        .attr("y", (this.portraitHeight - this.portraitHeight/3.5))
+        .attr("height", Math.floor(this.portraitHeight / 3.5))
+    }
+
     g.append('svg:text')
-        .text(character.name)
+        .text(character.alias || character.name)
         .attr("class", "charLabel ")
         .attr("name", this.tokenize(character.name))
         .attr('dx', function(d) {
@@ -301,6 +303,7 @@
   }
 
   board.prototype.drawLine = function(char, destinations, relationClass) {
+    console.log('aaa');
     var self = this;
     var relationPositions = {
       "parent": 0,
@@ -365,7 +368,7 @@
         chars.push(character);
         return line(chars)
       })
-      .attr('class', relationClass);
+      .attr('class', " " + relationClass + " relations_" +this.tokenize(char.name));
     if(path.node()) {
       var totalLength = path.node().getTotalLength();
       path
@@ -375,6 +378,7 @@
         .ease("linear")
         .attr("stroke-dashoffset", 0);
     }
+    return line;
   }
 
   board.prototype.paintRelations = function(char) {
@@ -427,6 +431,23 @@
     //     var character = self.visibleChars[d];
     //     return character.pos.y * (self.portraitHeight + self.margin) +(self.portraitHeight + self.margin) /2;
     //   })
+  }
+
+  board.prototype.paintLieges = function() {
+    var self = this;
+    var n = 0;
+    for(var j in this.visibleChars) {
+
+      var self = this;
+      var char = this.visibleChars[j];
+      if(char.liege.length > 0) {
+        setTimeout(function(){console.log(self.drawLine(char, char.liege, "liege"))}, 500*n);
+      }
+      n++;
+    }
+
+    this.redrawAll();
+
   }
 
   window.Board = board;
