@@ -3,13 +3,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <link href="style/main.css" rel="stylesheet"></link>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/fonts/css/font-awesome.min.css">
   </head>
   <body>
 
     <div id="main">
-
     </div>
+    <div class="sideBar closed">
+      <div class="searcher">
+        <span class="inputSearcher">
+          <i class="icon-search"></i>
+          <input id="search" placeholder="Search a character"></input>
+        </span>
+      </div>
+      <div class="characterInfo"></div>
+      <div class="close"><i class="icon-chevron-right"></i></div>
+    </div>
+    <div class="sideBarBackground closed"></div>
 
+
+    <script id="characterTemplate" type="text/template">
+      <h3 class="characterName">
+        <%= name %> <% if(typeof alias != "undefined") {%><%= alias %> <%}%>
+      </h3>
+      <div class="alignment">
+        <% if(house) {%>
+          <img src="assets/houses/<%= house %>.png"></img>
+        <% }%>
+        <% if(organization) {%>
+          <img src="assets/houses/<%= organization %>.png"></img>
+        <% }%>
+      </div>
+      <div class="characterBio">
+        <%= bio %>
+      </div>
+    </script>
+
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="app/character.js"></script>

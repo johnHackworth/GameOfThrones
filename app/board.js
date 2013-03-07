@@ -33,11 +33,23 @@
     this.characters = options.characters;
     this.selector = options.selector;
     this.maxX = Math.floor(this.totalWidth / this.cellSize);
-    if(this.maxX % 2 === 0) {
-      this.maxX--;
-    }
+    // if(this.maxX % 2 === 0) {
+    //   this.maxX--;
+    // }
     this.maxY = Math.floor(this.totalHeight / this.cellSize);
+    this.sideBar = $('.sideBar');
+    this.sideBarBackground = $('.sideBarBackground');
+    this.charTemplate = $('#characterTemplate').html();
     this.initEmptyPositions();
+  }
+
+  board.prototype.openSideBar = function() {
+    this.sideBar.removeClass('closed');
+    this.sideBarBackground.removeClass('closed');
+  }
+  board.prototype.closeSideBar = function() {
+    this.sideBar.addClass('closed');
+    this.sideBarBackground.addClass('closed');
   }
 
   board.prototype.initEmptyPositions = function() {
@@ -73,7 +85,7 @@
 
   board.prototype.isCentric = function(x, y) {
     var center = this.calculateCenter();
-    return ( Math.abs(x - center.x) <= 2 ) && ( Math.abs(y - center.y) <= 2 );
+    return ( Math.abs(x - center.x) <= 0) && ( Math.abs(y - center.y) <= 0 );
   }
 
   board.prototype.isInLimits = function(x, y) {
@@ -101,14 +113,55 @@
   }
 
   board.prototype.getPosition = function() {
+    var arrX = this.maxX;
+    var arrY = this.maxY;
+    var i = 0;
+    var r = 0;
+    var c = 0;
+    var topE = arrX - 1;
+    var topW = 0;
+    var topS = arrY - 1;
+    var topN = 1;
+    var cc = 0;
+    var route = [];
+    var heading = "e";
 
-    for(var n = 0; n < this.maxY; n++) {
-      for(var m = 0; m < this.maxX; m++) {
-        if(this.filledPositions[n][m] == null && !this.isCentric(m,n) ) {
-          return {x: m, y: n}
+    while(i < (arrX * arrY) -1) {
+      if(this.filledPositions[c][r] == null && !this.isCentric(r,c) ) {
+        return {x: r, y: c}
+      }
+      i++;
+      if(heading === "e") {
+        if(r < topE) {r++}
+        else {
+          heading = "s";
+          c++;
+          topE--;
+        }
+      } else if(heading === "s") {
+        if(c < topS) {c++}
+        else {
+          heading = "w";
+          r--;
+          topS--;
+        }
+      } else if(heading === "w") {
+        if(r > topW) {r--}
+        else {
+          heading = "n";
+          c--;
+          topW++;
+        }
+      } else if(heading === "n") {
+        if(c > topN) {c--}
+        else {
+          heading = "e";
+          r++;
+          topN++;
         }
       }
     }
+
     return {x:0, y:0}
   }
 
@@ -171,6 +224,15 @@
         // .attr("y",position.y * (this.portraitHeight + this.margin))
         .attr("height", this.portraitHeight)
 
+    if(character.organization) {
+      g.append('svg:image')
+        .attr("xlink:href", 'assets/houses/' + character.organization + '.png')
+        .attr("x", (this.portraitWidth - this.portraitWidth / 3.5))
+        .attr("width", Math.floor(this.portraitWidth / 3.5))
+        .attr("y", (this.portraitHeight - this.portraitHeight/2.5))
+        .attr("height", Math.floor(this.portraitHeight / 3.5))
+        .attr("class", "heraldic");
+    }
     if(character.house) {
       g.append('svg:image')
         .attr("xlink:href", 'assets/houses/' + character.house + '.png')
@@ -180,6 +242,7 @@
         .attr("height", Math.floor(this.portraitHeight / 3.5))
         .attr("class", "heraldic");
     }
+
 
     if(character.dead) {
       g.append('svg:image')
@@ -229,6 +292,7 @@
     character.view.on('click', function() {
       self.clickPortrait(this);
     });
+    this.sideBar.find('.close').on('click', self.closeSideBar.bind(this));
   },
 
   board.prototype.calculateCenter = function() {
@@ -239,6 +303,7 @@
 
   board.prototype.clickPortrait = function(char) {
     this.selectCharacter(char);
+    this.openSideBar();
   }
 
   board.prototype.selectCharacter = function(char) {
@@ -253,6 +318,15 @@
     this.placeFamily(character);
     this.paintRelations(character);
     this.redrawAll();
+    this.characterProfile(character);
+  }
+
+  board.prototype.characterProfile = function(char) {
+    console.log(char);
+    console.log(this.charTemplate);
+    var charData = _.template(this.charTemplate, char);
+    console.log(charData);
+    this.sideBar.find('.characterInfo').html(charData);
   }
 
   board.prototype.moveCharTo = function(char, position) {

@@ -4,7 +4,8 @@
     "bio":"",
     "parents": ["Ned Stark"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
-    "closeFriends": ["Robb Stark", "Arya Stark", "Tyrion Lannister", "Samwell Tarly", "Aemon Targaryen"]
+    "closeFriends": ["Robb Stark", "Arya Stark", "Tyrion Lannister", "Samwell Tarly", "Aemon Targaryen"],
+    "organization": "nightwatch"
   },
   { "name":"Ned Stark",
     "portrait": "assets/ned.png",
@@ -113,7 +114,8 @@
     "siblings":  ["Cersei Lannister", "Tyrion Lannister"],
     "sons": ["Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
     "liege": ["Robert Baratheon"],
-    "house": "lannister"
+    "house": "lannister",
+    "organization": "royalguard"
   },
   {
     "name": "Tyrion Lannister",
@@ -192,13 +194,15 @@
     "portrait":"assets/benjen.png",
     "siblings": ["Ned Stark"],
     "closeFriends": ["Aemon Targaryen"],
-    "house": "nightwatch"
+    "house": "stark",
+    "organization": "nightwatch"
   },
   {
     "name": "Aemon Targaryen",
     "portrait": "assets/aemon.png",
     "closeFriends": ["Benjen Stark", "Samwell Tarly", "Jon Snow"],
-    "house": "nightwatch"
+    "house": "targaryen",
+    "organization": "nightwatch"
   },
   {
     "name": "Stannis Baratheon",
@@ -266,7 +270,8 @@
     "name": "Samwell Tarly",
     "portrait": "assets/samwell.png",
     "closeFriends": ["Jon Snow", "Aemon Targaryen"],
-    "house": "tarly"
+    "house": "tarly",
+    "organization": "nightwatch"
   },
   {
     "name": "Sandor Clegane",
