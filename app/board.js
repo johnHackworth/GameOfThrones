@@ -2,19 +2,20 @@
 
   var board = function(options) {
     this.visibleChars = {};
-    this.totalWidth = window.innerWidth;
+    this.correction = 0.8;
+    this.totalWidth = window.innerWidth * this.correction;
     this.totalHeight = window.innerHeight;
     this.totalArea = this.totalWidth * this.totalHeight;
     var factor = 90 * 90
-    if(this.totalArea > (1300 * 1300)) {
+    if(this.totalArea > (1300*this.correction * 1300)) {
       factor = 130 * 130;
-    } else if(this.totalArea > (1200 * 1200)) {
+    } else if(this.totalArea > (1200*this.correction * 1200)) {
       factor = 115 * 115;
-    } else if(this.totalArea > (1000 * 1000)) {
+    } else if(this.totalArea > (1000*this.correction * 1000)) {
       factor = 105 * 105;
-    } else if(this.totalArea > (900 * 800)) {
+    } else if(this.totalArea > (900*this.correction * 800)) {
       factor = 90 * 90;
-    } else if(this.totalArea > (800 * 600)) {
+    } else if(this.totalArea > (800*this.correction * 600)) {
       factor = 85 * 85;
     } else {
       factor = 65 * 65;
@@ -46,10 +47,12 @@
   board.prototype.openSideBar = function() {
     this.sideBar.removeClass('closed');
     this.sideBarBackground.removeClass('closed');
+    this.svg.classed('centered', false)
   }
   board.prototype.closeSideBar = function() {
     this.sideBar.addClass('closed');
     this.sideBarBackground.addClass('closed');
+    this.svg.classed('centered', true)
   }
 
   board.prototype.initEmptyPositions = function() {
@@ -64,6 +67,7 @@
 
   board.prototype.initializeBoard = function() {
     this.svg = d3.select(this.selector).append("svg")
+    this.svg.attr('class', 'centered')
     // this.svg.append('defs')
     //   .append('rect')
     //   .attr('id', 'circleCropper')

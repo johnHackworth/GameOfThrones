@@ -10,6 +10,7 @@
     this.alias = options.alias;
     this.organization = options.organization;
     this.house = options.house;
+    this.picture = options.picture;
     this.bio = options.bio;
     this.parents = options.parents || [];
     this.siblings = options.siblings || [];

@@ -23,6 +23,11 @@
 
 
     <script id="characterTemplate" type="text/template">
+      <% if(typeof picture != "undefined") { %>
+      <div class="picture">
+        <img src="<%= picture %>"></img>
+      </div>
+      <% } %>
       <h3 class="characterName">
         <%= name %> <% if(typeof alias != "undefined") {%><%= alias %> <%}%>
       </h3>

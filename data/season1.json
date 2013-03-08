@@ -1,7 +1,8 @@
 [
   { "name":"Jon Snow",
     "portrait": "/assets/jon.png",
-    "bio":"",
+    "picture": "http://2.bp.blogspot.com/-HVQt-TjetbQ/T23kUhjOdbI/AAAAAAAAANY/CChT-YjSIMw/s1600/jon-snow.png",
+    "bio":"Jon was raised as a Stark and Northerner and in many ways took to their values of honor, to which he tries to conform even when faced with complex and morally ambiguous decisions. Jon always had issues with his bastardy and at time feels alienated; he eventually chose to join the Night's Watch, where the circumstances of his birth were of little importance; his decision also mean that he has to leave all bonds of the past behind. For a long time he struggles with this but gradually comes to understand what it means to be a black brother and fully accepts his role as such.",
     "parents": ["Ned Stark"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
     "closeFriends": ["Robb Stark", "Arya Stark", "Tyrion Lannister", "Samwell Tarly", "Aemon Targaryen"],
