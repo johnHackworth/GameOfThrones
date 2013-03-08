@@ -30,15 +30,16 @@
       <% } %>
       <h3 class="characterName">
         <%= name %> <% if(typeof alias != "undefined") {%><%= alias %> <%}%>
+        <div class="alignment">
+          <% if(house) {%>
+            <img src="assets/houses/<%= house %>.png"></img>
+          <% }%>
+          <% if(organization) {%>
+            <img src="assets/houses/<%= organization %>.png"></img>
+          <% }%>
+        </div>
       </h3>
-      <div class="alignment">
-        <% if(house) {%>
-          <img src="assets/houses/<%= house %>.png"></img>
-        <% }%>
-        <% if(organization) {%>
-          <img src="assets/houses/<%= organization %>.png"></img>
-        <% }%>
-      </div>
+
       <div class="characterBio">
         <%= bio %>
       </div>

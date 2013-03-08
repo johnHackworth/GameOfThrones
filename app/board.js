@@ -381,7 +381,7 @@
     var nextPosition = {x: -2, y : -2};
     nextPosition = this.iterateRelation(char.siblings, nextPosition.x, nextPosition.y);
     nextPosition = this.iterateRelation(char.parents, nextPosition.x, nextPosition.y);
-    nextPosition = this.iterateRelation(char.closeFriends, nextPosition.x, nextPosition.y);
+    // nextPosition = this.iterateRelation(char.closeFriends, nextPosition.x, nextPosition.y);
     nextPosition = this.iterateRelation(char.marriage, nextPosition.x, nextPosition.y);
     nextPosition = this.iterateRelation(char.lovers, nextPosition.x, nextPosition.y);
     nextPosition = this.iterateRelation(char.sons, nextPosition.x, nextPosition.y);

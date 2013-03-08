@@ -223,3 +223,7 @@ g:hover .heraldic {
 .picture img {
   width: 100%;
 }
+
+.alignment {
+  float:right;
+}
