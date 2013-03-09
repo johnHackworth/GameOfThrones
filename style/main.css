@@ -1,6 +1,6 @@
 body {
   background-color: #FDA;
-}F
+}
 
 .charPortrait {
   border: 2px solid #333;
@@ -13,8 +13,11 @@ g {
 
 svg {
   width: 80%;
-  margin-left: 0%;
+  padding-left: 4%;
+  padding-top: 1%;
   height: 100%;
+  position: fixed;
+  top:0%;
   display: block;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
@@ -28,7 +31,6 @@ svg.centered {
 
 .charLabel {
   font-size: 10px;
-  font-family: arial;
   opacity:0.3;
   text-align: center;
   color: #641;
@@ -170,6 +172,9 @@ g:hover .heraldic {
   text-align: right;
   display: inline-block;
   margin: 1em 0 1em;
+  position: fixed;
+  bottom: 0;
+  left: 55px ;
 }
 .inputSearcher {
   padding: 10px;
@@ -199,10 +204,10 @@ g:hover .heraldic {
 
 .close {
   position: absolute;
-  top: 0;
+  bottom: 0;
   border: 1px solid #FFF;
   border-radius: 2px;
-  padding: 9px 11px;
+  padding: 9px 11px 8px;
   font-size: 20px;
   z-index: 14;
   margin: 7px 10px;
@@ -226,4 +231,48 @@ g:hover .heraldic {
 
 .alignment {
   float:right;
+}
+
+.timeSelector {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  z-index:15;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+.episodedf {
+  cursor: pointer;
+  color: #CCC;
+  background-color: #333;
+  padding: 5px 7.5px;
+  width: 10px;
+  height: 15px;
+  border-radius: 20px;
+  display: inline-block;
+  border: 2px solid #333;
+}
+
+.episode.selected {
+  background-color: #FF5;
+  color: #333;
+}
+
+.seasonSelector {
+  z-index: 18;
+  padding:2% 5%;
+  width: 90%;
+}
+
+.sideBar .title {
+  width: 90%;
+  padding:1% 5%;
+  font-size:2.3em;
+  overflow: hidden;
+  font-weight: lighter;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  text-shadow: 0 0 2px #000;
 }

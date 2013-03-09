@@ -2,20 +2,21 @@
 
   var board = function(options) {
     this.visibleChars = {};
-    this.correction = 0.8;
+    this.correction = 0.75;
+    this.verticalCorrection = 0.95;
     this.totalWidth = window.innerWidth * this.correction;
-    this.totalHeight = window.innerHeight;
+    this.totalHeight = window.innerHeight * this.verticalCorrection;
     this.totalArea = this.totalWidth * this.totalHeight;
     var factor = 90 * 90
-    if(this.totalArea > (1300*this.correction * 1300)) {
+    if(this.totalArea > (1300*this.correction * 1300 * this.verticalCorrection)) {
       factor = 130 * 130;
-    } else if(this.totalArea > (1200*this.correction * 1200)) {
+    } else if(this.totalArea > (1200*this.correction * 1200* this.verticalCorrection)) {
       factor = 115 * 115;
-    } else if(this.totalArea > (1000*this.correction * 1000)) {
+    } else if(this.totalArea > (1000*this.correction * 1000* this.verticalCorrection)) {
       factor = 105 * 105;
-    } else if(this.totalArea > (900*this.correction * 800)) {
+    } else if(this.totalArea > (900*this.correction * 800* this.verticalCorrection)) {
       factor = 90 * 90;
-    } else if(this.totalArea > (800*this.correction * 600)) {
+    } else if(this.totalArea > (800*this.correction * 600* this.verticalCorrection)) {
       factor = 85 * 85;
     } else {
       factor = 65 * 65;
@@ -31,6 +32,7 @@
 
 
   board.prototype.initialize = function(options) {
+    var self = this;
     this.characters = options.characters;
     this.selector = options.selector;
     this.maxX = Math.floor(this.totalWidth / this.cellSize);
@@ -40,8 +42,12 @@
     this.maxY = Math.floor(this.totalHeight / this.cellSize);
     this.sideBar = $('.sideBar');
     this.sideBarBackground = $('.sideBarBackground');
+    this.timeSelector = $('.timeSelector');
     this.charTemplate = $('#characterTemplate').html();
+    this.seasonTemplate = $('#seasonSelector').html();
     this.initEmptyPositions();
+    this.sideBar.find('.close').on('click', self.closeSideBar.bind(this));
+    this.timeSelector.find('.episode').on('click', self.changeEpisode.bind(this));
   }
 
   board.prototype.openSideBar = function() {
@@ -65,9 +71,14 @@
     }
   }
 
-  board.prototype.initializeBoard = function() {
+  board.prototype.initializeBoard = function(season) {
     this.svg = d3.select(this.selector).append("svg")
-    this.svg.attr('class', 'centered')
+    this.initializeSeason(season);
+    var seasonData = _.template(this.seasonTemplate, this);
+    this.sideBar.find('.seasonSelector').html(seasonData);
+
+    // this.svg.attr('class', 'centered')
+
     // this.svg.append('defs')
     //   .append('rect')
     //   .attr('id', 'circleCropper')
@@ -81,6 +92,8 @@
 
   board.prototype.initializeSeason = function(nSeason) {
     var seasonName = 'season' + nSeason;
+    this.season = nSeason.split('_')[0];
+    this.episode = nSeason.split('_')[1];
     var chars = this.characters.seasons[seasonName];
     for(var n in chars) {
       this.drawCharacter(chars[n]);
@@ -296,8 +309,17 @@
     character.view.on('click', function() {
       self.clickPortrait(this);
     });
-    this.sideBar.find('.close').on('click', self.closeSideBar.bind(this));
-  },
+  }
+
+  board.prototype.changeEpisode = function(ev) {
+    var $button = $(ev.currentTarget);
+    $('.episode.selected').removeClass('selected');
+    $button.addClass('selected');
+    var nEpisode = $button.data('number');
+    this.clearBoard();
+    console.log(1);
+    this.initializeSeason(nEpisode);
+  }
 
   board.prototype.calculateCenter = function() {
     var middleRow = Math.floor(this.maxX / 2) ;
@@ -326,10 +348,7 @@
   }
 
   board.prototype.characterProfile = function(char) {
-    console.log(char);
-    console.log(this.charTemplate);
     var charData = _.template(this.charTemplate, char);
-    console.log(charData);
     this.sideBar.find('.characterInfo').html(charData);
   }
 
@@ -389,6 +408,19 @@
 
   board.prototype.clearRelations = function() {
     this.svg.selectAll('path').data([]).exit().remove()
+  }
+
+  board.prototype.clearCharacter = function(character) {
+    $('.'+character).parent().remove();
+  }
+
+  board.prototype.clearBoard = function() {
+    this.clearRelations();
+    for(var name in this.visibleChars) {
+      this.clearCharacter(this.tokenize(name))
+    }
+    this.visibleChars = {};
+    this.initEmptyPositions();
   }
 
   board.prototype.drawLine = function(char, destinations, relationClass) {

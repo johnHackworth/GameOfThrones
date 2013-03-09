@@ -4,12 +4,17 @@
     <link href="style/main.css" rel="stylesheet"></link>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="assets/fonts/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,200,300' rel='stylesheet' type='text/css'>
   </head>
   <body>
 
     <div id="main">
     </div>
-    <div class="sideBar closed">
+
+    <div class="sideBar">
+      <div class="title">Game Of Thrones</div>
+      <div class="seasonSelector">
+      </div>
       <div class="searcher">
         <span class="inputSearcher">
           <i class="icon-search"></i>
@@ -19,7 +24,7 @@
       <div class="characterInfo"></div>
       <div class="close"><i class="icon-chevron-right"></i></div>
     </div>
-    <div class="sideBarBackground closed"></div>
+    <div class="sideBarBackground"></div>
 
 
     <script id="characterTemplate" type="text/template">
@@ -39,9 +44,17 @@
           <% }%>
         </div>
       </h3>
-
       <div class="characterBio">
         <%= bio %>
+      </div>
+    </script>
+
+    <script id="seasonSelector" type="text/template">
+      <div class="season">
+        <span class="prevSeason"> < </span> Season <%= season %> <span class="nextSeason"> > </span>
+      </div>
+      <div class="episode">
+        <span class="prevEpisode"> < </span> Episode <%= episode %> <span class="nextEpisode"> > </span>
       </div>
     </script>
 

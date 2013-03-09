@@ -8,8 +8,7 @@
         characters: window.casting,
         selector: "#main"
       })
-      window.board.initializeBoard()
-      window.board.initializeSeason(1);
+      window.board.initializeBoard('1_0');
     });
 
   });
