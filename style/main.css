@@ -196,11 +196,18 @@ g:hover .heraldic {
 }
 .inputSearcher .tt-hint,
 .inputSearcher .tt-query {
-  width: 90%;
-  float:right;
-  border: 0;
+  width: 90% !important;
+  /*float:right !important;*/
+  border: 0 !important;
 }
 
+.inputSearcher .tt-dropdown-menu {
+
+}
+
+.inputSearcher .icon-search {
+  margin-right: 10px;
+}
 
 .inputSearcher input:focus,
 .inputSearcher input:active {
@@ -209,18 +216,19 @@ g:hover .heraldic {
 }
 
 .inputSearcher .tt-dropdown-menu.tt-is-open {
-    background: none repeat scroll 0 0 #efefef;
-    font-family: "marcellus";
-    font-size: 12px;
-    border-radius: 9px 9px 0 0;
-    display: inline-block;
-    left: -16%;
-    padding: 1px 1%;
-    position: absolute;
-    right: 0;
-    top: -140px;
-    width: 114%;
-    z-index: 20;
+  background: none repeat scroll 0 0 #FEFEFE;
+  border-radius: 3px 3px 3px 3px;
+  bottom: 0;
+  display: inline-block;
+  font-family: marcellus;
+  font-size: 12px;
+  height: 120px;
+  left: -24%;
+  padding: 1px 10px;
+  position: absolute;
+  top: -120px;
+  width: 110%;
+  z-index: 100;
 }
 /*.searcher {
   text-align: right;

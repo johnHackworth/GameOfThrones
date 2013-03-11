@@ -592,10 +592,12 @@
                 return this.$input.val();
             },
             setInputValue: function(value, silent) {
+
                 this.$input.val(value);
                 if (silent !== true) {
                     this._compareQueryToInputValue();
                 }
+                this.$input.trigger('change')
             },
             getHintValue: function() {
                 return this.$hint.val();
@@ -665,6 +667,7 @@
                 $($e.currentTarget).addClass("tt-is-under-cursor");
             },
             _handleSelection: function($e) {
+                this.trigger("value:input");
                 this.trigger("select", formatDataForSuggestion($($e.currentTarget)));
             },
             _moveCursor: function(increment) {

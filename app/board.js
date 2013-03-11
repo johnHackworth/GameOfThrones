@@ -58,8 +58,18 @@
     this.searcher = $('#search');
     this.searcher.typeahead({
       name: 'characters',
-      local: this.getSeasonDatums()
+      local: this.getSeasonDatums(),
+      limit: 3
     });
+    this.searcher.on('change blur', function() {
+      var charName = $('#search').val();
+      charName.split(' ').map(function(i,e){return i.charAt(0).toUpperCase() + i.slice(1);}).join(' ')
+      var char = self.visibleChars[charName];
+
+      if(char) {
+        self.selectCharacter(char);
+      }
+    })
 
   }
 
@@ -161,14 +171,11 @@
     // this.season = nSeason.split('_')[0];
     // this.episode = nSeason.split('_')[1];
     var seasonName = "season" + this.season + '_' + this.episode;
-    console.log(seasonName);
     var chars = this.characters.seasons[seasonName];
     for(var n in chars) {
       this.drawCharacter(chars[n]);
     }
     if(this.selectedCharacter) {
-      window.bbb = this.selectedCharacter.view
-      console.log(this.selectedCharacter.view);
       this.clickPortrait(this.selectedCharacter.view)
     }
   }
@@ -390,7 +397,6 @@
     $button.addClass('selected');
     var nEpisode = $button.data('number');
     this.clearBoard();
-    console.log(1);
     this.initializeSeason(nEpisode);
   }
 
@@ -499,7 +505,6 @@
   }
 
   board.prototype.drawLine = function(char, destinations, relationClass) {
-    console.log('aaa');
     var self = this;
     var relationPositions = {
       "parent": 0,
@@ -601,7 +606,6 @@
       this.drawLine(char, char.closeFriends, "friend");
     }
     if(char.sons.length > 0) {
-      console.log(char.sons);
       this.drawLine(char, char.sons, "son");
     }
     if(char.lovers.length > 0) {
