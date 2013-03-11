@@ -8,7 +8,7 @@
         characters: window.casting,
         selector: "#main"
       })
-      window.board.initializeBoard('1_0');
+      window.board.initializeBoard('1_1');
     });
 
   });

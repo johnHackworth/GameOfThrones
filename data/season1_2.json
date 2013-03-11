@@ -101,6 +101,7 @@
     "portrait": "assets/cersei.png",
     "bio": "",
     "marriage": ["Robert Baratheon"],
+    "lovers": ["Jaime Lannister"],
     "siblings":  ["Jaime Lannister", "Tyrion Lannister"],
     "sons": ["Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
     "enemies": ["Ned Stark", "Tyrion Lannister"],
@@ -110,7 +111,9 @@
     "name": "Jaime Lannister",
     "portrait": "assets/jaime.png",
     "bio": "",
+    "lovers": ["Cersei Lannister"],
     "siblings":  ["Cersei Lannister", "Tyrion Lannister"],
+    "sons": ["Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
     "liege": ["Robert Baratheon"],
     "house": "lannister",
     "organization": "royalguard"
@@ -128,26 +131,26 @@
     "name": "Joffrey Baratheon",
     "portrait": "assets/joffrey.png",
     "bio":"",
-    "parents": ["Robert Baratheon", "Cersei Lannister"],
+    "parents": ["Robert Baratheon", "Cersei Lannister", "Jaime Lannister"],
     "siblings": ["Tommen Baratheon", "Myrcella Baratheon"],
     "closeFriends": ["Sandor Clegane"],
     "lovers": ["Sansa Stark"],
     "enemies": ["Arya Stark", "Ned Stark", "Renly Baratheon", "Stannis Baratheon"],
-    "house": "baratheon"
+    "house": "lannister"
   },
   {
     "name": "Tommen Baratheon",
     "portrait": "assets/tommen.png",
     "bio":"",
-    "parents": ["Robert Baratheon", "Cersei Lannister"],
+    "parents": ["Robert Baratheon", "Cersei Lannister", "Jaime Lannister"],
     "siblings": ["Joffrey Baratheon", "Myrcella Baratheon"],
-    "house": "baratheon"
+    "house": "lannister"
   },
   {
     "name": "Myrcella Baratheon",
     "portrait": "assets/myrcella.png",
     "bio":"",
-    "parents": ["Robert Baratheon", "Cersei Lannister"],
+    "parents": ["Robert Baratheon", "Cersei Lannister", "Jaime Lannister"],
     "siblings": ["Joffrey Baratheon", "Tommen Baratheon"],
     "house": "lannister"
   },
@@ -168,6 +171,7 @@
     "portrait": "assets/daenerys.png",
     "siblings": ["Viserys Targaryen"],
     "closeFriends": ["Jorah Mormont", "Illyrio Monpatis"],
+    "lovers": ["Carl Drogo"],
     "enemies": ["Robert Baratheon"],
     "house": "targaryen"
   },

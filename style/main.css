@@ -1,5 +1,16 @@
+@font-face {
+    font-family: "got";
+    src: url('../assets/fonts/got.ttf');
+}
+
 body {
   background-color: #FDA;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .charPortrait {
@@ -167,28 +178,29 @@ g:hover .heraldic {
   right:-20%;
   opacity: 0;
 }
-.searcher {
-  width: 100%;
-  text-align: right;
-  display: inline-block;
-  margin: 1em 0 1em;
-  position: fixed;
-  bottom: 0;
-  left: 55px ;
-}
+
 .inputSearcher {
   padding: 10px;
   background: #FFF;
   border: 1px solid #666;
   border-radius: 3px;
   color: #333;
-  margin-left: 20px;
-  margin-right: 5%;
+  width: 60%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 5%;
 }
-
-.inputSearcher input {
+.inputSearcher .twitter-typeahead {
+  position: absolute !important;
+}
+.inputSearcher .tt-hint,
+.inputSearcher .tt-query {
+  width: 90%;
+  float:right;
   border: 0;
 }
+
 
 .inputSearcher input:focus,
 .inputSearcher input:active {
@@ -196,6 +208,36 @@ g:hover .heraldic {
   outline: none;
 }
 
+.inputSearcher .tt-dropdown-menu.tt-is-open {
+    background: none repeat scroll 0 0 #efefef;
+    font-family: "marcellus";
+    font-size: 12px;
+    border-radius: 9px 9px 0 0;
+    display: inline-block;
+    left: -16%;
+    padding: 1px 1%;
+    position: absolute;
+    right: 0;
+    top: -140px;
+    width: 114%;
+    z-index: 20;
+}
+/*.searcher {
+  text-align: right;
+  display: inline-block;
+  margin: 1em 0 1em;
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+}
+
+
+.inputSearcher input {
+  border: 0;
+  width: 55%;
+}
+
+*/
 .characterInfo {
   width: 90%;
   padding: 0 5%;
@@ -207,10 +249,10 @@ g:hover .heraldic {
   bottom: 0;
   border: 1px solid #FFF;
   border-radius: 2px;
-  padding: 9px 11px 8px;
+  padding: 7px 11px 7px;
   font-size: 20px;
   z-index: 14;
-  margin: 7px 10px;
+  margin: 5%;
   cursor: pointer;
   background-color: transparent;
 }
@@ -244,35 +286,33 @@ ul, li {
     list-style-type: none;
 }
 
-.episodedf {
-  cursor: pointer;
-  color: #CCC;
-  background-color: #333;
-  padding: 5px 7.5px;
-  width: 10px;
-  height: 15px;
-  border-radius: 20px;
-  display: inline-block;
-  border: 2px solid #333;
-}
-
-.episode.selected {
-  background-color: #FF5;
-  color: #333;
-}
-
 .seasonSelector {
   z-index: 18;
-  padding:2% 5%;
+  padding:0% 5% 1%;
   width: 90%;
+  font-size: 1.1em;
+}
+
+.seasonSelector i {
+  font-size: 1.5em;
+  padding:0 1em;
 }
 
 .sideBar .title {
   width: 90%;
-  padding:1% 5%;
-  font-size:2.3em;
+  padding:3% 5% 1%;
+  font-size:1.2em;
   overflow: hidden;
-  font-weight: lighter;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  text-shadow: 0 0 2px #000;
+  font-family: 'got', 'marcellus';
+  text-shadow: 0 0 1px #000;
+  text-align: center;
+}
+
+.season, .episode {
+  width: 100%;
+  text-align: center;
+  font-family: marcellus;
+}
+.season span, .episode span {
+  cursor: pointer;
 }

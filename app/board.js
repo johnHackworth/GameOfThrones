@@ -15,9 +15,9 @@
     } else if(this.totalArea > (1000*this.correction * 1000* this.verticalCorrection)) {
       factor = 105 * 105;
     } else if(this.totalArea > (900*this.correction * 800* this.verticalCorrection)) {
-      factor = 90 * 90;
+      factor = 80 * 80;
     } else if(this.totalArea > (800*this.correction * 600* this.verticalCorrection)) {
-      factor = 85 * 85;
+      factor = 75 * 75;
     } else {
       factor = 65 * 65;
     }
@@ -29,16 +29,19 @@
     this.initialize(options);
   }
 
+  board.prototype.episodeList = [
+    ["episode 1", "episode 2"]
+  ]
 
+  board.prototype.season = 1;
+  board.prototype.episode = 1;
 
   board.prototype.initialize = function(options) {
     var self = this;
     this.characters = options.characters;
     this.selector = options.selector;
     this.maxX = Math.floor(this.totalWidth / this.cellSize);
-    // if(this.maxX % 2 === 0) {
-    //   this.maxX--;
-    // }
+
     this.maxY = Math.floor(this.totalHeight / this.cellSize);
     this.sideBar = $('.sideBar');
     this.sideBarBackground = $('.sideBarBackground');
@@ -48,8 +51,67 @@
     this.initEmptyPositions();
     this.sideBar.find('.close').on('click', self.closeSideBar.bind(this));
     this.timeSelector.find('.episode').on('click', self.changeEpisode.bind(this));
+    this.sideBar.on('click', '.prevSeason', self.prevSeason.bind(this));
+    this.sideBar.on('click', '.nextSeason', self.nextSeason.bind(this));
+    this.sideBar.on('click', '.prevEpisode', self.prevEpisode.bind(this));
+    this.sideBar.on('click', '.nextEpisode', self.nextEpisode.bind(this));
+    this.searcher = $('#search');
+    this.searcher.typeahead({
+      name: 'characters',
+      local: this.getSeasonDatums()
+    });
+
   }
 
+  board.prototype.getSeasonDatums = function() {
+    var datums = [];
+    var season = this.characters.seasons["season"+this.season+"_"+this.episode];
+    for(var n = 0, l = season.length; n < l; n++) {
+      var datum = {};
+      datum.value = season[n].name;
+      datum.tokens = season[n].name.split(' ');
+      datums.push(datum);
+    }
+    return datums;
+
+  }
+
+  board.prototype.prevSeason = function() {
+    this.season --;
+    if(this.season < 1) {
+      this.season = 1;
+    }
+    this.clearBoard();
+    this.initializeSeason();
+    this.renderSeasonData();
+  }
+  board.prototype.nextSeason = function() {
+    this.season++;
+    if(this.season > this.episodeList.length) {
+      this.season = this.episodeList.length;
+    }
+    this.clearBoard();
+    this.initializeSeason();
+    this.renderSeasonData();
+  }
+  board.prototype.prevEpisode = function() {
+    this.episode--;
+    if(this.episode < 1) {
+      this.episode = 1;
+    }
+    this.clearBoard();
+    this.initializeSeason();
+    this.renderSeasonData();
+  }
+  board.prototype.nextEpisode = function() {
+    this.episode++;
+    if(this.episode > this.episodeList[this.season - 1].length) {
+      this.episode = this.episodeList[this.season - 1].length;
+    }
+    this.clearBoard();
+    this.initializeSeason();
+    this.renderSeasonData();
+  }
   board.prototype.openSideBar = function() {
     this.sideBar.removeClass('closed');
     this.sideBarBackground.removeClass('closed');
@@ -71,11 +133,15 @@
     }
   }
 
-  board.prototype.initializeBoard = function(season) {
-    this.svg = d3.select(this.selector).append("svg")
-    this.initializeSeason(season);
+  board.prototype.renderSeasonData = function() {
     var seasonData = _.template(this.seasonTemplate, this);
     this.sideBar.find('.seasonSelector').html(seasonData);
+  }
+
+  board.prototype.initializeBoard = function() {
+    this.svg = d3.select(this.selector).append("svg")
+    this.initializeSeason();
+    this.renderSeasonData();
 
     // this.svg.attr('class', 'centered')
 
@@ -90,13 +156,20 @@
     //   .attr('xlink:href', '#circleCropper')
   }
 
-  board.prototype.initializeSeason = function(nSeason) {
-    var seasonName = 'season' + nSeason;
-    this.season = nSeason.split('_')[0];
-    this.episode = nSeason.split('_')[1];
+  board.prototype.initializeSeason = function() {
+    // var seasonName = 'season' + nSeason;
+    // this.season = nSeason.split('_')[0];
+    // this.episode = nSeason.split('_')[1];
+    var seasonName = "season" + this.season + '_' + this.episode;
+    console.log(seasonName);
     var chars = this.characters.seasons[seasonName];
     for(var n in chars) {
       this.drawCharacter(chars[n]);
+    }
+    if(this.selectedCharacter) {
+      window.bbb = this.selectedCharacter.view
+      console.log(this.selectedCharacter.view);
+      this.clickPortrait(this.selectedCharacter.view)
     }
   }
 
@@ -345,6 +418,8 @@
     this.paintRelations(character);
     this.redrawAll();
     this.characterProfile(character);
+
+    this.selectedCharacter = character;
   }
 
   board.prototype.characterProfile = function(char) {

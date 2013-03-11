@@ -1,10 +1,12 @@
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="style/main.css" rel="stylesheet"></link>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="assets/fonts/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,200,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
+    <link href="vendors/typehead/typehead.css" rel="stylesheet" type="text/css">
   </head>
   <body>
 
@@ -51,10 +53,10 @@
 
     <script id="seasonSelector" type="text/template">
       <div class="season">
-        <span class="prevSeason"> < </span> Season <%= season %> <span class="nextSeason"> > </span>
+        <span class="prevSeason"><i class="icon-angle-left"></i> </span> Season <%= season %> <span class="nextSeason"> <i class="icon-angle-right"></i> </span>
       </div>
       <div class="episode">
-        <span class="prevEpisode"> < </span> Episode <%= episode %> <span class="nextEpisode"> > </span>
+        <span class="prevEpisode"> <i class="icon-angle-left"></i> </span> Episode <%= episode %> <span class="nextEpisode"> <i class="icon-angle-right"></i> </span>
       </div>
     </script>
 
@@ -62,6 +64,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="vendors/typehead/typehead.js"></script>
     <script src="app/character.js"></script>
     <script src="app/casting.js"></script>
     <script src="app/board.js"></script>

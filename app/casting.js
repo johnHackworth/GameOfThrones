@@ -1,8 +1,8 @@
 (function() {
   var casting = function(options) {
     this.seasons = {
-      season1_0: [],
-      season1_1: []
+      season1_1: [],
+      season1_2: []
 
     }
     this.initialize(options);
@@ -31,7 +31,7 @@
     var dfd = $.Deferred();
     var self = this;
     var promises = [];
-    for(var n = 0; n<2; n++) {
+    for(var n = 1; n<3; n++) {
       promises.push(this.loadSeason('1_'+n));
     }
     $.when.apply(this, promises)
