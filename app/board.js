@@ -3,15 +3,17 @@
   var board = function(options) {
     this.visibleChars = {};
     this.correction = 0.75;
-    this.verticalCorrection = 0.95;
+    this.verticalCorrection = 0.93444;
     this.totalWidth = window.innerWidth * this.correction;
     this.totalHeight = window.innerHeight * this.verticalCorrection;
     this.totalArea = this.totalWidth * this.totalHeight;
     var factor = 90 * 90
-    if(this.totalArea > (1300*this.correction * 1300 * this.verticalCorrection)) {
-      factor = 130 * 130;
+    if(this.totalArea > (1400*this.correction * 1400 * this.verticalCorrection)) {
+      factor = 92 * 92;
+    } else if(this.totalArea > (1300*this.correction * 1300 * this.verticalCorrection)) {
+      factor = 105 * 105;
     } else if(this.totalArea > (1200*this.correction * 1200* this.verticalCorrection)) {
-      factor = 115 * 115;
+      factor = 103 * 103;
     } else if(this.totalArea > (1000*this.correction * 1000* this.verticalCorrection)) {
       factor = 105 * 105;
     } else if(this.totalArea > (900*this.correction * 800* this.verticalCorrection)) {
@@ -48,6 +50,8 @@
     this.timeSelector = $('.timeSelector');
     this.charTemplate = $('#characterTemplate').html();
     this.seasonTemplate = $('#seasonSelector').html();
+    this.legendButton = $('.legendButton');
+    this.legend = $('.legend');
     this.initEmptyPositions();
     this.sideBar.find('.close').on('click', self.closeSideBar.bind(this));
     this.timeSelector.find('.episode').on('click', self.changeEpisode.bind(this));
@@ -55,6 +59,7 @@
     this.sideBar.on('click', '.nextSeason', self.nextSeason.bind(this));
     this.sideBar.on('click', '.prevEpisode', self.prevEpisode.bind(this));
     this.sideBar.on('click', '.nextEpisode', self.nextEpisode.bind(this));
+    this.legendButton.on('click', self.showLegend.bind(this));
     this.searcher = $('#search');
     this.searcher.typeahead({
       name: 'characters',
@@ -73,6 +78,16 @@
 
   }
 
+  board.prototype.showLegend = function() {
+    this.legendButton.fadeOut();
+    this.legend.fadeIn();
+    setTimeout(this.hideLegend.bind(this),10000);
+  }
+
+  board.prototype.hideLegend = function() {
+    this.legendButton.fadeIn();
+    this.legend.fadeOut();
+  }
   board.prototype.getSeasonDatums = function() {
     var datums = [];
     var season = this.characters.seasons["season"+this.season+"_"+this.episode];
@@ -127,6 +142,18 @@
     this.sideBarBackground.removeClass('closed');
     this.svg.classed('centered', false)
   }
+
+  board.prototype.moveBackground = function() {
+    var headings = ['north', 'south', 'east', 'west'];
+    var heading = headings[Math.floor(Math.random()*4)]
+    $('.background')
+      .removeClass('north')
+      .removeClass('south')
+      .removeClass('east')
+      .removeClass('west')
+      .addClass(heading);
+  }
+
   board.prototype.closeSideBar = function() {
     this.sideBar.addClass('closed');
     this.sideBarBackground.addClass('closed');
@@ -152,7 +179,8 @@
     this.svg = d3.select(this.selector).append("svg")
     this.initializeSeason();
     this.renderSeasonData();
-
+    this.moveBackground();
+    this.interval = setInterval(this.moveBackground.bind(this), 20000);
     // this.svg.attr('class', 'centered')
 
     // this.svg.append('defs')

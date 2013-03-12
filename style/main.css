@@ -5,6 +5,9 @@
 
 body {
   background-color: #FDA;
+  margin: 0;
+  padding: 0;
+  background-image: url('../minimap.jpg');
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -12,6 +15,50 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -10;
+  background-image: url('../mapblue.jpg');
+  background-position: -500px -500px;
+  background-repeat: no-repeat;
+
+-webkit-transition: all 160000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+   -moz-transition: all 160000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+    -ms-transition: all 160000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+     -o-transition: all 160000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+        transition: all 160000ms cubic-bezier(0.340, 0.005, 0.610, 0.995); /* custom */
+
+-webkit-transition-timing-function: cubic-bezier(0.340, 0.005, 0.610, 0.995);
+   -moz-transition-timing-function: cubic-bezier(0.340, 0.005, 0.610, 0.995);
+    -ms-transition-timing-function: cubic-bezier(0.340, 0.005, 0.610, 0.995);
+     -o-transition-timing-function: cubic-bezier(0.340, 0.005, 0.610, 0.995);
+        transition-timing-function: cubic-bezier(0.340, 0.005, 0.610, 0.995);
+
+/*  -webkit-transition: all 42s easeInCirc;
+  -moz-transition: all 42s easeInCirc;
+  -o-transition: all 42s easeInCirc;
+  -ms-transition: all 42s easeInCirc;
+  transition: all 42s easeInCirc;*/
+}
+
+.background.south {
+  background-position: -500px -2000px;
+}
+
+.background.north {
+  background-position: 0px 0px;
+}
+
+.background.east {
+  background-position: -1000px -1000px;
+}
+.background.west {
+  background-position: 00px -1000px;
+}
+
 
 .charPortrait {
   border: 2px solid #333;
@@ -26,7 +73,8 @@ svg {
   width: 80%;
   padding-left: 4%;
   padding-top: 1%;
-  height: 100%;
+  padding-bottom: 3%;
+  height: 96%;
   position: fixed;
   top:0%;
   display: block;
@@ -42,9 +90,9 @@ svg.centered {
 
 .charLabel {
   font-size: 10px;
-  opacity:0.3;
+  opacity:0.6;
   text-align: center;
-  color: #641;
+  stroke: #A51;
   font-family: 'Open Sans', sans-serif;
   font-weight: lighter;
   -webkit-transition: opacity .3s linear, fill .3s linear;
@@ -60,11 +108,13 @@ g {
 
 g:hover .charLabel {
   opacity: 1;
+
 }
 
 .charSelected .charLabel {
   opacity: 1;
   font-weight:bold;
+  stroke: #321;
 }
 
 
@@ -77,42 +127,71 @@ line, path {
 }
 
 path.sibling {
-  stroke: #FC5;
+  stroke: #FD3;
+}
+.legend .legendElement.sibling {
+  background-color: #FD5;
 }
 
 path.parent {
-  stroke: #DA5;
+  stroke: #631;
+}
+.legend .legendElement.parent {
+  background-color: #631;
 }
 
 path.friend {
   stroke: #55F;
   stroke-width:0.3em;
 }
+.legend .legendElement.friend {
+  background-color: #55F;
+}
 
 path.son {
   stroke: #595;
+}
+.legend .legendElement.son {
+  background-color: #595;
 }
 
 path.lover {
   stroke: #F55;
 }
+.legend .legendElement.lover {
+  background-color: #F55;
+}
 
 path.spouse {
   stroke: #F99;
+}
+.legend .legendElement.spouse {
+  background-color: #F99;
 }
 
 path.enemy {
   stroke: #222;
   stroke-width:0.3em;
 }
+.legend .legendElement.enemy {
+  background-color: #222;
+  color: #EEE;
+}
 
 path.liege {
   stroke: #FFD;
   stroke-width:0.3em;
 }
+.legend .legendElement.liege {
+  background-color: #FFD;
+}
+
 path.courtesan {
-  stroke: #CCC;
+  stroke: #888;
   stroke-width:0.3em;
+}
+.legend .legendElement.courtesan {
+  background-color: #888;
 }
 
 
@@ -165,7 +244,7 @@ g:hover .heraldic {
 
 .sideBarBackground {
   background-color: #333;
-  opacity: 0.7;
+  opacity: 0.95;
   z-index: 8;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
@@ -266,7 +345,8 @@ g:hover .heraldic {
 }
 
 .characterBio {
-  height: 40%;
+  height: 30%;
+  max-height: 200px;
   overflow-y: auto;
 }
 
@@ -323,4 +403,33 @@ ul, li {
 }
 .season span, .episode span {
   cursor: pointer;
+}
+
+.legend {
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+  display: none;
+}
+
+.legend .legendElement {
+  display: inline-block;
+  padding: 3px 10px;
+  font-family: marcellus;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.legendButton {
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+  cursor: pointer;
+  font-family: marcellus;
+  color: #666;
+  opacity: 0.8;
+}
+
+.legendButton i {
+  color: #921;
 }

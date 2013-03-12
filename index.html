@@ -9,7 +9,7 @@
     <link href="vendors/typehead/typehead.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-
+    <div class="background"></div>
     <div id="main">
     </div>
 
@@ -27,7 +27,19 @@
       <div class="close"><i class="icon-chevron-right"></i></div>
     </div>
     <div class="sideBarBackground"></div>
+    <div class="legend">
+      <div class="legendElement son">Son</div>
+      <div class="legendElement parent">Parent</div>
+      <div class="legendElement liege">Liege</div>
+      <div class="legendElement friend">Friend</div>
+      <div class="legendElement enemy">Enemy</div>
+      <div class="legendElement spouse">Spouse</div>
+      <div class="legendElement lover">Lover</div>
+      <div class="legendElement courtesan">Courtesan</div>
+      <div class="legendElement sibling">Sibling</div>
+    </div>
 
+    <div class="legendButton"><i class="icon-bookmark"></i> legend </div>
 
     <script id="characterTemplate" type="text/template">
       <% if(typeof picture != "undefined") { %>
