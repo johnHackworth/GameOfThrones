@@ -1,22 +1,20 @@
 [
   { "name":"Jon Snow",
     "portrait": "/assets/jon.png",
-    "picture": "http://2.bp.blogspot.com/-HVQt-TjetbQ/T23kUhjOdbI/AAAAAAAAANY/CChT-YjSIMw/s1600/jon-snow.png",
-    "bio":"Jon was raised as a Stark and Northerner and in many ways took to their values of honor, to which he tries to conform even when faced with complex and morally ambiguous decisions. Jon always had issues with his bastardy and at time feels alienated; he eventually chose to join the Night's Watch, where the circumstances of his birth were of little importance; his decision also mean that he has to leave all bonds of the past behind. For a long time he struggles with this but gradually comes to understand what it means to be a black brother and fully accepts his role as such.",
+    "picture": "assets/pictures/jon_snow.jpg",
+    "bio":"Jon is the bastard child of Ned Stark of Winterfell and a unkwnow woman. Soon after his marriage, Ned Stark leaved his home to go to fight on the war of the usurper, and returned home carrying a infant that was supposedly his own",
     "parents": ["Ned Stark"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
-    "closeFriends": ["Robb Stark", "Arya Stark", "Tyrion Lannister", "Samwell Tarly", "Aemon Targaryen"],
-    "organization": "nightwatch"
+    "closeFriends": ["Robb Stark", "Arya Stark"]
   },
   { "name":"Ned Stark",
     "portrait": "assets/ned.png",
     "picture": "assets/pictures/ned_stark.jpg",
     "bio":"Eddard 'Ned' Stark is the head of House Stark, Lord of Winterfell, and Warden of the North. He is a friend to King Robert Baratheon, whom he was raised with and helped to win the Iron Throne, and is eventually named his Hand. ",
-    "sons":["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
+    "sons":["Jon Snow", "Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
     "marriage": ["Catelyn Tully"],
     "lovers": ["Catelyn Tully"],
     "liege": ["Robert Baratheon"],
-    "enemies": ["Cersei Lannister"],
     "court": ["Theon Greyjoy", "Maester Luwin"],
     "house": "stark"
   },
@@ -28,23 +26,22 @@
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Bran Stark", "Sansa Stark", "Jon Snow",  "Robb Stark", "Rickon Stark"],
     "closeFriends": ["Jon Snow"],
-    "enemies": ["Joffrey Baratheon", "Sandor Clegane", "Cersei Lannister"],
     "house": "stark"
   },
   {
     "name": "Sansa Stark",
     "portrait": "assets/sansa.png",
-    "bio": "",
+    "picture": "assets/pictures/sansa_stark.jpg",
+    "bio": "Sansa Stark is the elder daughter of Catelyn and Eddard Stark. She is thirteen years old at the start of the series. ",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Robb Stark", "Arya Stark", "Bran Stark", "Robb Stark", "Rickon Stark", "Jon Snow"],
-    "enemies": ["Joffrey Baratheon"],
-    "lovers": ["Joffrey Baratheon"],
     "house": "stark"
   },
   {
     "name": "Robb Stark",
     "portrait": "assets/robb.png",
-    "bio":"",
+    "picture": "assets/pictures/robb_stark.jpg",
+    "bio":"Robb Stark is the eldest son of Eddard Stark and Catelyn Tully and the heir to Winterfell and the North.",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "closeFriends": ["Theon Greyjoy"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Bran Stark", "Rickon Stark", "Jon Snow"],
@@ -53,6 +50,7 @@
   {
     "name": "Bran Stark",
     "portrait":"assets/bran.png",
+    "picture": "assets/pictures/bran_stark.jpg",
     "bio":"",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Jon Snow"],

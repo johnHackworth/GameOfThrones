@@ -127,46 +127,46 @@ line, path {
 }
 
 path.sibling {
-  stroke: #FD3;
+  stroke: #E9B64D;
 }
 .legend .legendElement.sibling {
-  background-color: #FD5;
+  background-color: #E9B64D;
 }
 
 path.parent {
   stroke: #631;
 }
 .legend .legendElement.parent {
-  background-color: #631;
+  background-color: #631                        ;
 }
 
 path.friend {
-  stroke: #55F;
+  stroke: #90CA77;
   stroke-width:0.3em;
 }
 .legend .legendElement.friend {
-  background-color: #55F;
+  background-color: #90CA77;
 }
 
 path.son {
-  stroke: #595;
+  stroke: #E48743;
 }
 .legend .legendElement.son {
-  background-color: #595;
+  background-color: #E48743;
 }
 
 path.lover {
-  stroke: #F55;
+  stroke: #9E3B33;
 }
 .legend .legendElement.lover {
-  background-color: #F55;
+  background-color: #9E3B33;
 }
 
 path.spouse {
-  stroke: #F99;
+  stroke: #EC633F;
 }
 .legend .legendElement.spouse {
-  background-color: #F99;
+  background-color: #EC633F;
 }
 
 path.enemy {
@@ -179,11 +179,11 @@ path.enemy {
 }
 
 path.liege {
-  stroke: #FFD;
+  stroke: #81C6DD;
   stroke-width:0.3em;
 }
 .legend .legendElement.liege {
-  background-color: #FFD;
+  background-color: #81C6DD;
 }
 
 path.courtesan {
