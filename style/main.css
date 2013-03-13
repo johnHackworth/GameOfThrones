@@ -25,11 +25,11 @@ body {
   background-position: -500px -500px;
   background-repeat: no-repeat;
 
--webkit-transition: all 80000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
-   -moz-transition: all 80000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
-    -ms-transition: all 80000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
-     -o-transition: all 80000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
-        transition: all 80000ms cubic-bezier(0.340, 0.005, 0.610, 0.995); /* custom */
+-webkit-transition: background-position 80000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+   -moz-transition: background-position 80000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+    -ms-transition: background-position 80000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+     -o-transition: background-position 80000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+        transition: background-position 80000ms cubic-bezier(0.340, 0.005, 0.610, 0.995); /* custom */
 
 -webkit-transition-timing-function: cubic-bezier(0.340, 0.005, 0.610, 0.995);
    -moz-transition-timing-function: cubic-bezier(0.340, 0.005, 0.610, 0.995);
