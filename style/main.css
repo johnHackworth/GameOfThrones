@@ -102,6 +102,26 @@ svg.centered {
   transition: opacity .3s linear, fill .3s linear;
 }
 
+.relLabel {
+  font-size: 12px;
+  text-transform: capitalize;
+  opacity:0.0;
+  text-align: center;
+  stroke: #633;
+  font-family: 'Raleway', 'Open Sans', sans-serif;
+  font-weight: lighter;
+  -webkit-transition: opacity 2s linear, fill 2s linear;
+  -moz-transition: opacity 2s linear, fill 2s linear;
+  -o-transition: opacity 2s linear, fill 2s linear;
+  -ms-transition: opacity 2s linear, fill 2s linear;
+  transition: opacity 2s linear, fill 2s linear;
+}
+
+.relLabel.shown{
+  opacity: 0.5;
+}
+
+
 g {
   cursor: pointer;
 }
@@ -433,3 +453,4 @@ ul, li {
 .legendButton i {
   color: #921;
 }
+

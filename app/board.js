@@ -1,13 +1,24 @@
 (function() {
 
   var board = function(options) {
+    this.relationLabelPositions = {
+      "parent": 1.4,
+      "spouse": 1.4,
+      "son": 1.4,
+      "sibling": 1.4,
+      "lover": 1.55,
+      "enemy": 1.55,
+      "friend": 1.55,
+      "liege": 1.7,
+      "courtesan": 1.7
+    };
     this.visibleChars = {};
     this.correction = 0.75;
     this.verticalCorrection = 0.93444;
     this.totalWidth = window.innerWidth * this.correction;
     this.totalHeight = window.innerHeight * this.verticalCorrection;
     this.totalArea = this.totalWidth * this.totalHeight;
-    var factor = 90 * 90
+    var factor = 90 * 90;
     if(this.totalArea > (1400*this.correction * 1400 * this.verticalCorrection)) {
       factor = 92 * 92;
     } else if(this.totalArea > (1300*this.correction * 1300 * this.verticalCorrection)) {
@@ -516,6 +527,7 @@
   }
 
   board.prototype.clearRelations = function() {
+    this.svg.selectAll('text.relLabel').data([]).exit().remove()
     this.svg.selectAll('path').data([]).exit().remove()
   }
 
@@ -536,14 +548,14 @@
     var self = this;
     var relationPositions = {
       "parent": 0,
-      "sibling": -20,
-      "friend": -10,
-      "lover": 10,
-      "spouse": 20,
-      "son": 30,
-      "liege": -30,
-      "enemy": 5,
-      "courtesan": -5
+      "sibling": -4,
+      "friend": -2,
+      "lover": 2,
+      "spouse": 4,
+      "son": 6,
+      "liege": -6,
+      "enemy": 1,
+      "courtesan": -1
     };
     var line = d3.svg.line()
       .x(function(d){
@@ -563,13 +575,16 @@
       .tension(0.9);
     var path = this.svg.selectAll('path.'+relationClass)
       .data(destinations).enter()
+      .append('g')
+      .attr('class', "gPath " + relationClass + " relations_" +this.tokenize(char.name))
+    var pathG = path
       .append('path')
       .attr("transform", null)
       .attr('d', function(d) {
         var chars = [char];
         var character = self.visibleChars[d];
         var middlePoint = { pos: {
-            x:  char.pos.x + (relationPositions[relationClass] /100),
+            x:  char.pos.x,
             y: (character.pos.y + char.pos.y) / 2
           }
         }
@@ -582,7 +597,7 @@
 
         chars.push(middlePoint);
         var middlePoint2 = { pos: {
-            x:  (relationPositions[relationClass] /300) + (character.pos.x ) ,
+            x: character.pos.x,
             y: (character.pos.y + char.pos.y) / 2
           }
         }
@@ -592,15 +607,41 @@
         ) {
           middlePoint2.pos.y += 0.4;
         }
-
+        // this.attr('labelPoint', [middlePoint2.pos.x, middlePoint2.pos.y]);
         chars.push(middlePoint2);
         chars.push(character);
         return line(chars)
       })
-      .attr('class', " " + relationClass + " relations_" +this.tokenize(char.name));
-    if(path.node()) {
-      var totalLength = path.node().getTotalLength();
-      path
+      .attr('labelPointX', function(d) {
+        var character = self.visibleChars[d];
+        return character.pos.x;
+      })
+      .attr('labelPointY', function(d) {
+        var character = self.visibleChars[d];
+        return character.pos.y;
+      })
+      .attr('class', function(d) {
+        return " " + relationClass + " with_" +self.tokenize(d) +" relations_" +self.tokenize(char.name)
+      })
+      var pathTexts = path
+      .append('svg:text')
+        .text(relationClass)
+        .attr("class", "relLabel ")
+        .attr("name", "name")
+        .attr('dx', function(d) {
+          var textWidth = this.getBBox().width;
+
+          return ((self.portraitWidth - textWidth) / 2)  + $('.with_'+self.tokenize(d)).get(0).getAttribute('labelPointX') * (self.portraitWidth + self.margin)
+        })
+        .attr('dy', function(d) {
+          return (self.relationLabelPositions[relationClass] * self.portraitHeight + $('.with_'+self.tokenize(d)).get(0).getAttribute('labelPointY') * (self.portraitHeight + self.margin))
+        })
+      setTimeout(function() {
+        self.svg.selectAll('.relLabel').classed('shown', true);
+        },1500);
+    if(pathG.node()) {
+      var totalLength = pathG.node().getTotalLength();
+      pathG
         .attr("stroke-dasharray",  totalLength*3 + " " + totalLength*3)
         .attr("stroke-dashoffset", totalLength*3)
         .transition().duration(800).delay(700)
