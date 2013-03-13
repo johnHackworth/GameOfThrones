@@ -134,7 +134,7 @@
   {
     "name": "Joffrey Baratheon",
     "portrait": "assets/joffrey.png",
-    "picture": "assets/picture/joffrey_baratheon.jpg",
+    "picture": "assets/pictures/joffrey_baratheon.jpg",
     "bio":"Joffrey Baratheon is the eldest son and heir of King Robert Baratheon and Queen Cersei Lannister. He strong-willed as a child and has an uncontrollable temper not unlike his mother's and an unchecked sadistic streak",
     "parents": ["Robert Baratheon", "Cersei Lannister"],
     "siblings": ["Tommen Baratheon", "Myrcella Baratheon"],
@@ -146,7 +146,7 @@
   {
     "name": "Tommen Baratheon",
     "portrait": "assets/tommen.png",
-    "picture": "assets/pictures/tommen_baratheon.jpg"
+    "picture": "assets/pictures/tommen_baratheon.jpg",
     "bio":"The youngest child of King Robert I and Queen Cersei Lannister.",
     "parents": ["Robert Baratheon", "Cersei Lannister"],
     "siblings": ["Joffrey Baratheon", "Myrcella Baratheon"],
@@ -173,7 +173,7 @@
   {
     "name": "Varys",
     "portrait": "assets/varys.png",
-    "picture": "assets/pictures/vayrs.jpg",
+    "picture": "assets/pictures/varys.jpg",
     "liege": ["Robert Baratheon"],
     "bio":"Called 'the Spider', is the enigmatic member of the small council and Master of Whisperers, or spymaster, for the Iron Throne of the Seven Kingdoms. An eunuch since his infancy, his history of providing information to all sides, of aiding enemies, of pitting rivals against one another, and of manipulation to achieve his ends has earned him a reputation of being distasteful and untrustworthy amongst the nobles at court"
   },
@@ -290,7 +290,7 @@
   {
     "name": "Illyrio Monpatis",
     "portrait": "assets/illyrio.png",
-    "closeFriends": ["Carl Drogo", "Viserys Targaryen", "Daenerys Targaryen"],
+    "closeFriends": ["Khal Drogo", "Viserys Targaryen", "Daenerys Targaryen"],
     "bio": "Illyrio Mopatis is a wealthy and powerful Magister in the Free City of Pentos. He is a dealer in spices, gemstones, dragonbone, and other things. For a time he served as custodian of the exiled Targaryens and now seeks to return them to the Iron Throne"
   },
   {
@@ -315,6 +315,6 @@
     "liege": ["Robert Baratheon"],
     "closeFriends": ["Sansa Stark"],
     "house": "clegane",
-    "bio": "Sandor Clegane is a member of House Clegane. He is the younger brother of the current head, Ser Gregor Clegane. He is nicknamed "The Hound" for his savage nature and unquestioning obedience to his masters and for the three dogs featured in his family's crest. He is considered one of the most dangerous fighters in Westeros, though he frequently drinks himself into stupors. As a child, Sandor received gruesome facial burns when Gregor shoved his face into a brazier."
+    "bio": "Sandor Clegane is a member of House Clegane. He is the younger brother of the current head, Ser Gregor Clegane. He is nicknamed 'The Hound' for his savage nature and unquestioning obedience to his masters and for the three dogs featured in his family's crest. He is considered one of the most dangerous fighters in Westeros, though he frequently drinks himself into stupors. As a child, Sandor received gruesome facial burns when Gregor shoved his face into a brazier."
   }
 ]

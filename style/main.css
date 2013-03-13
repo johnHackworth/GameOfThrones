@@ -157,7 +157,7 @@ path.parent {
   stroke: #631;
 }
 .legend .legendElement.parent {
-  background-color: #631                        ;
+  background-color: #631;
 }
 
 path.friend {
@@ -250,9 +250,10 @@ g:hover .heraldic {
   position: fixed;
   right:0px;
   width:20%;
-  height: 100%;
+  height: 96%;
   top: 0;
   color: #FFF;
+  padding:2% 0.5% 0;
   z-index: 9;
   opacity: 1;
   -webkit-transition: all 0.3s linear;
@@ -347,7 +348,7 @@ g:hover .heraldic {
 */
 .characterInfo {
   width: 90%;
-  padding: 0 5%;
+  padding: 5% 5% 0;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -430,6 +431,27 @@ ul, li {
   bottom: 5px;
   left: 5px;
   display: none;
+}
+
+.about {
+  position: fixed;
+  bottom: 5px;
+  right: 22%;
+  display: inline-block;
+  padding: 3px 10px;
+  font-family: marcellus;
+  font-size: 12px;
+  opacity: 0.8;
+  color: #666;
+}
+
+.about a {
+  color: #666;
+  text-decoration: none;
+}
+
+.about .fork {
+  margin-left: 20px;
 }
 
 .legend .legendElement {
