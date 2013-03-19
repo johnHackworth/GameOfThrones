@@ -92,7 +92,7 @@
   board.prototype.showLegend = function() {
     this.legendButton.fadeOut();
     this.legend.fadeIn();
-    setTimeout(this.hideLegend.bind(this),10000);
+    setTimeout(this.hideLegend.bind(this),100000);
   }
 
   board.prototype.hideLegend = function() {
