@@ -1,6 +1,6 @@
 [
   { "name":"Jon Snow",
-    "portrait": "/assets/jon.png",
+    "portrait": "assets/jon.png",
     "picture": "assets/pictures/jon_snow.jpg",
     "bio":"Jon is the bastard child of Ned Stark of Winterfell and a unkwnow woman. Soon after his marriage, Ned Stark leaved his home to go to fight on the war of the usurper, and returned home carrying a infant that was supposedly his own",
     "parents": ["Ned Stark"],
