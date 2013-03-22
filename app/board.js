@@ -341,11 +341,6 @@
     character.pos = {x:position.x,y:position.y};
     this.visibleChars[character.name]
 
-    // character.view
-    //   .append('use')
-    //   .attr('xlink:href', '#circleCropper')
-    //   .attr('stroke-width', 2)
-    //   .attr('stroke', '#333333')
 
     var g = character.view
       .append('g')
@@ -399,29 +394,7 @@
           return (self.portraitWidth - textWidth) / 2;
         })
         .attr("dy",this.portraitHeight + 10)
-        // .attr('clip-path', 'url(#clip)')
 
-      //   .append('defs')
-      //   .append('pattern')
-      //   .attr('id', 'image_'+this.tokenize(character.name))
-      //   .attr('patternUnits', 'objectBoundingBox')
-      //   .attr('height', this.portraitHeight)
-      //   .attr('width', this.portraitWidth)
-      //   .attr('x', 0)
-      //   .attr('y', 0)
-      //   .append('image')
-      //   .attr('height', this.portraitHeight)
-      //   .attr('width', this.portraitWidth)
-      //   .attr("xlink:href", character.portrait)
-
-      // character.view
-      //   .append('circle')
-      //   .attr('r', this.portraitWidth / 2)
-      //   .attr("class", "charPortrait")
-      //   .attr("class", this.tokenize(character.name))
-      //   .attr("cx", position.x * (this.portraitWidth + this.margin ) + this.portraitWidth / 2)
-      //   .attr("cy",position.y * (this.portraitHeight + this.margin) + this.portraitHeight / 2)
-      //   .attr("fill", "url(#image_"+this.tokenize(character.name)+ ")")
 
     $(character.view).data('name', character.name)
     character.view.data = character;
