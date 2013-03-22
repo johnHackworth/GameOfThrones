@@ -1,17 +1,6 @@
 (function() {
 
   var board = function(options) {
-    this.relationLabelPositions = {
-      "parent": 1.4,
-      "spouse": 1.4,
-      "son": 1.4,
-      "sibling": 1.4,
-      "lover": 1.55,
-      "enemy": 1.55,
-      "friend": 1.55,
-      "liege": 1.7,
-      "courtesan": 1.7
-    };
     this.visibleChars = {};
     this.correction = 0.75;
     this.verticalCorrection = 0.93444;
@@ -35,15 +24,26 @@
       factor = 65 * 65;
     }
     this.cellSize = Math.floor(this.totalArea / factor);
-    this.portraitWidth = Math.floor(this.cellSize * 2 / 3);
-    this.portraitHeight = Math.floor(this.cellSize * 2 / 3);
-    this.margin =  Math.floor(this.cellSize * 1 / 3);
+    this.portraitWidth = Math.floor(this.cellSize * 3 / 5);
+    this.portraitHeight = Math.floor(this.cellSize * 3 / 5);
+    this.margin =  Math.floor(this.cellSize * 2 / 5);
 
     this.initialize(options);
   }
 
   board.prototype.episodeList = [
     ["episode 1", "episode 2"]
+  ]
+
+  board.prototype.relationTypes = ['siblings',
+    'sons',
+    'enemies',
+    'marriage',
+    'lovers',
+    'liege',
+    'court',
+    'parents',
+    'closeFriends'
   ]
 
   board.prototype.season = 1;
@@ -434,6 +434,7 @@
 
     this.placeFamily(character);
     this.paintRelations(character);
+    this.paintRelationLabels(character);
     this.redrawAll();
     this.characterProfile(character);
 
@@ -495,12 +496,12 @@
     nextPosition = this.iterateRelation(char.parents, nextPosition.x, nextPosition.y);
     // nextPosition = this.iterateRelation(char.closeFriends, nextPosition.x, nextPosition.y);
     nextPosition = this.iterateRelation(char.marriage, nextPosition.x, nextPosition.y);
-    nextPosition = this.iterateRelation(char.lovers, nextPosition.x, nextPosition.y);
+    // nextPosition = this.iterateRelation(char.lovers, nextPosition.x, nextPosition.y);
     nextPosition = this.iterateRelation(char.sons, nextPosition.x, nextPosition.y);
   }
 
   board.prototype.clearRelations = function() {
-    this.svg.selectAll('text.relLabel').data([]).exit().remove()
+    this.svg.selectAll('g.relLabel').data([]).exit().remove()
     this.svg.selectAll('path').data([]).exit().remove()
   }
 
@@ -530,6 +531,7 @@
       "enemy": 1,
       "courtesan": -1
     };
+
     var line = d3.svg.line()
       .x(function(d){
         var position = d.pos.x * (self.portraitWidth + self.margin) +(self.portraitWidth ) /2;
@@ -596,22 +598,6 @@
       .attr('class', function(d) {
         return " " + relationClass + " with_" +self.tokenize(d) +" relations_" +self.tokenize(char.name)
       })
-      var pathTexts = path
-      .append('svg:text')
-        .text(relationClass)
-        .attr("class", "relLabel ")
-        .attr("name", "name")
-        .attr('dx', function(d) {
-          var textWidth = this.getBBox().width;
-
-          return ((self.portraitWidth - textWidth) / 2)  + $('.with_'+self.tokenize(d)).get(0).getAttribute('labelPointX') * (self.portraitWidth + self.margin)
-        })
-        .attr('dy', function(d) {
-          return (self.relationLabelPositions[relationClass] * self.portraitHeight + $('.with_'+self.tokenize(d)).get(0).getAttribute('labelPointY') * (self.portraitHeight + self.margin))
-        })
-      setTimeout(function() {
-        self.svg.selectAll('.relLabel').classed('shown', true);
-        },1500);
     if(pathG.node()) {
       var totalLength = pathG.node().getTotalLength();
       pathG
@@ -656,24 +642,90 @@
     if(char.marriage.length > 0) {
       this.drawLine(char, char.marriage, "spouse");
     }
-
-    // this.svg.selectAll('line').data(char.siblings).enter()
-    //   .append('line')
-    //   .attr('x1', (char.pos.x * (this.portraitWidth + this.margin)) +(this.portraitWidth + this.margin) /2)
-    //   .attr('y1', (char.pos.y * (this.portraitHeight + this.margin))+(this.portraitHeight + this.margin) /2)
-    //   .attr('x2', (char.pos.x * (this.portraitWidth + this.margin)) +(this.portraitWidth + this.margin) /2)
-    //   .attr('y2', (char.pos.y * (this.portraitHeight + this.margin))+(this.portraitHeight + this.margin) /2)
-    //   .transition().duration(600).delay(30)
-    //   .attr('x2', function(d) {
-    //     console.log(d);
-    //     var character = self.visibleChars[d];
-    //     return character.pos.x * (self.portraitWidth + self.margin) +(self.portraitWidth + self.margin) /2;
-    //   })
-    //   .attr('y2', function(d) {
-    //     var character = self.visibleChars[d];
-    //     return character.pos.y * (self.portraitHeight + self.margin) +(self.portraitHeight + self.margin) /2;
-    //   })
   }
+
+
+  board.prototype.getSelectedRelationLabels = function(char) {
+    this.relationLabels = {};
+
+    var relations = this.relationTypes;
+    for(var n = 0, l = relations.length; n<l; n++) {
+      for(var i = 0, ll = char[relations[n]].length; i < ll; i ++) {
+        if(!this.relationLabels[char[relations[n]][i]]) {
+          this.relationLabels[char[relations[n]][i]] = [];
+        }
+        this.relationLabels[char[relations[n]][i]].push(this.getRelationLabelText(relations[n]))
+      }
+
+    }
+  }
+  board.prototype.getRelationLabelText = function(rel) {
+    if(rel === 'sons') return 'son';
+    if(rel === 'friends') return 'friend';
+    if(rel === 'siblings') return 'sibling';
+    if(rel === 'enemies') return 'enemy';
+    if(rel === 'lovers') return 'lover';
+    if(rel === 'marriage') return 'spouse';;
+    if(rel === 'closeFriends') return 'friend';
+    if(rel === 'parents') return 'parent';
+
+    return rel;
+  }
+
+  board.prototype.paintRelationLabels = function(char) {
+    var self = this;
+    this.getSelectedRelationLabels(char);
+    setTimeout(function() {
+      for(var name in self.relationLabels) {
+        if(name != undefined) {
+          console.log(name, 'name');
+
+          self.paintRelationLabel(name, self.relationLabels[name]);
+        }
+      }
+      setTimeout(function() {
+        self.svg.selectAll('.relLabel').classed('shown', true);
+        self.redrawAll();
+      },500);
+    },500);
+  }
+
+  board.prototype.paintRelationLabel = function(charName, labels) {
+    // debugger;
+    var self = this;
+    console.log(charName);
+    var char = this.visibleChars[charName];
+    var group = this.svg
+      .append('g')
+      .attr("class", "relLabel ")
+    var background = group.append('rect')
+      .attr('x', (char.pos.x * (self.portraitWidth + self.margin) - 0))
+      .attr('y', 15 + self.portraitHeight + char.pos.y * (self.portraitHeight + self.margin))
+      .attr('rx', '1em')
+      .attr('ry', '1em')
+      .attr('width',(self.portraitWidth))
+      .attr('height', 8 + 12 * labels.length)
+      .attr('fill', '#333')
+
+    for(var n = 0, l = labels.length; n < l; n++) {
+
+
+      var text = group
+        .append('svg:text')
+          .attr("name", "name")
+          .text(labels[n])
+          .attr('dx', function(d) {
+            var textWidth = this.getBBox().width;
+
+            return ((self.portraitWidth - textWidth) / 2)  + char.pos.x * (self.portraitWidth + self.margin)
+          })
+          .attr('dy', function(d) {
+            return 20 + (n+1) *10 + self.portraitHeight + char.pos.y * (self.portraitHeight + self.margin)
+          })
+    }
+
+  }
+
 
   board.prototype.paintLieges = function() {
     var self = this;

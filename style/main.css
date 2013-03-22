@@ -103,11 +103,11 @@ svg.centered {
 }
 
 .relLabel {
-  font-size: 12px;
+  font-size: 9px;
   text-transform: capitalize;
   opacity:0.0;
   text-align: center;
-  stroke: #633;
+  stroke: #FFF;
   font-family: 'Raleway', 'Open Sans', sans-serif;
   font-weight: lighter;
   -webkit-transition: opacity 2s linear, fill 2s linear;
@@ -118,7 +118,7 @@ svg.centered {
 }
 
 .relLabel.shown{
-  opacity: 0.5;
+  opacity: .5;
 }
 
 
