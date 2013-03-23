@@ -26,7 +26,7 @@
 
   board.prototype.detectOrientation = function() {
     this.xSize = 8;
-      this.ySize = 7;
+    this.ySize = 7;
     // if(window.orientation === undefined || window.orientation === 0 || window.orientation === 180) {
     //   this.xSize = 9;
     //   this.ySize = 7;
@@ -212,11 +212,10 @@
     //   .attr('xlink:href', '#circleCropper')
   }
 
-  board.prototype.initializeSeason = function() {
+  board.prototype.initializeSeason = function(nSeason) {
     // var seasonName = 'season' + nSeason;
-    // this.season = nSeason.split('_')[0];
-    // this.episode = nSeason.split('_')[1];
     var seasonName = "season" + this.season + '_' + this.episode;
+    localStorage.setItem('episode', this.season + '_' + this.episode)
     var chars = this.characters.seasons[seasonName];
     for(var n in chars) {
       this.drawCharacter(chars[n]);

@@ -96,7 +96,8 @@ svg.centered {
   text-transform: uppercase;
   text-align: center;
   stroke: #521;
-  font-family: 'Open Sans', sans-serif;
+  letter-spacing:0.1em;
+  font-family: 'Marcellus', 'Open Sans', sans-serif;
   font-weight: lighter;
   -webkit-transition: opacity .3s linear, fill .3s linear;
   -moz-transition: opacity .3s linear, fill .3s linear;
