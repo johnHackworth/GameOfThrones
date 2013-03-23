@@ -199,17 +199,6 @@
     this.renderSeasonData();
     this.moveBackground();
     this.interval = setInterval(this.moveBackground.bind(this), 20000);
-    // this.svg.attr('class', 'centered')
-
-    // this.svg.append('defs')
-    //   .append('rect')
-    //   .attr('id', 'circleCropper')
-    //   .attr('x', '25%').attr('y', '25%').attr('width', '50%')
-    //   .attr('height', '50%').attr('rx', '15')
-    // this.svg.append('clipPath')
-    //   .attr('id', 'clip')
-    //   .append('use')
-    //   .attr('xlink:href', '#circleCropper')
   }
 
   board.prototype.initializeSeason = function(nSeason) {
@@ -704,7 +693,7 @@
       .attr('rx', '1em')
       .attr('ry', '1em')
       .attr('width',(self.portraitWidth))
-      .attr('height', 8 + 12 * labels.length)
+      .attr('height', 12 + 12 * labels.length)
       .attr('fill', '#333')
 
     for(var n = 0, l = labels.length; n < l; n++) {
@@ -720,7 +709,7 @@
             return ((self.portraitWidth - textWidth) / 2)  + char.pos.x * (self.portraitWidth + self.margin)
           })
           .attr('dy', function(d) {
-            return 20 + (n+1) *10 + self.portraitHeight + char.pos.y * (self.portraitHeight + self.verticalMargin)
+            return 18 + (n+1) *12 + self.portraitHeight + char.pos.y * (self.portraitHeight + self.verticalMargin)
           })
     }
 
