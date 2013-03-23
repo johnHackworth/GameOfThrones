@@ -1,34 +1,39 @@
 (function() {
 
   var board = function(options) {
+    var self = this;
     this.visibleChars = {};
-    this.correction = 0.75;
-    this.verticalCorrection = 0.93444;
-    this.totalWidth = window.innerWidth * this.correction;
-    this.totalHeight = window.innerHeight * this.verticalCorrection;
+    this.correction = 0.85;
+    this.verticalCorrection = 1;
+    this.totalWidth = $('body').innerWidth() * this.correction;
+    this.totalHeight = $('body').innerHeight() * this.verticalCorrection;
     this.totalArea = this.totalWidth * this.totalHeight;
-    var factor = 90 * 90;
-    if(this.totalArea > (1400*this.correction * 1400 * this.verticalCorrection)) {
-      factor = 92 * 92;
-    } else if(this.totalArea > (1300*this.correction * 1300 * this.verticalCorrection)) {
-      factor = 105 * 105;
-    } else if(this.totalArea > (1200*this.correction * 1200* this.verticalCorrection)) {
-      factor = 103 * 103;
-    } else if(this.totalArea > (1000*this.correction * 1000* this.verticalCorrection)) {
-      factor = 105 * 105;
-    } else if(this.totalArea > (900*this.correction * 800* this.verticalCorrection)) {
-      factor = 80 * 80;
-    } else if(this.totalArea > (800*this.correction * 600* this.verticalCorrection)) {
-      factor = 75 * 75;
-    } else {
-      factor = 65 * 65;
-    }
-    this.cellSize = Math.floor(this.totalArea / factor);
-    this.portraitWidth = Math.floor(this.cellSize * 3 / 5);
-    this.portraitHeight = Math.floor(this.cellSize * 3 / 5);
-    this.margin =  Math.floor(this.cellSize * 2 / 5);
+    this.detectOrientation();
+
+    this.portraitWidth = Math.floor((this.totalWidth / this.xSize) * this.correction * (2/3));
+    this.portraitHeight = Math.floor((this.totalHeight / this.xSize) * this.verticalCorrection * (3/5));
+    this.margin =  Math.floor((this.totalWidth / this.xSize) * this.correction * (1/3));;
+    this.verticalMargin =  Math.floor((this.totalHeight / this.ySize) * this.verticalCorrection * (2/5));;
 
     this.initialize(options);
+    $(window).on("orientationchange", function() {
+      self.initialize(options);
+    });
+    $(window).on("resize", function() {
+      self.initialize(options);
+    });
+  }
+
+  board.prototype.detectOrientation = function() {
+    this.xSize = 8;
+      this.ySize = 7;
+    // if(window.orientation === undefined || window.orientation === 0 || window.orientation === 180) {
+    //   this.xSize = 9;
+    //   this.ySize = 7;
+    // } else {
+    //   this.xSize = 7;
+    //   this.ySize = 9;
+    // }
   }
 
   board.prototype.episodeList = [
@@ -51,11 +56,11 @@
 
   board.prototype.initialize = function(options) {
     var self = this;
+    this.detectOrientation();
     this.characters = options.characters;
     this.selector = options.selector;
-    this.maxX = Math.floor(this.totalWidth / this.cellSize);
-
-    this.maxY = Math.floor(this.totalHeight / this.cellSize);
+    this.maxX = this.xSize;//Math.floor(this.totalWidth / this.cellSize);
+    this.maxY = this.ySize;//Math.floor(this.totalHeight / this.cellSize);
     this.sideBar = $('.sideBar');
     this.sideBarBackground = $('.sideBarBackground');
     this.timeSelector = $('.timeSelector');
@@ -86,6 +91,8 @@
         self.selectCharacter(char);
       }
     })
+
+    window.scrollTo(0,0)
 
   }
 
@@ -345,14 +352,12 @@
     var g = character.view
       .append('g')
       .attr("transform", "translate(" + (position.x * (this.portraitWidth + this.margin)) +
-          "," + (position.y * (this.portraitHeight + this.margin)) + ")")
+          "," + (position.y * (this.portraitHeight + this.verticalMargin)) + ")")
       .attr("class", this.tokenize(character.name))
 
     g.append('svg:image')
         .attr("xlink:href", character.portrait)
-        // .attr("x", position.x * (this.portraitWidth + this.margin))
         .attr("width", this.portraitWidth)
-        // .attr("y",position.y * (this.portraitHeight + this.margin))
         .attr("height", this.portraitHeight)
 
     if(character.organization) {
@@ -453,13 +458,9 @@
     this.svg.selectAll('.' + id).transition()
       .duration(800)
       .ease("back-out")
-      // .attr('cx', position.x * (this.portraitWidth + this.margin) + this.portraitWidth / 2)
-      // .attr('cy', position.y * (this.portraitHeight + this.margin) + this.portraitHeight /2 )
 
       .attr("transform", "translate(" + (position.x * (this.portraitWidth + this.margin)) +
-          "," + (position.y * (this.portraitHeight + this.margin)) + ")")
-      // .attr('xd', position.x * (this.portraitWidth + this.margin) )
-      // .attr('dy', position.y * (this.portraitHeight + this.margin) )
+          "," + (position.y * (this.portraitHeight + this.verticalMargin)) + ")")
     if(char.pos) {
       this.filledPositions[char.pos.y][char.pos.x] = null;
     }
@@ -540,9 +541,9 @@
       .y(function(d){
         var position = null;
         if(d.name === char.name) {
-          position = relationPositions[relationClass] + d.pos.y * (self.portraitHeight + self.margin) +(self.portraitHeight + self.margin) /2
+          position = relationPositions[relationClass] + d.pos.y * (self.portraitHeight + self.verticalMargin) +(self.portraitHeight + self.verticalMargin) /2
         } else {
-          position = -10 + d.pos.y * (self.portraitHeight + self.margin) +(self.portraitHeight + self.margin) /2
+          position = -10 + d.pos.y * (self.portraitHeight + self.verticalMargin) +(self.portraitHeight + self.verticalMargin) /2
         }
         return position;
       })
@@ -700,7 +701,7 @@
       .attr("class", "relLabel ")
     var background = group.append('rect')
       .attr('x', (char.pos.x * (self.portraitWidth + self.margin) - 0))
-      .attr('y', 15 + self.portraitHeight + char.pos.y * (self.portraitHeight + self.margin))
+      .attr('y', 15 + self.portraitHeight + char.pos.y * (self.portraitHeight + self.verticalMargin))
       .attr('rx', '1em')
       .attr('ry', '1em')
       .attr('width',(self.portraitWidth))
@@ -720,7 +721,7 @@
             return ((self.portraitWidth - textWidth) / 2)  + char.pos.x * (self.portraitWidth + self.margin)
           })
           .attr('dy', function(d) {
-            return 20 + (n+1) *10 + self.portraitHeight + char.pos.y * (self.portraitHeight + self.margin)
+            return 20 + (n+1) *10 + self.portraitHeight + char.pos.y * (self.portraitHeight + self.verticalMargin)
           })
     }
 
