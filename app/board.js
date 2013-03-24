@@ -124,12 +124,14 @@
     if(this.season < 1) {
       this.season = 1;
     }
+    this.episode = this.characters.EPISODE_LIST[this.season - 1].length;
     this.clearBoard();
     this.initializeSeason();
     this.renderSeasonData();
   }
   board.prototype.nextSeason = function() {
     this.season++;
+    this.episode = 1;
     if(this.season > this.characters.EPISODE_LIST.length) {
       this.season = this.characters.EPISODE_LIST.length;
     }
@@ -367,7 +369,14 @@
         .attr("class", "heraldic");
     }
 
-
+    if(character.king) {
+      g.append('svg:image')
+        .attr("xlink:href", 'assets/icons/crown.png')
+        .attr("width", Math.floor(this.portraitWidth / 3.5))
+        .attr("y", (0))
+        .attr("height", Math.floor(this.portraitHeight / 3.5))
+        .attr("class", "icon king");
+    }
     if(character.dead) {
       g.append('svg:image')
         .attr("xlink:href", 'assets/icons/death.png')

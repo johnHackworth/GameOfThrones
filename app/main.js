@@ -9,8 +9,8 @@
       window.board.initializeBoard();
     })
     $('.appInfo .last').on('click', function() {
-      window.board.season = 1;
-      window.board.episode = 2;
+      window.board.season = 3;
+      window.board.episode = 1;
       $('.appInfo').removeClass('show');
       window.board.initializeBoard();
     })

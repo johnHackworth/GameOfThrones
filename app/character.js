@@ -6,6 +6,7 @@
   character.prototype.initialize = function(options, bios) {
     this.name = options.name;
     this.dead = options.dead;
+    this.king = options.king;
 
     var bioData = this.locateCharacterInfo(bios);
     this.portrait = bioData.portrait;

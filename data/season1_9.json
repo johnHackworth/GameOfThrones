@@ -104,6 +104,7 @@
   },
   {
     "name": "Joffrey Baratheon",
+    "king": true,
     "parents": ["Jaime Lannister", "Robert Baratheon", "Cersei Lannister"],
     "siblings": ["Tommen Baratheon", "Myrcella Baratheon"],
     "closeFriends": ["Sandor Clegane"],
@@ -133,6 +134,7 @@
   },
   {
     "name": "Daenerys Targaryen",
+    "king": true,
     "siblings": ["Viserys Targaryen"],
     "marriage": ["Khal Drogo"],
     "lovers": ["Khal Drogo"],
@@ -165,12 +167,13 @@
   },
   {
     "name": "Stannis Baratheon",
-    "liege": ["Robert Baratheon"],
+    "king": true,
     "court": ["Ned Stark"],
     "siblings": ["Robert Baratheon", "Renly Baratheon"]
   },
   {
     "name": "Renly Baratheon",
+    "king": true,
     "siblings": ["Stannis Baratheon", "Renly Baratheon"],
     "court": ["Loras Tyrell"],
     "closeFriends": ["Loras Tyrell"]

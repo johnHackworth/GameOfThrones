@@ -217,12 +217,13 @@
   {
     "name": "Illyrio Monpatis",
     "portrait": "assets/illyrio.png",
+    "picture": "assets/pictures/illyrio.jpg",
     "bio": "Illyrio Mopatis is a wealthy and powerful Magister in the Free City of Pentos. He is a dealer in spices, gemstones, dragonbone, and other things. For a time he served as custodian of the exiled Targaryens and now seeks to return them to the Iron Throne"
   },
   {
     "name": "Maester Pycelle",
     "portrait": "assets/pycelle.png",
-    "picture": "assets/picture/pycelle.jpg",
+    "picture": "assets/pictures/pycelle.jpg",
     "bio": "A Grand Maester of the Citadel. He served in King's Landing, as conselor of six different kings, both Targaryen and Baratheons, for over forty years."
   },
   {
@@ -288,8 +289,58 @@
     "name": "Jeor Mormont",
     "portrait": "assets/jeor.png",
     "picture": "assets/pictures/jeor_mormont.jpg",
-    "bio":"",
+    "bio":"Lord Commander Jeor Mormont, also known as the Old Bear, is the 997th Lord Commander of the Night's Watch, which he commands from his headquarters, the fortress of Castle Black. Jeor, previously head of House Mormont and Lord of Bear Island, abdicated his seat in favor of his son, Ser Jorah Mormont, and joined the Night's Watch",
     "house": "mormont",
     "organization": "nightwatch"
+  },
+  {
+    "name": "Balon Greyjoy",
+    "portrait": "assets/balon.png",
+    "picture": "assets/pictures/balon_greyjoy.jpg",
+    "bio": "Balon Greyjoy is the head of House Greyjoy of Pyke; as such he is lord paramount of the Iron Islands. Years before the time of the series, he rebelled against king Robert, but his rebellion was crushed by king's armys, leading to the death of his two older children",
+    "house": "greyjoy"
+  },
+  {
+    "name": "Davos Seaworth",
+    "portrait": "assets/davos.png",
+    "picture": "assets/pictures/davos_seaworth.jpg",
+    "bio": "Davos Seaworth, commonly called the Onion Knight, was once a smuggler, but after Robert's Rebellion became a landed knight and Stannis Baratheon's most honest and loyal supporter. He captains the Black Betha, his old smuggling ship. He has seven sons, many of them serving on ships in Stannis's fleet."
+  },
+  {
+    "name": "Melisandre",
+    "portrait": "assets/melissandre.png",
+    "picture": "assets/pictures/melissandre.jpg",
+    "bio":"Melisandre is a priestess of the god R'hllor,  hailing from the eastern city of Asshai. She has joined the entourage of Stannis Baratheon, believing him to be Azor Ahai reborn, a hero destined to defeat the Great Other. She has become an influential advisor to him and his family. "
+  },
+  {
+    "name": "Margaery Tyrell",
+    "portrait": "assets/margaery.png",
+    "picture": "assets/pictures/margaery_tyrell.jpg",
+    "bio": "Margaery Tyrell is the only daughter of Lord Mace Tyrell and his wife, Lady Alerie. "
+  },
+  {
+    "name": "Yara Greyjoy",
+    "portrait": "assets/yara.png",
+    "picture": "assets/pictures/yara_greyjoy.jpg",
+    "bio": "She is the daughter of Balon Greyjoy and his wife, Alannys. She is fierce and proud, and defies traditional ironborn gender roles by commanding her own ship, the Black Wind, and leading men into battle."
+  },
+  {
+    "name": "Brienne",
+    "portrait": "assets/brienne.png",
+    "picture": "assets/pictures/brienne_tarth.jpg",
+    "bio": "Brienne, the Maid of Tarth, sometimes mockingly called Brienne the Beauty, is the only child and heir of Lord Selwyn Tarth of Evenfall. Brienne has spent most of her life as the object of scorn, rejection and – at best – pity. When she tried to dress and act like a proper lady, she was met with mockery and disdain for her unattractive appearance and lack of feminine social graces; when she turned to a career more suited to her talents as a warrior, she received only contempt and resentment for her gender despite her considerable skill."
+  },
+  {
+    "name": "Ygritte",
+    "portrait": "assets/ygritte.png",
+    "picture": "assets/pictures/ygritte.jpg",
+    "bio":"Ygritte is nineteen years old wildling warrior. Her most distinctive feature is her fiery red hair. The wildlings consider red hair to be lucky and describe those with it as having been 'kissed by fire'."
+  },
+  {
+    "name": "Roose Bolton",
+    "portrait": "assets/roose_bolton.png",
+    "picture": "assets/pictures/roose_bolton.jpg",
+    "bio": "Roose Bolton is the head of House Bolton and Lord of the Dreadfort. Though mild-mannered, he is cold, calculating, and capable of great cruelty. He speaks softly, never raising his voice, forcing those who listen to do so intently.[2] He receives regular leechings, which he believes to improve his health."
   }
+
 ]

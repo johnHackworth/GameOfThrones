@@ -60,6 +60,7 @@
   },
   {
     "name": "Robert Baratheon",
+    "king": true,
     "closeFriends": ["Ned Stark"],
     "marriage": ["Cersei Lannister"],
     "sons": ["Gendry", "Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
@@ -130,6 +131,7 @@
   },
   {
     "name": "Daenerys Targaryen",
+    "king": true,
     "siblings": ["Viserys Targaryen"],
     "marriage": ["Khal Drogo"],
     "lovers": ["Khal Drogo"],

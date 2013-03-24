@@ -54,6 +54,7 @@
   },
   {
     "name": "Robert Baratheon",
+    "king": true,
     "closeFriends": ["Ned Stark"],
     "marriage": ["Cersei Lannister"],
     "sons": ["Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
@@ -117,6 +118,7 @@
   },
   {
     "name": "Viserys Targaryen",
+    "king": true,
     "enemies": ["Robert Baratheon", "Ned Stark"],
     "siblings": ["Daenerys Targaryen"]
   },
