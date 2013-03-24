@@ -36,10 +36,6 @@
     // }
   }
 
-  board.prototype.episodeList = [
-    ["episode 1", "episode 2"]
-  ]
-
   board.prototype.relationTypes = ['siblings',
     'sons',
     'enemies',
@@ -67,6 +63,8 @@
     this.charTemplate = $('#characterTemplate').html();
     this.seasonTemplate = $('#seasonSelector').html();
     this.legendButton = $('.legendButton');
+    this.moreInfo = $('.showMoreInfo');
+
     this.legend = $('.legend');
     this.initEmptyPositions();
     this.sideBar.find('.close').on('click', self.closeSideBar.bind(this));
@@ -99,11 +97,13 @@
   board.prototype.showLegend = function() {
     this.legendButton.fadeOut();
     this.legend.fadeIn();
+    this.moreInfo.fadeOut();
     setTimeout(this.hideLegend.bind(this),100000);
   }
 
   board.prototype.hideLegend = function() {
     this.legendButton.fadeIn();
+    this.moreInfo.fadeIn();
     this.legend.fadeOut();
   }
   board.prototype.getSeasonDatums = function() {
@@ -130,8 +130,8 @@
   }
   board.prototype.nextSeason = function() {
     this.season++;
-    if(this.season > this.episodeList.length) {
-      this.season = this.episodeList.length;
+    if(this.season > this.characters.EPISODE_LIST.length) {
+      this.season = this.characters.EPISODE_LIST.length;
     }
     this.clearBoard();
     this.initializeSeason();
@@ -148,8 +148,8 @@
   }
   board.prototype.nextEpisode = function() {
     this.episode++;
-    if(this.episode > this.episodeList[this.season - 1].length) {
-      this.episode = this.episodeList[this.season - 1].length;
+    if(this.episode > this.characters.EPISODE_LIST[this.season - 1].length) {
+      this.episode = this.characters.EPISODE_LIST[this.season - 1].length;
     }
     this.clearBoard();
     this.initializeSeason();
@@ -198,7 +198,7 @@
     this.initializeSeason();
     this.renderSeasonData();
     this.moveBackground();
-    this.interval = setInterval(this.moveBackground.bind(this), 20000);
+    this.interval = setInterval(this.moveBackground.bind(this), 60000);
   }
 
   board.prototype.initializeSeason = function(nSeason) {
@@ -724,7 +724,7 @@
       var self = this;
       var char = this.visibleChars[j];
       if(char.liege.length > 0) {
-        setTimeout(function(){console.log(self.drawLine(char, char.liege, "liege"))}, 500*n);
+        setTimeout(function(){self.drawLine(char, char.liege, "liege")}, 500*n);
       }
       n++;
     }

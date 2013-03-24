@@ -1,15 +1,25 @@
 (function() {
   var casting = function(options) {
-    this.seasons = {
-      season1_1: [],
-      season1_2: []
-
-    }
+    this.seasons = {};
     this.charData = [];
     this.initialize(options);
 
   }
 
+  casting.prototype.EPISODE_LIST = [
+    [
+      '1_1',
+      '1_2',
+      '1_3',
+      '1_4',
+      '1_5',
+      '1_6',
+      '1_7',
+      '1_8',
+      '1_9',
+      '1_10'
+    ]
+  ]
   casting.prototype.loadSeason = function(n) {
     var dfd = $.Deferred();
     var self = this;
@@ -56,8 +66,11 @@
     var promises = [];
     $.when(this.loadBios())
     .done(function() {
-      for(var n = 1; n<3; n++) {
-        promises.push(self.loadSeason('1_'+n));
+      for(var n = 0, l = self.EPISODE_LIST.length; n < l; n++) {
+        for(var m = 0, ll = self.EPISODE_LIST[n].length; m < ll; m++) {
+          promises.push(self.loadSeason(self.EPISODE_LIST[n][m]));
+          self.seasons['season'+self.EPISODE_LIST[n][m]] = [];
+        }
       }
       promises.push();
       $.when.apply(self, promises)

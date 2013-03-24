@@ -2,21 +2,24 @@
   { "name":"Jon Snow",
     "parents": ["Ned Stark"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
-    "closeFriends": ["Robb Stark", "Arya Stark"]
+    "closeFriends": ["Robb Stark", "Arya Stark", "Samwell Tarly", "Benjen Stark"],
+    "enemies": ["Alliser Thorne"]
   },
   { "name":"Ned Stark",
     "sons":["Jon Snow", "Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
     "marriage": ["Catelyn Tully"],
-    "siblings": ["Benjen Stark"],
     "lovers": ["Catelyn Tully"],
+    "siblings": ["Benjen Stark"],
     "liege": ["Robert Baratheon"],
+    "enemies": ["Cersei Lannister", "Tyrion Lannister", "Jaime Lannister"],
     "court": ["Hodor", "Theon Greyjoy", "Maester Luwin"]
   },
   {
     "name": "Arya Stark",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Bran Stark", "Sansa Stark", "Jon Snow",  "Robb Stark", "Rickon Stark"],
-    "closeFriends": ["Jon Snow"]
+    "closeFriends": ["Jon Snow", "Syrio Forel"],
+    "enemies": ["Cersei Lannister", "Sandor Clegane", "Joffrey Baratheon"]
   },
   {
     "name": "Sansa Stark",
@@ -28,7 +31,8 @@
     "name": "Robb Stark",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "closeFriends": ["Theon Greyjoy"],
-    "siblings": ["Sansa Stark", "Arya Stark",  "Bran Stark", "Rickon Stark", "Jon Snow"]
+    "siblings": ["Sansa Stark", "Arya Stark",  "Bran Stark", "Rickon Stark", "Jon Snow"],
+    "enemies": ["Cersei Lannister", "Tyrion Lannister", "Jaime Lannister"]
   },
   {
     "name": "Bran Stark",
@@ -58,9 +62,9 @@
     "name": "Robert Baratheon",
     "closeFriends": ["Ned Stark"],
     "marriage": ["Cersei Lannister"],
-    "sons": ["Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
-    "court": ["Petyr Baelish", "Jaime Lannister", "Tyrion Lannister", "Maester Pycelle", "Varys"],
+    "sons": ["Gendry", "Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
     "siblings": ["Renly Baratheon", "Stannis Baratheon"],
+    "court": ["Barristan Selmy", "Loras Tyrell", "Petyr Baelish", "Jaime Lannister", "Tyrion Lannister", "Maester Pycelle", "Varys"],
     "enemies": ["Viserys Targaryen", "Daenerys Targaryen"]
   },
   {
@@ -78,14 +82,17 @@
     "parents": ["Tywin Lannister"],
     "lovers": ["Cersei Lannister"],
     "siblings":  ["Cersei Lannister", "Tyrion Lannister"],
-    "liege": ["Robert Baratheon"]
+    "liege": ["Robert Baratheon", "Barristan Selmy"],
+    "sons": ["Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
+    "enemies": ["Ned Stark"]
   },
   {
     "name": "Tyrion Lannister",
     "siblings":  ["Cersei Lannister", "Jaime Lannister"],
-    "closeFriends": ["Jon Snow"],
+    "closeFriends": ["Jon Snow", "Bronn"],
     "parents": ["Tywin Lannister"],
-    "enemies": ["Maester Pycelle", "Cersei Lannister"]
+    "enemies": ["Cersei Lannister", "Catelyn Tully", "Lysa Tully"],
+    "court": ["Bronn"]
   },
   {
     "name": "Tywin Lannister",
@@ -95,23 +102,25 @@
   },
   {
     "name": "Joffrey Baratheon",
-    "parents": ["Robert Baratheon", "Cersei Lannister"],
+    "parents": ["Jaime Lannister", "Robert Baratheon", "Cersei Lannister"],
     "siblings": ["Tommen Baratheon", "Myrcella Baratheon"],
     "closeFriends": ["Sandor Clegane"],
-    "lovers": ["Sansa Stark"]
+    "lovers": ["Sansa Stark"],
+    "enemies": ["Arya Stark"]
   },
   {
     "name": "Tommen Baratheon",
-    "parents": ["Robert Baratheon", "Cersei Lannister"],
+    "parents": ["Jaime Lannister", "Robert Baratheon", "Cersei Lannister"],
     "siblings": ["Joffrey Baratheon", "Myrcella Baratheon"]
   },
   {
     "name": "Myrcella Baratheon",
-    "parents": ["Robert Baratheon", "Cersei Lannister"],
+    "parents": ["Jaime Lannister", "Robert Baratheon", "Cersei Lannister"],
     "siblings": ["Joffrey Baratheon", "Tommen Baratheon"]
   },
   {
     "name": "Petyr Baelish",
+    "lovers": ["Catelyn Tully"],
     "closeFriends": ["Catelyn Tully", "Lysa Tully"],
     "liege": ["Robert Baratheon"]
   },
@@ -123,12 +132,14 @@
     "name": "Daenerys Targaryen",
     "siblings": ["Viserys Targaryen"],
     "marriage": ["Khal Drogo"],
+    "lovers": ["Khal Drogo"],
     "closeFriends": ["Jorah Mormont", "Illyrio Monpatis"],
+    "court": ["Jorah Mormont"],
     "enemies": ["Robert Baratheon"]
   },
   {
     "name": "Jorah Mormont",
-    "liege": ["Viserys Targaryen"],
+    "liege": ["Daenerys Targaryen"],
     "enemies": ["Ned Stark"],
     "closeFriends": ["Daenerys Targaryen"]
   },
@@ -137,7 +148,7 @@
     "enemies": ["Robert Baratheon", "Ned Stark"],
     "siblings": ["Daenerys Targaryen"],
     "closeFriends": ["Illyrio Monpatis"],
-    "court": ["Jorah Mormont"]
+    "dead": true
   },
   {
     "name": "Benjen Stark",
@@ -156,12 +167,14 @@
   {
     "name": "Renly Baratheon",
     "liege": ["Robert Baratheon"],
-    "siblings": ["Stannis Baratheon", "Renly Baratheon"]
+    "siblings": ["Stannis Baratheon", "Renly Baratheon"],
+    "closeFriends": ["Loras Tyrell"]
   },
   {
     "name": "Khal Drogo",
     "closeFriends": ["Illyrio Monpatis"],
-    "marriage": ["Daenerys Targaryen"]
+    "marriage": ["Daenerys Targaryen"],
+    "lovers": ["Daenerys Targaryen"]
   },
   {
     "name": "Hodor",
@@ -192,5 +205,42 @@
     "name": "Sandor Clegane",
     "liege": ["Robert Baratheon", "Joffrey Baratheon"],
     "closeFriends": ["Sansa Stark"]
+  },
+  {
+    "name": "Samwell Tarly",
+    "closeFriends": ["Jon Snow", "Aemon Targaryen"],
+    "enemies": ["Alliser Thorne"]
+  },
+  {
+    "name": "Alliser Thorne",
+    "enemies": ["Jon Snow", "Samwell Tarly"]
+  },
+  {
+    "name": "Syrio Forel",
+    "liege": ["Ned Stark"],
+    "closeFriends": ["Arya Stark"]
+  },
+  {
+    "name": "Gendry",
+    "parents": ["Robert Baratheon"]
+  },
+  {
+    "name": "Loras Tyrell",
+    "liege": ["Robert Baratheon"],
+    "closeFriends": ["Renly Baratheon"]
+  },
+  {
+    "name": "Barristan Selmy",
+    "liege": ["Robert Baratheon"],
+    "court": ["Jaime Lannister"]
+  },
+  {
+    "name": "Bronn",
+    "closeFriends": ["Tyrion Lannister"],
+    "liege": ["Tyrion Lannister"]
+  },
+  {
+    "name": "Osha",
+    "enemies": ["Bran Stark", "Theon Greyjoy", "Robb Stark"]
   }
 ]

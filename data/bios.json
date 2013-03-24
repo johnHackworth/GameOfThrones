@@ -2,7 +2,8 @@
   { "name":"Jon Snow",
     "portrait": "assets/jon.png",
     "picture": "assets/pictures/jon_snow.jpg",
-    "bio":"Jon is the bastard child of Ned Stark of Winterfell and a unkwnow woman. Soon after his marriage, Ned Stark leaved his home to go to fight on the war of the usurper, and returned home carrying a infant that was supposedly his own"
+    "bio":"Jon is the bastard child of Ned Stark of Winterfell and a unkwnow woman. Soon after his marriage, Ned Stark leaved his home to go to fight on the war of the usurper, and returned home carrying a infant that was supposedly his own",
+    "organization": "nightwatch"
   },
   { "name":"Ned Stark",
     "portrait": "assets/ned.png",
@@ -197,16 +198,19 @@
   {
     "name": "Hodor",
     "portrait": "assets/hodor.png",
+    "picture": "assets/pictures/hodor.jpg",
     "bio":  "Hodor, hodor hodor hodor hodor. Hodor hodor hodor, hodor hodor hodor. Hodor, hodor hodor hodor hodor hodor. Hodor hodor, hodor hodor hodor hodor, hodor hodor hodor. "
   },
   {
     "name": "Maester Luwin",
     "portrait": "assets/luwin.png",
+    "picture": "assets/pictures/luwin.jpg",
     "bio": "A maester in the service of House Stark at Winterfell. He has delivered and educated all and each of the Stark children."
   },
   {
     "name": "Lysa Tully",
     "portrait": "assets/lysa.png",
+    "picture": "assets/pictures/lysa_tully.jpg",
     "house": "tully",
     "bio": "She is the daughter of Hoster Tully and Minisa Whent, sister of Catelyn Stark, and wife of Jon Arryn, the former hand of the king Robert. Since her husband's death she is the Lady Regent of the Vale of Arryn"
   },
@@ -218,11 +222,13 @@
   {
     "name": "Maester Pycelle",
     "portrait": "assets/pycelle.png",
+    "picture": "assets/picture/pycelle.jpg",
     "bio": "A Grand Maester of the Citadel. He served in King's Landing, as conselor of six different kings, both Targaryen and Baratheons, for over forty years."
   },
   {
     "name": "Samwell Tarly",
     "portrait": "assets/samwell.png",
+    "picture": "assets/pictures/samwell_tarly.jpg",
     "house": "tarly",
     "organization": "nightwatch",
     "bio": "Samwell Tarly is the eldest son of Lord Randyll Tarly and his wife Melessa Florent. He is popularly called 'Sam', and disparagingly as 'Ser Piggy.'"
@@ -230,8 +236,60 @@
   {
     "name": "Sandor Clegane",
     "portrait": "assets/sandor.png",
+    "picture": "assets/pictures/sandor_clegane.jpg",
     "alias": "The Hound",
     "house": "clegane",
     "bio": "Sandor Clegane is a member of House Clegane. He is the younger brother of the current head, Ser Gregor Clegane. He is nicknamed 'The Hound' for his savage nature and unquestioning obedience to his masters and for the three dogs featured in his family's crest. He is considered one of the most dangerous fighters in Westeros, though he frequently drinks himself into stupors. As a child, Sandor received gruesome facial burns when Gregor shoved his face into a brazier."
+  },
+  {
+    "name": "Shae",
+    "portrait":"assets/shae.png",
+    "picture": "assets/pictures/shae.jpg",
+    "bio": ""
+  },
+  {
+    "name": "Alliser Thorne",
+    "portrait": "assets/thorne.png",
+    "picture": "assets/pictures/allister_thorne.jpg",
+    "bio": "Ser Alliser Thorne is a master-at-arms of the Night's Watch at Castle Black. Alliser is a bitter, mean-spirited man. Alliser also overestimates his own worth, and he is generally hated by nightwatch's recruits.",
+    "organization": "nightwatch"
+  },
+  {
+    "name": "Syrio Forel",
+    "portrait": "assets/syrio.png",
+    "picture": "assets/pictures/syrio_forel.jpg",
+    "bio": "He is from the free city of Braavos, a master fencer and former First Sword of Braavos. Ned Starks hires him to teach Arya to use the sword."
+  },
+  {
+    "name": "Gendry",
+    "portrait": "assets/gendry.png",
+    "picture": "assets/pictures/gendry.jpg",
+    "bio":"He is a bastard of Robert Baratheon, who doesn't know who his father really is. He was raised by a blacksmith, who teached him his proffesion."
+  },
+  {
+    "name": "Loras Tyrell",
+    "portrait": "assets/loras.png",
+    "picture": "assets/pictures/loras_tyrel.jpg",
+    "bio": "Mace Tyrell, lord of Highgarden, third son. He is a highly skilled knight and jouster. His tournament successes, dazzling good looks, and ostentatious showmanship have made him a celebrated figure in the courts of the Seven Kingdoms."
+  },
+  {
+    "name": "Barristan Selmy",
+    "portrait": "assets/barristan.png",
+    "picture": "assets/pictures/barristan_selmy.jpg",
+    "bio": "Ser Barristan Selmy is a celebrated hero and commander of the Kingsguard, serving throughout a time when the Kingsguard. He is one of the skilled and respected knights in the seven kingdoms"
+  },
+  {
+    "name": "Osha",
+    "portrait": "assets/osha.png",
+    "picture": "assets/pictures/osha.jpg",
+    "bio":"Osha is one of the Free Folk, who becomes a captive of Winterfell and later a servant of House Stark."
+  },
+  {
+    "name": "Jeor Mormont",
+    "portrait": "assets/jeor.png",
+    "picture": "assets/pictures/jeor_mormont.jpg",
+    "bio":"",
+    "house": "mormont",
+    "organization": "nightwatch"
   }
 ]

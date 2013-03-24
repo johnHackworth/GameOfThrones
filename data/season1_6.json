@@ -1,320 +1,241 @@
 [
   { "name":"Jon Snow",
-    "portrait": "/assets/jon.png",
-    "picture": "assets/pictures/jon_snow.jpg",
-    "bio":"Jon is the bastard child of Ned Stark of Winterfell and a unkwnow woman. Soon after his marriage, Ned Stark leaved his home to go to fight on the war of the usurper, and returned home carrying a infant that was supposedly his own",
     "parents": ["Ned Stark"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
-    "closeFriends": ["Robb Stark", "Arya Stark"]
+    "closeFriends": ["Robb Stark", "Arya Stark", "Samwell Tarly", "Benjen Stark"],
+    "enemies": ["Alliser Thorne"]
   },
   { "name":"Ned Stark",
-    "portrait": "assets/ned.png",
-    "picture": "assets/pictures/ned_stark.jpg",
-    "bio":"Eddard 'Ned' Stark is the head of House Stark, Lord of Winterfell, and Warden of the North. He is a friend to King Robert Baratheon, whom he was raised with and helped to win the Iron Throne, and is eventually named his Hand. ",
     "sons":["Jon Snow", "Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
     "marriage": ["Catelyn Tully"],
     "lovers": ["Catelyn Tully"],
+    "siblings": ["Benjen Stark"],
     "liege": ["Robert Baratheon"],
-    "court": ["Theon Greyjoy", "Maester Luwin"],
-    "house": "stark"
+    "enemies": ["Cersei Lannister", "Tyrion Lannister", "Jaime Lannister"],
+    "court": ["Hodor", "Theon Greyjoy", "Maester Luwin"]
   },
   {
     "name": "Arya Stark",
-    "portrait": "assets/arya.png",
-    "picture": "assets/pictures/arya_stark.jpg",
-    "bio": "Arya Stark is the third child and second daughter of Lord Eddard and Lady Catelyn Stark. She is nine at the start of A Game of Thrones.",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Bran Stark", "Sansa Stark", "Jon Snow",  "Robb Stark", "Rickon Stark"],
-    "closeFriends": ["Jon Snow"],
-    "house": "stark"
+    "closeFriends": ["Jon Snow", "Syrio Forel"],
+    "enemies": ["Cersei Lannister", "Sandor Clegane", "Joffrey Baratheon"]
   },
   {
     "name": "Sansa Stark",
-    "portrait": "assets/sansa.png",
-    "picture": "assets/pictures/sansa_stark.jpg",
-    "bio": "Sansa Stark is the elder daughter of Catelyn and Eddard Stark. She is thirteen years old at the start of the series. ",
     "parents": ["Ned Stark", "Catelyn Tully"],
-    "siblings": ["Robb Stark", "Arya Stark", "Bran Stark", "Robb Stark", "Rickon Stark", "Jon Snow"],
-    "house": "stark"
+    "lovers": ["Joffrey Baratheon"],
+    "siblings": ["Robb Stark", "Arya Stark", "Bran Stark", "Robb Stark", "Rickon Stark", "Jon Snow"]
   },
   {
     "name": "Robb Stark",
-    "portrait": "assets/robb.png",
-    "picture": "assets/pictures/robb_stark.jpg",
-    "bio":"Robb Stark is the eldest son of Eddard Stark and Catelyn Tully and the heir to Winterfell and the North.",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "closeFriends": ["Theon Greyjoy"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Bran Stark", "Rickon Stark", "Jon Snow"],
-    "house": "stark"
+    "enemies": ["Cersei Lannister", "Tyrion Lannister", "Jaime Lannister"]
   },
   {
     "name": "Bran Stark",
-    "portrait":"assets/bran.png",
-    "picture": "assets/pictures/bran_stark.jpg",
-    "bio":"Eddard and Catelyn's second son.  Bran was educated by Maester Luwin and trained with weapons; he seemed destined to be an excellent fighter.",
     "parents": ["Ned Stark", "Catelyn Tully"],
     "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Jon Snow"],
-    "closeFriends": ["Maester Luwin"],
-    "house": "stark"
+    "closeFriends": ["Maester Luwin"]
   },
   {
     "name": "Rickon Stark",
-    "portrait": "assets/rickon.png",
-    "picture": "assets/pictures/rickon_stark.jpg",
-    "bio":"Rickon Stark is Eddard and Catelyn's youngest child, only three years old when the series begins. Rickon is a naturally aggressive and strong-willed child, but his youth makes it difficult for him to cope with the terrible changes that come to his family and life. ",
     "parents": ["Ned Stark", "Catelyn Tully"],
-    "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Jon Snow", "Bran Stark"],
-    "house": "stark"
+    "siblings": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Jon Snow", "Bran Stark"]
   },
   {
     "name": "Catelyn Tully",
-    "portrait": "assets/catelyn.png",
-    "picture": "assets/pictures/catelyn_tully.jpg",
-    "bio": "Catelyn is the eldest daughter of Lady Minisa and Lord Hoster Tully, head of House Tully, Lord Paramount of the Riverlands. She was betrothed to Brandon Stark, heir of Winterfell, but he  was killed by the Mad King before they could marry, so their parents rearraged the wedding to make Ned Stark replace his defunct brother. She moved to Winterfell, where she and Eddard have formed a strong and loving marriage.",
     "sons": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
     "siblings": ["Lysa Tully"],
     "marriage": ["Ned Stark"],
     "lovers": ["Ned Stark"],
-    "enemies": ["Jon Snow"],
-    "house": "tully"
+    "enemies": ["Jon Snow", "Tyrion Lannister", "Jaime Lannister", "Cersei Lannister"]
   },
   {
     "name": "Theon Greyjoy",
-    "portrait": "assets/theon.png",
-    "picture": "assets/pictures/theon_greyjoy.jpg",
-    "bio": "Theon Greyjoy is the son and heir apparent of Lord Balon Greyjoy. When he was a child, his father rebelled against the king, and when he was defeated, Theon was taken as a hostage and ward to Eddard Stark, to assure his father loyalty.",
     "closeFriends": ["Robb Stark"],
-    "liege": ["Ned Stark"],
-    "house": "greyjoy"
+    "liege": ["Ned Stark"]
   },
   {
     "name": "Robert Baratheon",
-    "dead": true,
-    "portrait": "assets/robert.png",
-    "picture": "assets/pictures/robert_baratheon.jpg",
-    "bio": "was crowned King of the Seven Kingdoms after winning the War of the Usurper. He fought the war to keep the hand of Lyanna Stark, with the aid of her brother, his friend Eddard. Due to Lyanna's death, Robert married Cersei Lannister to ensure political stability.",
     "closeFriends": ["Ned Stark"],
     "marriage": ["Cersei Lannister"],
-    "sons": ["Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
-    "court": ["Petyr Baelish", "Jaime Lannister", "Tyrion Lannister", "Maester Pycelle", "Varys"],
-    "enemies": ["Viserys Targaryen", "Daenerys Targaryen"],
-    "house": "baratheon"
+    "sons": ["Gendry", "Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
+    "siblings": ["Renly Baratheon", "Stannis Baratheon"],
+    "court": ["Barristan Selmy", "Loras Tyrell", "Petyr Baelish", "Jaime Lannister", "Tyrion Lannister", "Maester Pycelle", "Varys"],
+    "enemies": ["Viserys Targaryen", "Daenerys Targaryen"]
   },
   {
     "name": "Cersei Lannister",
-    "portrait": "assets/cersei.png",
-    "picture": "assets/pictures/cersei_lannister.jpg",
-    "bio": "Cersei Lannister is the eldest child of Tywin and Joanna Lannister by mere moments, and the twin sister of Jaime Lannister. After Robert's Rebellion she married the new king, Robert Baratheon, and became Queen of the Seven Kingdoms.",
     "marriage": ["Robert Baratheon"],
+    "enemies": ["Robert Baratheon"],
+    "lovers": ["Jaime Lannister"],
+    "parents": ["Tywin Lannister"],
     "siblings":  ["Jaime Lannister", "Tyrion Lannister"],
     "sons": ["Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
-    "enemies": ["Ned Stark", "Tyrion Lannister"],
-    "house": "lannister"
+    "enemies": ["Tyrion Lannister", "Ned Stark", "Robert Baratheon"]
   },
   {
     "name": "Jaime Lannister",
-    "portrait": "assets/jaime.png",
-    "picture": "assets/pictures/jaime_lannister.jpg",
-    "bio": "Known as the Kingslayer, is the second child and first-born son of Lord Tywin Lannister of Casterly Rock and his wife Lady Joanna, also of House Lannister. Raised at the age of fifteen to the Kingsguard of the Mad King Aerys II Targaryen, Jaime became the youngest member in the history of the prestigious knightly order.<br/> He earned the derogatory nickname when he treasonously slew King Aerys near the end of Robert's Rebellion",
+    "parents": ["Tywin Lannister"],
+    "lovers": ["Cersei Lannister"],
     "siblings":  ["Cersei Lannister", "Tyrion Lannister"],
-    "liege": ["Robert Baratheon"],
-    "house": "lannister",
-    "organization": "royalguard"
+    "liege": ["Robert Baratheon", "Barristan Selmy"],
+    "enemies": ["Ned Stark"]
   },
   {
     "name": "Tyrion Lannister",
-    "portrait": "assets/tyrion.png",
-    "picture": "assets/pictures/tyrion_lannister.jpg",
-    "bio": "He is the third and youngest child of Tywin and Joanna. Tyrion is a dwarf, because of this he is sometimes mockingly called The Imp and The Halfman. He is shrewd, educated, and calculating, but receives little respect for this from his father, because of his deformity, and the death of his mother during his birth.",
     "siblings":  ["Cersei Lannister", "Jaime Lannister"],
     "closeFriends": ["Jon Snow", "Bronn"],
-    "enemies": ["Maester Pycelle", "Cersei Lannister"],
-    "house": "lannister"
+    "parents": ["Tywin Lannister"],
+    "enemies": ["Cersei Lannister", "Catelyn Tully", "Lysa Tully"],
+    "court": ["Bronn"]
+  },
+  {
+    "name": "Tywin Lannister",
+    "sons":  ["Cersei Lannister", "Tyrion Lannister", "Jaime Lannister"],
+    "closeFriends": ["Maester Pycelle"],
+    "liege": ["Robert Baratheon"]
   },
   {
     "name": "Joffrey Baratheon",
-    "portrait": "assets/joffrey.png",
-    "picture": "assets/pictures/joffrey_baratheon.jpg",
-    "bio":"Joffrey Baratheon is the eldest son and heir of King Robert Baratheon and Queen Cersei Lannister. He strong-willed as a child and has an uncontrollable temper not unlike his mother's and an unchecked sadistic streak",
     "parents": ["Robert Baratheon", "Cersei Lannister"],
     "siblings": ["Tommen Baratheon", "Myrcella Baratheon"],
     "closeFriends": ["Sandor Clegane"],
     "lovers": ["Sansa Stark"],
-    "enemies": ["Arya Stark", "Ned Stark", "Renly Baratheon", "Stannis Baratheon"],
-    "house": "baratheon"
+    "enemies": ["Arya Stark"]
   },
   {
     "name": "Tommen Baratheon",
-    "portrait": "assets/tommen.png",
-    "picture": "assets/pictures/tommen_baratheon.jpg",
-    "bio":"The youngest child of King Robert I and Queen Cersei Lannister.",
     "parents": ["Robert Baratheon", "Cersei Lannister"],
-    "siblings": ["Joffrey Baratheon", "Myrcella Baratheon"],
-    "house": "baratheon"
+    "siblings": ["Joffrey Baratheon", "Myrcella Baratheon"]
   },
   {
     "name": "Myrcella Baratheon",
-    "portrait": "assets/myrcella.png",
-    "picture": "assets/pictures/myrcella_baratheon.jpg",
-    "bio":"Princess Myrcella Baratheon is the second oldest of the royal Baratheon children. ",
     "parents": ["Robert Baratheon", "Cersei Lannister"],
-    "siblings": ["Joffrey Baratheon", "Tommen Baratheon"],
-    "house": "lannister"
+    "siblings": ["Joffrey Baratheon", "Tommen Baratheon"]
   },
   {
     "name": "Petyr Baelish",
-    "portrait":"assets/petyr.png",
-    "picture": "assets/pictures/petyr_baelish.jpg",
-    "alias": "littlefinger",
-    "bio": "Lord Petyr Baelish, sometimes called Littlefinger, was Master of Coin (or treasurer) on the King's Small Council. He was born to a small and insignificant house, spending most of his adult life trying to rise above his lowly birthright and become something greater, craving for power and status. He possesses considerable skill in commerce and coin, and is a master of court intrigue, his brilliance matched only by his ambition and his gift for political improvisation.",
-    "closeFriends": ["Catelyn Tully"],
+    "closeFriends": ["Catelyn Tully", "Lysa Tully"],
     "liege": ["Robert Baratheon"]
   },
   {
     "name": "Varys",
-    "portrait": "assets/varys.png",
-    "picture": "assets/pictures/varys.jpg",
-    "liege": ["Robert Baratheon"],
-    "bio":"Called 'the Spider', is the enigmatic member of the small council and Master of Whisperers, or spymaster, for the Iron Throne of the Seven Kingdoms. An eunuch since his infancy, his history of providing information to all sides, of aiding enemies, of pitting rivals against one another, and of manipulation to achieve his ends has earned him a reputation of being distasteful and untrustworthy amongst the nobles at court"
+    "liege": ["Robert Baratheon"]
   },
   {
     "name": "Daenerys Targaryen",
-    "portrait": "assets/daenerys.png",
-    "picture": "assets/pictures/daenerys_targaryen.jpg",
     "siblings": ["Viserys Targaryen"],
+    "marriage": ["Khal Drogo"],
     "closeFriends": ["Jorah Mormont", "Illyrio Monpatis"],
-    "enemies": ["Robert Baratheon"],
-    "house": "targaryen",
-    "bio": "She is the last confirmed member of the ancient Targaryen Dynasty, former rulers of The Seven Kingdoms. She is the daughter of Raeghar Targaryen, who was the royal heir when Robert Baratheon rebelled and killed the king (Daenerys' granfather) and his heir. She has lived all of her life exiled on the free cities"
+    "enemies": ["Robert Baratheon"]
   },
   {
     "name": "Jorah Mormont",
-    "portrait": "assets/jorah.png",
-    "pictures": "assets/pictures/jorah_mormont",
     "liege": ["Viserys Targaryen"],
     "enemies": ["Ned Stark"],
-    "closeFriends": ["Daenerys Targaryen"],
-    "house": "mormont",
-    "bio": "An exiled knight, former head of House Mormont and lord of Bear Island. He fled Westeros to escape execution for trading in slaves and took up work as a mercenary in the Free Cities, eventually entering the service of the last Targaryens."
+    "closeFriends": ["Daenerys Targaryen"]
   },
   {
     "name": "Viserys Targaryen",
-    "portrait": "assets/viserys.png",
-    "picture": "assets/pictures/viserys_targaryen.jpg",
     "enemies": ["Robert Baratheon", "Ned Stark"],
     "siblings": ["Daenerys Targaryen"],
-    "house": "targaryen",
-    "bio": "Viserys Targaryen, called The Beggar King, is the heir of his father Aerys II and brother Rhaegar after their deaths during Robert's Rebellion. The war, however, turned him into an exile who plots to regain control of the Iron Throne. "
+    "closeFriends": ["Illyrio Monpatis"],
+    "court": ["Jorah Mormont"]
   },
   {
     "name": "Benjen Stark",
-    "portrait":"assets/benjen.png",
-    "picture": "assets/pictures/benjen_stark.jpg",
     "siblings": ["Ned Stark"],
-    "closeFriends": ["Aemon Targaryen"],
-    "house": "stark",
-    "organization": "nightwatch",
-    "bio": "Benjen Stark is the younger brother of Lord Eddard Stark and a sworn brother of the Night's Watch. He is the First Ranger, or leader of the rangers, of the Night's Watch."
+    "closeFriends": ["Aemon Targaryen", "Jon Snow"]
   },
   {
     "name": "Aemon Targaryen",
-    "portrait": "assets/aemon.png",
-    "picture": "assets/pictures/aemon_targaryen.jpg",
-    "closeFriends": ["Benjen Stark", "Samwell Tarly", "Jon Snow"],
-    "house": "targaryen",
-    "organization": "nightwatch",
-    "bio": "Maester Aemon, born Aemon Targaryen, is the third son of King Maekar I Targaryen. He has served as a maester to the Night's Watch at Castle Black for so long that the rest of the Seven Kingdoms has forgotten about his Targaryen blood."
+    "closeFriends": ["Benjen Stark",  "Jon Snow"]
   },
   {
     "name": "Stannis Baratheon",
-    "portrait": "assets/stannis.png",
-    "picture": "assets/pictures/stannis_baratheon.jpg",
     "liege": ["Robert Baratheon"],
-    "siblings": ["Robert Baratheon", "Renly Baratheon"],
-    "enemies": ["Joffrey Baratheon", "Renly Baratheon"],
-    "house": "baratheon",
-    "bio": "Stannis Baratheon is the elder of Robert Baratheon's younger brothers. He served on his brother's small council as Master of Ships and was also Lord of Dragonstone."
+    "siblings": ["Robert Baratheon", "Renly Baratheon"]
   },
   {
     "name": "Renly Baratheon",
-    "portrait": "assets/renly.png",
-    "picture": "assets/pictures/renly_baratheon.jpg",
     "liege": ["Robert Baratheon"],
     "siblings": ["Stannis Baratheon", "Renly Baratheon"],
-    "enemies": ["Joffrey Baratheon", "Stannis Baratheon"],
-    "house": "baratheon",
-    "bio": "Renly Baratheon is the younger brother of Robert and Stannis Baratheon, all sons of Steffon Baratheon and Cassana Estermont. He rules as Lord of Storm's End, and served as Master of Laws on Robert's small council."
-  },
-  {
-    "name": "Bronn",
-    "picture": "assets/pictures/bronn.jpg",
-    "portrait": "assets/bronn.png",
-    "liege": ["Tyrion Lannister"],
-    "closeFriends": ["Tyrion Lannister"],
-    "bio": "Bronn is a low-born sellsword of great skill and cunning."
+    "closeFriends": ["Loras Tyrell"]
   },
   {
     "name": "Khal Drogo",
-    "dead": true,
-    "portrait": "assets/drogo.png",
-    "picture": "assets/pictures/khal_drogo.jpg",
-    "lovers": ["Daenerys Targaryen"],
-    "marriage": ["Daenerys Targaryen"],
-    "enemies": ["Viserys Targaryen"],
     "closeFriends": ["Illyrio Monpatis"],
-    "bio": "He is a powerful warlord of the fearsome Dothraki nomads. He has a long braid hung with tiny bells that hangs down to his thighs, symbolizing his status among the Dothraki as an undefeated warlord. He commands an horde of 40.000 dothraki raiders"
+    "marriage": ["Daenerys Targaryen"]
   },
   {
     "name": "Hodor",
-    "portrait": "assets/hodor.png",
     "liege": ["Ned Stark"],
-    "closeFriends": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
-    "bio":  "Hodor, hodor hodor hodor hodor. Hodor hodor hodor, hodor hodor hodor. Hodor, hodor hodor hodor hodor hodor. Hodor hodor, hodor hodor hodor hodor, hodor hodor hodor. "
+    "closeFriends": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"]
   },
   {
     "name": "Maester Luwin",
-    "portrait": "assets/luwin.png",
     "liege": ["Ned Stark"],
-    "closeFriends": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"],
-    "bio": "A maester in the service of House Stark at Winterfell. He has delivered and educated all and each of the Stark children."
+    "closeFriends": ["Sansa Stark", "Arya Stark",  "Robb Stark", "Rickon Stark", "Bran Stark"]
   },
   {
     "name": "Lysa Tully",
-    "portrait": "assets/lysa.png",
     "siblings": ["Catelyn Tully"],
     "closeFriends": ["Petyr Baelish"],
-    "enemies": ["Cersei Lannister"],
-    "house": "tully",
-    "bio": "She is the daughter of Hoster Tully and Minisa Whent, sister of Catelyn Stark, and wife of Jon Arryn, the former hand of the king Robert. Since her husband's death she is the Lady Regent of the Vale of Arryn"
+    "enemies": ["Cersei Lannister"]
   },
   {
     "name": "Illyrio Monpatis",
-    "portrait": "assets/illyrio.png",
-    "closeFriends": ["Khal Drogo", "Viserys Targaryen", "Daenerys Targaryen"],
-    "bio": "Illyrio Mopatis is a wealthy and powerful Magister in the Free City of Pentos. He is a dealer in spices, gemstones, dragonbone, and other things. For a time he served as custodian of the exiled Targaryens and now seeks to return them to the Iron Throne"
+    "closeFriends": ["Khal Drogo", "Viserys Targaryen", "Daenerys Targaryen"]
   },
   {
     "name": "Maester Pycelle",
-    "portrait": "assets/pycelle.png",
     "liege": ["Robert Baratheon"],
-    "closeFriends": ["Cersei Lannister"],
-    "bio": "A Grand Maester of the Citadel. He served in King's Landing, as conselor of six different kings, both Targaryen and Baratheons, for over forty years."
-  },
-  {
-    "name": "Samwell Tarly",
-    "portrait": "assets/samwell.png",
-    "closeFriends": ["Jon Snow", "Aemon Targaryen"],
-    "house": "tarly",
-    "organization": "nightwatch",
-    "bio": "Samwell Tarly is the eldest son of Lord Randyll Tarly and his wife Melessa Florent. He is popularly called 'Sam', and disparagingly as 'Ser Piggy.'"
+    "closeFriends": ["Tywin Lannister", "Cersei Lannister"]
   },
   {
     "name": "Sandor Clegane",
-    "portrait": "assets/sandor.png",
-    "alias": "The Hound",
+    "liege": ["Robert Baratheon", "Joffrey Baratheon"],
+    "closeFriends": ["Sansa Stark"]
+  },
+  {
+    "name": "Samwell Tarly",
+    "closeFriends": ["Jon Snow", "Aemon Targaryen"],
+    "enemies": ["Alliser Thorne"]
+  },
+  {
+    "name": "Alliser Thorne",
+    "enemies": ["Jon Snow", "Samwell Tarly"]
+  },
+  {
+    "name": "Syrio Forel",
+    "liege": ["Ned Stark"],
+    "closeFriends": ["Arya Stark"]
+  },
+  {
+    "name": "Gendry",
+    "parents": ["Robert Baratheon"]
+  },
+  {
+    "name": "Loras Tyrell",
     "liege": ["Robert Baratheon"],
-    "closeFriends": ["Sansa Stark"],
-    "house": "clegane",
-    "bio": "Sandor Clegane is a member of House Clegane. He is the younger brother of the current head, Ser Gregor Clegane. He is nicknamed 'The Hound' for his savage nature and unquestioning obedience to his masters and for the three dogs featured in his family's crest. He is considered one of the most dangerous fighters in Westeros, though he frequently drinks himself into stupors. As a child, Sandor received gruesome facial burns when Gregor shoved his face into a brazier."
+    "closeFriends": ["Renly Baratheon"]
+  },
+  {
+    "name": "Barristan Selmy",
+    "liege": ["Robert Baratheon"],
+    "court": ["Jaime Lannister"]
+  },
+  {
+    "name": "Bronn",
+    "closeFriends": ["Tyrion Lannister"],
+    "liege": ["Tyrion Lannister"]
+  },
+  {
+    "name": "Osha",
+    "enemies": ["Bran Stark", "Theon Greyjoy", "Robb Stark"]
   }
 ]

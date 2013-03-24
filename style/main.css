@@ -27,11 +27,11 @@ body {
   background-position: -500px -500px;
   background-repeat: no-repeat;
 
--webkit-transition: background-position 200000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
-   -moz-transition: background-position 200000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
-    -ms-transition: background-position 200000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
-     -o-transition: background-position 200000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
-        transition: background-position 200000ms cubic-bezier(0.340, 0.005, 0.610, 0.995); /* custom */
+-webkit-transition: background-position 1500000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+   -moz-transition: background-position 1500000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+    -ms-transition: background-position 1500000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+     -o-transition: background-position 1500000ms cubic-bezier(0.340, 0.005, 0.610, 0.995);
+        transition: background-position 1500000ms cubic-bezier(0.340, 0.005, 0.610, 0.995); /* custom */
 
 -webkit-transition-timing-function: cubic-bezier(0.340, 0.005, 0.610, 0.995);
    -moz-transition-timing-function: cubic-bezier(0.340, 0.005, 0.610, 0.995);
@@ -218,11 +218,11 @@ path.liege {
 }
 
 path.courtesan {
-  stroke: #888;
+  stroke: #EEE;
   stroke-width:0.3em;
 }
 .legend .legendElement.courtesan i{
-  color: #888;
+  color: #EEE;
 }
 
 
@@ -261,6 +261,7 @@ g:hover .heraldic {
   position: fixed;
   right:0px;
   width:20%;
+  min-width:225px;
   height: 96%;
   top: 0;
   color: #FFF;
@@ -360,10 +361,19 @@ g:hover .heraldic {
 */
 .characterInfo {
   width: 90%;
-  padding: 5% 5% 0;
+  padding: 0% 5% 0;
+  height: 50%;
+  display: block;
   font-family: 'Open Sans', sans-serif;
+  position: absolute;
+  top: 80px;
 }
 
+.characterName {
+  position: absolute;
+  margin-top: 5px;
+  width:90%;
+}
 
 .close {
   position: absolute;
@@ -379,14 +389,19 @@ g:hover .heraldic {
 }
 
 .characterBio {
-  height: 30%;
-  max-height: 200px;
+  display:block;;
+  /*max-height: 200px;*/
+  position: relative;
+  height: 60%;
   overflow-y: auto;
+  margin-top: 3em;
 }
 
 .picture {
   max-width: 100%;
-  max-height: 20%;
+  height:40%;
+  display: block;
+  position: relative;
   overflow: hidden;
 }
 
@@ -414,6 +429,8 @@ ul, li {
   padding:0% 5% 1%;
   width: 90%;
   font-size: 1.1em;
+  position: absolute;
+  bottom:60px;
 }
 
 .seasonSelector i {
@@ -486,7 +503,134 @@ ul, li {
   opacity: 0.8;
 }
 
+
+.showMoreInfo {
+  position: fixed;
+  bottom: 5px;
+  left: 105px;
+  cursor: pointer;
+  font-family: marcellus;
+  color: #666;
+  opacity: 0.8;
+}
+
+.showMoreInfo i {
+  color: #991;
+}
+
 .legendButton i {
   color: #921;
 }
 
+.modal {
+  position: fixed;
+  top: 30%;
+  left:30%;
+  width: 34%;
+  padding:2% 3%;
+  display: inline-block;
+  color: #FFF;
+  border-radius: 5px;
+  font-family: 'Marcellus';
+  z-index: -10;
+  opacity: 0;
+
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.modal.show {
+  z-index: 9999;
+  opacity: 0.9;
+}
+
+.appInfo, .moreInfo {
+  background-color: #444;
+}
+
+.appInfo h1 {
+  font-family: "got";
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.appInfo .text {
+  display: block;
+  width: 100%;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.buttoner {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.appInfo .icon-fire {
+  color: #C00 ;
+  font-size: 25px ;
+  /*text-shadow:0 0 2px #FF0;*/
+}
+
+.button {
+  border: 1px solid #FFF;
+  display: inline-block;
+  border-radius: 2px;
+  padding: 7px 11px 7px;
+  font-size: 20px;
+  z-index: 14;
+  margin: 2%;
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: none;
+  color: #FFF;
+  text-align: right;
+
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.button:hover {
+  color: #FFA;
+  border-color: #FFA;
+  background: #333;
+}
+
+.button.first:hover i {
+  color: #cFc;
+}
+.button.last:hover i {
+  color: #Fcc;
+}
+
+.button .subtext {
+  display: block;
+  font-size: 10px;
+}
+
+.moreInfo {
+  top: 10%;
+  left: 15%;
+  width: 50%;
+}
+.moreInfo .text,
+.moreInfo .thanks {
+  display: block;
+  margin-bottom: 1em;
+}
+.moreInfo .buttoner {
+  text-align: right;
+}
+
+.moreInfo .buttoner a {
+  position: relative;
+}
+
+.moreInfo a {
+  color: #EEE;
+}

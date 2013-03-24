@@ -9,7 +9,7 @@
     "marriage": ["Catelyn Tully"],
     "lovers": ["Catelyn Tully"],
     "liege": ["Robert Baratheon"],
-    "court": ["Theon Greyjoy", "Maester Luwin"]
+    "court": ["Hodor", "Theon Greyjoy", "Maester Luwin"]
   },
   {
     "name": "Arya Stark",
@@ -54,11 +54,11 @@
   },
   {
     "name": "Robert Baratheon",
-    "dead": true,
     "closeFriends": ["Ned Stark"],
     "marriage": ["Cersei Lannister"],
     "sons": ["Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
-    "court": ["Petyr Baelish", "Jaime Lannister", "Tyrion Lannister", "Maester Pycelle", "Varys"],
+    "court": ["Jaime Lannister", "Tyrion Lannister"],
+    "siblings": ["Renly Baratheon", "Stannis Baratheon"],
     "enemies": ["Viserys Targaryen", "Daenerys Targaryen"]
   },
   {
@@ -67,7 +67,7 @@
     "parents": ["Tywin Lannister"],
     "siblings":  ["Jaime Lannister", "Tyrion Lannister"],
     "sons": ["Tommen Baratheon", "Joffrey Baratheon", "Myrcella Baratheon"],
-    "enemies": ["Ned Stark", "Tyrion Lannister"]
+    "enemies": ["Tyrion Lannister"]
   },
   {
     "name": "Jaime Lannister",
@@ -78,14 +78,12 @@
   {
     "name": "Tyrion Lannister",
     "siblings":  ["Cersei Lannister", "Jaime Lannister"],
-    "closeFriends": ["Jon Snow", "Bronn"],
     "parents": ["Tywin Lannister"],
-    "enemies": ["Maester Pycelle", "Cersei Lannister"]
+    "enemies": ["Cersei Lannister"]
   },
   {
     "name": "Tywin Lannister",
     "sons":  ["Cersei Lannister", "Tyrion Lannister", "Jaime Lannister"],
-    "closeFriends": ["Maester Pycelle"],
     "liege": ["Robert Baratheon"]
   },
   {
@@ -93,8 +91,7 @@
     "parents": ["Robert Baratheon", "Cersei Lannister"],
     "siblings": ["Tommen Baratheon", "Myrcella Baratheon"],
     "closeFriends": ["Sandor Clegane"],
-    "lovers": ["Sansa Stark"],
-    "enemies": ["Arya Stark", "Ned Stark", "Renly Baratheon", "Stannis Baratheon"]
+    "lovers": ["Sansa Stark"]
   },
   {
     "name": "Tommen Baratheon",
@@ -105,15 +102,6 @@
     "name": "Myrcella Baratheon",
     "parents": ["Robert Baratheon", "Cersei Lannister"],
     "siblings": ["Joffrey Baratheon", "Tommen Baratheon"]
-  },
-  {
-    "name": "Petyr Baelish",
-    "closeFriends": ["Catelyn Tully"],
-    "liege": ["Robert Baratheon"]
-  },
-  {
-    "name": "Varys",
-    "liege": ["Robert Baratheon"]
   },
   {
     "name": "Daenerys Targaryen",
@@ -134,36 +122,20 @@
   },
   {
     "name": "Benjen Stark",
-    "siblings": ["Ned Stark"],
-    "closeFriends": ["Aemon Targaryen"]
-  },
-  {
-    "name": "Aemon Targaryen",
-    "closeFriends": ["Benjen Stark", "Samwell Tarly", "Jon Snow"]
+    "siblings": ["Ned Stark"]
   },
   {
     "name": "Stannis Baratheon",
     "liege": ["Robert Baratheon"],
-    "siblings": ["Robert Baratheon", "Renly Baratheon"],
-    "enemies": ["Joffrey Baratheon", "Renly Baratheon"]
+    "siblings": ["Robert Baratheon", "Renly Baratheon"]
   },
   {
     "name": "Renly Baratheon",
     "liege": ["Robert Baratheon"],
-    "siblings": ["Stannis Baratheon", "Renly Baratheon"],
-    "enemies": ["Joffrey Baratheon", "Stannis Baratheon"]
-  },
-  {
-    "name": "Bronn",
-    "liege": ["Tyrion Lannister"],
-    "closeFriends": ["Tyrion Lannister"]
+    "siblings": ["Stannis Baratheon", "Renly Baratheon"]
   },
   {
     "name": "Khal Drogo",
-    "dead": true,
-    "lovers": ["Daenerys Targaryen"],
-    "marriage": ["Daenerys Targaryen"],
-    "enemies": ["Viserys Targaryen"],
     "closeFriends": ["Illyrio Monpatis"]
   },
   {
@@ -179,25 +151,14 @@
   {
     "name": "Lysa Tully",
     "siblings": ["Catelyn Tully"],
-    "closeFriends": ["Petyr Baelish"],
-    "enemie s": ["Cersei Lannister"]
+    "enemies": ["Cersei Lannister"]
   },
   {
     "name": "Illyrio Monpatis",
     "closeFriends": ["Khal Drogo", "Viserys Targaryen", "Daenerys Targaryen"]
   },
   {
-    "name": "Maester Pycelle",
-    "liege": ["Robert Baratheon"],
-    "closeFriends": ["Cersei Lannister"]
-  },
-  {
-    "name": "Samwell Tarly",
-    "closeFriends": ["Jon Snow", "Aemon Targaryen"]
-  },
-  {
     "name": "Sandor Clegane",
-    "liege": ["Robert Baratheon"],
-    "closeFriends": ["Sansa Stark"]
+    "liege": ["Robert Baratheon", "Joffrey Baratheon"]
   }
 ]
