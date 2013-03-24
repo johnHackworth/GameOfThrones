@@ -29,7 +29,6 @@
   }
 
   character.prototype.locateCharacterInfo = function(bios) {
-    console.log(bios);
     for(var n = 0, l = bios.length; n < l; n++) {
       if(bios[n].name === this.name) {
         return bios[n];

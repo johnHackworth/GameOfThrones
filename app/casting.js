@@ -90,7 +90,6 @@
       promises.push();
       $.when.apply(self, promises)
       .done(function() {
-        console.log(self.charData);
         dfd.resolve();
       })
       .fail(function() {

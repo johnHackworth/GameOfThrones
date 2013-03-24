@@ -676,7 +676,6 @@
     setTimeout(function() {
       for(var name in self.relationLabels) {
         if(name != undefined) {
-          console.log(name, 'name');
 
           self.paintRelationLabel(name, self.relationLabels[name]);
         }
@@ -691,7 +690,6 @@
   board.prototype.paintRelationLabel = function(charName, labels) {
     // debugger;
     var self = this;
-    console.log(charName);
     var char = this.visibleChars[charName];
     var group = this.svg
       .append('g')
