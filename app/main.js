@@ -22,9 +22,16 @@
     $('.showMoreInfo').on('click', function() {
       $('.moreInfo').addClass('show');
     })
-    window.casting = new Casting();
-    $.when(window.casting.initialized)
-    .done(function() {
+
+    $(window).on("orientationchange", function() {
+      window.initialize();
+    });
+    $(window).on("resize", function() {
+      window.initialize();
+    });
+
+    window.initialize = function() {
+      $('svg').remove();
       window.board = new Board({
         characters: window.casting,
         selector: "#main"
@@ -42,7 +49,11 @@
       } else {
         $('.appInfo').addClass('show');
       }
-    });
+    }
+
+    window.casting = new Casting();
+    $.when(window.casting.initialized)
+    .done(window.initialize);
 
   });
 })()

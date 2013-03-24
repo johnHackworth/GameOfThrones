@@ -2,6 +2,9 @@
 
   var board = function(options) {
     var self = this;
+    this.shittyPerformance = false;
+    this.ultraShittyPerformanceWTF = false;
+    this.detectShittingness();
     this.visibleChars = {};
     this.correction = 0.85;
     this.verticalCorrection = 1;
@@ -16,12 +19,40 @@
     this.verticalMargin =  Math.floor((this.totalHeight / this.ySize) * this.verticalCorrection * (2/5));;
 
     this.initialize(options);
-    $(window).on("orientationchange", function() {
-      self.initialize(options);
-    });
-    $(window).on("resize", function() {
-      self.initialize(options);
-    });
+
+  }
+
+  board.prototype.detectShittingness = function() {
+    var uAgent = navigator.userAgent;
+    if(uAgent.indexOf('Chrome') >= 0 && // chrome not mobile
+      uAgent.indexOf('Mobile') < 0
+    ) {
+      this.shittyPerformance = false;
+      this.ultraShittyPerformanceWTF = false;
+    } else if(uAgent.indexOf('Chrome') >= 0 && // chrome mobile
+      uAgent.indexOf('Mobile') >=  0
+    ) {
+      this.shittyPerformance = true;
+      this.ultraShittyPerformanceWTF = false;
+    } else if(uAgent.indexOf('Firefox') >= 0 && // firefox not mobile
+      uAgent.indexOf('Mobile') < 0
+    ) {
+      this.shittyPerformance = true;
+      this.ultraShittyPerformanceWTF = true;
+    } else if(uAgent.indexOf('Safari') >= 0 && // firefox not mobile
+      uAgent.indexOf('Mobile') < 0
+    ) {
+      this.shittyPerformance = false;
+      this.ultraShittyPerformanceWTF = false;
+    } else if(uAgent.indexOf('Safari') >= 0 && // firefox not mobile
+      uAgent.indexOf('Mobile') >= 0
+    ) {
+      this.shittyPerformance = true;
+      this.ultraShittyPerformanceWTF = false;
+    } else { // everything else
+      this.shittyPerformance = true;
+      this.ultraShittyPerformanceWTF = true;
+    }
   }
 
   board.prototype.detectOrientation = function() {
@@ -350,7 +381,7 @@
         .attr("width", this.portraitWidth)
         .attr("height", this.portraitHeight)
 
-    if(character.organization) {
+    if(!this.shittyPerformance && character.organization) {
       g.append('svg:image')
         .attr("xlink:href", 'assets/houses/' + character.organization + '.png')
         .attr("x", (this.portraitWidth - this.portraitWidth / 3.5))
@@ -359,7 +390,7 @@
         .attr("height", Math.floor(this.portraitHeight / 3.5))
         .attr("class", "heraldic");
     }
-    if(character.house) {
+    if(!this.shittyPerformance && character.house) {
       g.append('svg:image')
         .attr("xlink:href", 'assets/houses/' + character.house + '.png')
         .attr("x", (this.portraitWidth - this.portraitWidth / 3.5))
@@ -386,17 +417,17 @@
         .attr("height", Math.floor(this.portraitHeight / 3.5))
         .attr("class", "icon dead");
     }
-
-    g.append('svg:text')
-        .text(character.alias || character.name)
-        .attr("class", "charLabel ")
-        .attr("name", this.tokenize(character.name))
-        .attr('dx', function(d) {
-          var textWidth = this.getBBox().width;
-          return (self.portraitWidth - textWidth) / 2;
-        })
-        .attr("dy",this.portraitHeight + 10)
-
+    if(!this.ultraShittyPerformanceWTF) {
+      g.append('svg:text')
+          .text(character.alias || character.name)
+          .attr("class", "charLabel ")
+          .attr("name", this.tokenize(character.name))
+          .attr('dx', function(d) {
+            var textWidth = this.getBBox().width;
+            return (self.portraitWidth - textWidth) / 2;
+          })
+          .attr("dy",this.portraitHeight + 10)
+    }
 
     $(character.view).data('name', character.name)
     character.view.data = character;
@@ -426,6 +457,7 @@
   }
 
   board.prototype.selectCharacter = function(char) {
+    var self = this;
     var center = this.calculateCenter();
     var character = this.visibleChars[$(char).attr('name')];
     this.clearCentric();
@@ -437,7 +469,9 @@
     this.placeFamily(character);
     this.paintRelations(character);
     this.paintRelationLabels(character);
-    this.redrawAll();
+    setTimeout(function() {
+      self.redrawAll();
+    },25);
     this.characterProfile(character);
 
     this.selectedCharacter = character;
@@ -452,12 +486,29 @@
     var self = this;
     var previousOccuper = this.filledPositions[position.y][position.x]
     var id = this.tokenize(char.name);
-    this.svg.selectAll('.' + id).transition()
+    setTimeout(function() { // break the io thread to help the browser with the load
+      var gChar = self.svg.selectAll('.' + id);
+      var charLabel = null;
+      var charHeraldic= null;
+      if(self.shittyPerformance) {
+
+        charLabel = $(gChar.selectAll('.charLabel')[0]).detach();
+        charHeraldic = $(gChar.selectAll('.heraldic')[0]).detach();
+      }
+
+      gChar.transition()
       .duration(800)
       .ease("back-out")
 
-      .attr("transform", "translate(" + (position.x * (this.portraitWidth + this.margin)) +
-          "," + (position.y * (this.portraitHeight + this.verticalMargin)) + ")")
+      .attr("transform", "translate(" + (position.x * (self.portraitWidth + self.margin)) +
+          "," + (position.y * (self.portraitHeight + self.verticalMargin)) + ")")
+      if(self.shittyPerformance) {
+        setTimeout(function() {
+          charLabel.appendTo($(gChar))
+          charHeraldic.appendTo($(gChar))
+        },800)
+      }
+    }, 25)
     if(char.pos) {
       this.filledPositions[char.pos.y][char.pos.x] = null;
     }
@@ -529,83 +580,83 @@
       "enemy": 1,
       "courtesan": -1
     };
-
-    var line = d3.svg.line()
-      .x(function(d){
-        var position = d.pos.x * (self.portraitWidth + self.margin) +(self.portraitWidth ) /2;
-        return position;
-      })
-      .y(function(d){
-        var position = null;
-        if(d.name === char.name) {
-          position = relationPositions[relationClass] + d.pos.y * (self.portraitHeight + self.verticalMargin) +(self.portraitHeight + self.verticalMargin) /2
-        } else {
-          position = -10 + d.pos.y * (self.portraitHeight + self.verticalMargin) +(self.portraitHeight + self.verticalMargin) /2
-        }
-        return position;
-      })
-      .interpolate('basis')
-      .tension(0.9);
-    var path = this.svg.selectAll('path.'+relationClass)
-      .data(destinations).enter()
-      .append('g')
-      .attr('class', "gPath " + relationClass + " relations_" +this.tokenize(char.name))
-    var pathG = path
-      .append('path')
-      .attr("transform", null)
-      .attr('d', function(d) {
-        var chars = [char];
-        var character = self.visibleChars[d];
-        var middlePoint = { pos: {
-            x:  char.pos.x,
-            y: (character.pos.y + char.pos.y) / 2
+    setTimeout(function() {
+      var line = d3.svg.line()
+        .x(function(d){
+          var position = d.pos.x * (self.portraitWidth + self.margin) +(self.portraitWidth ) /2;
+          return position;
+        })
+        .y(function(d){
+          var position = null;
+          if(d.name === char.name) {
+            position = relationPositions[relationClass] + d.pos.y * (self.portraitHeight + self.verticalMargin) +(self.portraitHeight + self.verticalMargin) /2
+          } else {
+            position = -10 + d.pos.y * (self.portraitHeight + self.verticalMargin) +(self.portraitHeight + self.verticalMargin) /2
           }
-        }
-        if(middlePoint.pos.y === char.pos.y &&
-          middlePoint.pos.y === character.pos.y &&
-          Math.abs(character.pos.x - char.pos.x) >= 2
-        ) {
-          middlePoint.pos.y += 0.4;
-        }
-
-        chars.push(middlePoint);
-        var middlePoint2 = { pos: {
-            x: character.pos.x,
-            y: (character.pos.y + char.pos.y) / 2
+          return position;
+        })
+        .interpolate('basis')
+        .tension(0.9);
+      var path = self.svg.selectAll('path.'+relationClass)
+        .data(destinations).enter()
+        .append('g')
+        .attr('class', "gPath " + relationClass + " relations_" +self.tokenize(char.name))
+      var pathG = path
+        .append('path')
+        .attr("transform", null)
+        .attr('d', function(d) {
+          var chars = [char];
+          var character = self.visibleChars[d];
+          var middlePoint = { pos: {
+              x:  char.pos.x,
+              y: (character.pos.y + char.pos.y) / 2
+            }
           }
-        }
-        if(middlePoint2.pos.y === char.pos.y &&
-          middlePoint2.pos.y === character.pos.y &&
-          Math.abs(character.pos.x - char.pos.x) >= 2
-        ) {
-          middlePoint2.pos.y += 0.4;
-        }
-        // this.attr('labelPoint', [middlePoint2.pos.x, middlePoint2.pos.y]);
-        chars.push(middlePoint2);
-        chars.push(character);
-        return line(chars)
-      })
-      .attr('labelPointX', function(d) {
-        var character = self.visibleChars[d];
-        return character.pos.x;
-      })
-      .attr('labelPointY', function(d) {
-        var character = self.visibleChars[d];
-        return character.pos.y;
-      })
-      .attr('class', function(d) {
-        return " " + relationClass + " with_" +self.tokenize(d) +" relations_" +self.tokenize(char.name)
-      })
-    if(pathG.node()) {
-      var totalLength = pathG.node().getTotalLength();
-      pathG
-        .attr("stroke-dasharray",  totalLength*3 + " " + totalLength*3)
-        .attr("stroke-dashoffset", totalLength*3)
-        .transition().duration(800).delay(700)
-        .ease("linear")
-        .attr("stroke-dashoffset", 0);
-    }
-    return line;
+          if(middlePoint.pos.y === char.pos.y &&
+            middlePoint.pos.y === character.pos.y &&
+            Math.abs(character.pos.x - char.pos.x) >= 2
+          ) {
+            middlePoint.pos.y += 0.4;
+          }
+
+          chars.push(middlePoint);
+          var middlePoint2 = { pos: {
+              x: character.pos.x,
+              y: (character.pos.y + char.pos.y) / 2
+            }
+          }
+          if(middlePoint2.pos.y === char.pos.y &&
+            middlePoint2.pos.y === character.pos.y &&
+            Math.abs(character.pos.x - char.pos.x) >= 2
+          ) {
+            middlePoint2.pos.y += 0.4;
+          }
+          // self.attr('labelPoint', [middlePoint2.pos.x, middlePoint2.pos.y]);
+          chars.push(middlePoint2);
+          chars.push(character);
+          return line(chars)
+        })
+        .attr('labelPointX', function(d) {
+          var character = self.visibleChars[d];
+          return character.pos.x;
+        })
+        .attr('labelPointY', function(d) {
+          var character = self.visibleChars[d];
+          return character.pos.y;
+        })
+        .attr('class', function(d) {
+          return " " + relationClass + " with_" +self.tokenize(d) +" relations_" +self.tokenize(char.name)
+        })
+      if(pathG.node()) {
+        var totalLength = pathG.node().getTotalLength();
+        pathG
+          .attr("stroke-dasharray",  totalLength*3 + " " + totalLength*3)
+          .attr("stroke-dashoffset", totalLength*3)
+          .transition().duration(800).delay(700)
+          .ease("linear")
+          .attr("stroke-dashoffset", 0);
+      }
+    }, 25);
   }
 
   board.prototype.paintRelations = function(char) {
