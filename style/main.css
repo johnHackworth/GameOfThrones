@@ -639,3 +639,11 @@ ul, li {
 .moreInfo a {
   color: #EEE;
 }
+
+.loader {
+  position: fixed;
+  top: 50px;
+  margin-left:46%;
+  font-size:150px;
+  color: #976;
+}

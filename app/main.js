@@ -31,6 +31,7 @@
     });
 
     window.initialize = function() {
+      $('.loader').fadeOut();
       $('svg').remove();
       window.board = new Board({
         characters: window.casting,
