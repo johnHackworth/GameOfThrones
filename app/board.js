@@ -25,12 +25,12 @@
   board.prototype.detectShittingness = function() {
     var uAgent = navigator.userAgent;
     if(uAgent.indexOf('Chrome') >= 0 && // chrome not mobile
-      uAgent.indexOf('Mobile') < 0
+      uAgent.indexOf('Android') < 0
     ) {
       this.shittyPerformance = false;
       this.ultraShittyPerformanceWTF = false;
     } else if(uAgent.indexOf('Chrome') >= 0 && // chrome mobile
-      uAgent.indexOf('Mobile') >=  0
+      uAgent.indexOf('Android') >=  0
     ) {
       this.shittyPerformance = true;
       this.ultraShittyPerformanceWTF = false;
