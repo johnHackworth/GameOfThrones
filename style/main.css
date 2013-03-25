@@ -85,7 +85,6 @@ svg {
   position: absolute;
   top:0%;
   display: block;
-  z-index: 1;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
