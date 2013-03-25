@@ -78,13 +78,14 @@ g {
 
 svg {
   width: 80%;
-  padding-left: 4%;
+  padding-left: 2%;
   padding-top: 1%;
   padding-bottom: 3%;
   height: 98%;
   position: absolute;
   top:0%;
   display: block;
+  z-index: 1;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
@@ -96,7 +97,7 @@ svg.centered {
 }
 
 .charLabel {
-  font-size: 0.60em;
+  font-size: 0.40em;
   opacity:0.6;
   text-transform: uppercase;
   text-align: center;
@@ -109,6 +110,12 @@ svg.centered {
   -o-transition: opacity .3s linear, fill .3s linear;
   -ms-transition: opacity .3s linear, fill .3s linear;
   transition: opacity .3s linear, fill .3s linear;
+}
+
+@media screen and (min-height:600px) {
+  .charLabel {
+    font-size: 0.60em;
+  }
 }
 
 .relLabel {
@@ -125,6 +132,14 @@ svg.centered {
   -o-transition: opacity 2s linear, fill 2s linear;
   -ms-transition: opacity 2s linear, fill 2s linear;
   transition: opacity 2s linear, fill 2s linear;
+}
+
+.relLabel.shitty {
+  -webkit-transition: opacity 0s linear, fill 0s linear;
+  -moz-transition: opacity 0s linear, fill 0s linear;
+  -o-transition: opacity 0s linear, fill 0s linear;
+  -ms-transition: opacity 0s linear, fill 0s linear;
+  transition: opacity 0s linear, fill 0s linear;
 }
 
 .relLabel.shown{
@@ -272,7 +287,7 @@ g:hover .heraldic {
   color: #FFF;
   padding:2% 0.5% 0;
   font-size:1em;
-  z-index: 9;
+  z-index: 9999999999;
   opacity: 1;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
@@ -371,9 +386,14 @@ g:hover .heraldic {
   display: block;
   font-family: 'Open Sans', sans-serif;
   position: absolute;
-  top: 80px;
+  top: 40px;
 }
+@media screen and (min-height:600px) {
+  .characterInfo {
+    top: 80px;
 
+  }
+}
 .characterName {
   position: absolute;
   margin-top: 5px;
@@ -397,18 +417,35 @@ g:hover .heraldic {
   display:block;;
   /*max-height: 200px;*/
   position: relative;
-  height: 60%;
+  height: 30%;
   overflow-y: auto;
-  margin-top: 3em;
+  margin-top: 2em;
+}
+@media screen and (min-height:600px) {
+ .characterBio {
+   height: 60%;
+    margin-top: 3em;
+ }
 }
 
 .picture {
-  max-width: 100%;
-  height:40%;
+  height:20%;
   display: block;
   position: relative;
   overflow: hidden;
+  max-width:45%;
+  margin-left:25%;
+
 }
+
+@media screen and (min-height:600px) {
+  .picture {
+    height:40%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
 
 .picture img {
   width: 100%;
@@ -445,12 +482,18 @@ ul, li {
 
 .sideBar .title {
   width: 90%;
-  padding:3% 5% 1%;
-  font-size:1.2em;
+  font-size:0.6em;
+  padding: 0 5%;
   overflow: hidden;
   font-family: 'got', 'marcellus';
   text-shadow: 0 0 1px #000;
   text-align: center;
+}
+@media screen and (min-height:600px) {
+  .sideBar .title {
+    font-size:1.2em;
+    padding:3% 5% 1%;
+  }
 }
 
 .season, .episode {
@@ -529,9 +572,9 @@ ul, li {
 
 .modal {
   position: fixed;
-  top: 30%;
-  left:30%;
-  width: 34%;
+  top: 0%;
+  left: 0%;
+  width: 94%;
   padding:2% 3%;
   display: inline-block;
   color: #FFF;
@@ -545,9 +588,16 @@ ul, li {
   -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
+@media screen and (min-height:600px) {
+  .modal {
+    top: 30%;
+    width: 34%;
+    left: 30%;
+  }
+}
 
 .modal.show {
-  z-index: 9999;
+  z-index: 99999999999;
   opacity: 0.9;
 }
 
@@ -619,9 +669,21 @@ ul, li {
 }
 
 .moreInfo {
-  top: 10%;
-  left: 15%;
-  width: 50%;
+  top: 00%;
+  left:0%;
+  width: 100%;
+  font-size:0.5em;
+}
+
+
+@media screen and (min-height:600px) {
+  .moreInfo {
+    top: 10%;
+    left: 15%;
+    width: 50%;
+    font-size: 1em;
+  }
+
 }
 .moreInfo .text,
 .moreInfo .thanks {
@@ -642,8 +704,10 @@ ul, li {
 
 .loader {
   position: fixed;
-  top: 50px;
-  margin-left:46%;
-  font-size:150px;
+  top: 5px;
+  margin-left:5px;
+  font-size:77px;
   color: #976;
+  z-index: 9999999;
+  text-shadow: 1px 1px 1px #555;
 }

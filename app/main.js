@@ -24,10 +24,10 @@
     })
 
     $(window).on("orientationchange", function() {
-      window.initialize();
+      // window.initialize();
     });
     $(window).on("resize", function() {
-      window.initialize();
+      // window.initialize();
     });
 
     window.initialize = function() {
