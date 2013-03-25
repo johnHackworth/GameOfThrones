@@ -7,11 +7,17 @@
     this.detectShittingness();
     this.visibleChars = {};
     this.correction = 0.85;
+    this.marginLeft = 0;
     this.verticalCorrection = 1;
     this.totalWidth = $('body').innerWidth() * this.correction;
     this.totalHeight = $('body').innerHeight() * this.verticalCorrection;
     this.totalArea = this.totalWidth * this.totalHeight;
     this.detectOrientation();
+    this.animationTime = 800;
+    if(this.ultraShittyPerformanceWTF) {
+      this.animationTime = 0;
+      this.marginLeft = 40;
+    }
 
     this.portraitWidth = Math.floor((this.totalWidth / this.xSize) * this.correction * (2/3));
     this.portraitHeight = Math.floor((this.totalHeight / this.xSize) * this.verticalCorrection * (3/5));
@@ -33,12 +39,17 @@
       uAgent.indexOf('Android') >=  0
     ) {
       this.shittyPerformance = true;
-      this.ultraShittyPerformanceWTF = false;
+      this.ultraShittyPerformanceWTF = true;
+    } else if(uAgent.indexOf('WebKit') >= 0 && // android browser mobile
+      uAgent.indexOf('Android') >=  0
+    ) {
+      this.shittyPerformance = true;
+      this.ultraShittyPerformanceWTF = true;
     } else if(uAgent.indexOf('Firefox') >= 0 && // firefox not mobile
       uAgent.indexOf('Mobile') < 0
     ) {
       this.shittyPerformance = true;
-      this.ultraShittyPerformanceWTF = true;
+      this.ultraShittyPerformanceWTF = false;
     } else if(uAgent.indexOf('Safari') >= 0 && // firefox not mobile
       uAgent.indexOf('Mobile') < 0
     ) {
@@ -94,6 +105,7 @@
     this.charTemplate = $('#characterTemplate').html();
     this.seasonTemplate = $('#seasonSelector').html();
     this.legendButton = $('.legendButton');
+    this.loader = $('.loader');
     this.moreInfo = $('.showMoreInfo');
 
     this.legend = $('.legend');
@@ -369,10 +381,9 @@
     character.pos = {x:position.x,y:position.y};
     this.visibleChars[character.name]
 
-
     var g = character.view
       .append('g')
-      .attr("transform", "translate(" + (position.x * (this.portraitWidth + this.margin)) +
+      .attr("transform", "translate(" + (self.marginLeft + (position.x * (this.portraitWidth + this.margin))) +
           "," + (position.y * (this.portraitHeight + this.verticalMargin)) + ")")
       .attr("class", this.tokenize(character.name))
 
@@ -417,17 +428,15 @@
         .attr("height", Math.floor(this.portraitHeight / 3.5))
         .attr("class", "icon dead");
     }
-    if(!this.ultraShittyPerformanceWTF) {
-      g.append('svg:text')
-          .text(character.alias || character.name)
-          .attr("class", "charLabel ")
-          .attr("name", this.tokenize(character.name))
-          .attr('dx', function(d) {
-            var textWidth = this.getBBox().width;
-            return (self.portraitWidth - textWidth) / 2;
-          })
-          .attr("dy",this.portraitHeight + 10)
-    }
+    g.append('svg:text')
+        .text(character.alias || character.name)
+        .attr("class", "charLabel ")
+        .attr("name", this.tokenize(character.name))
+        .attr('dx', function(d) {
+          var textWidth = this.getBBox().width;
+          return (self.portraitWidth - textWidth) / 2;
+        })
+        .attr("dy",this.portraitHeight + 10)
 
     $(character.view).data('name', character.name)
     character.view.data = character;
@@ -452,6 +461,9 @@
   }
 
   board.prototype.clickPortrait = function(char) {
+    if(this.shittyPerformance) {
+      this.loader.show();
+    }
     this.selectCharacter(char);
     this.openSideBar();
   }
@@ -497,16 +509,16 @@
       }
 
       gChar.transition()
-      .duration(800)
+      .duration(self.animationTime)
       .ease("back-out")
 
-      .attr("transform", "translate(" + (position.x * (self.portraitWidth + self.margin)) +
+      .attr("transform", "translate(" + (self.marginLeft + (position.x * (self.portraitWidth + self.margin))) +
           "," + (position.y * (self.portraitHeight + self.verticalMargin)) + ")")
       if(self.shittyPerformance) {
         setTimeout(function() {
           charLabel.appendTo($(gChar))
           charHeraldic.appendTo($(gChar))
-        },800)
+        },self.animationTime)
       }
     }, 25)
     if(char.pos) {
@@ -580,10 +592,11 @@
       "enemy": 1,
       "courtesan": -1
     };
+
     setTimeout(function() {
       var line = d3.svg.line()
         .x(function(d){
-          var position = d.pos.x * (self.portraitWidth + self.margin) +(self.portraitWidth ) /2;
+          var position = self.marginLeft + d.pos.x * (self.portraitWidth + self.margin) +(self.portraitWidth ) /2;
           return position;
         })
         .y(function(d){
@@ -652,7 +665,7 @@
         pathG
           .attr("stroke-dasharray",  totalLength*3 + " " + totalLength*3)
           .attr("stroke-dashoffset", totalLength*3)
-          .transition().duration(800).delay(700)
+          .transition().duration(self.animationTime).delay(self.animationTime - 100)
           .ease("linear")
           .attr("stroke-dashoffset", 0);
       }
@@ -731,9 +744,13 @@
           self.paintRelationLabel(name, self.relationLabels[name]);
         }
       }
+      if(self.shittyPerformance) {
+        self.loader.fadeOut('slow');
+      }
       setTimeout(function() {
         self.svg.selectAll('.relLabel').classed('shown', true);
         self.redrawAll();
+
       },500);
     },500);
   }
@@ -742,11 +759,15 @@
     // debugger;
     var self = this;
     var char = this.visibleChars[charName];
+    var labelClass = "relLabel ";
+    if(this.ultraShittyPerformanceWTF) {
+      labelClass = "relLabel shitty";
+    }
     var group = this.svg
       .append('g')
-      .attr("class", "relLabel ")
+      .attr("class", labelClass)
     var background = group.append('rect')
-      .attr('x', (char.pos.x * (self.portraitWidth + self.margin) - 0))
+      .attr('x', self.marginLeft + (char.pos.x * (self.portraitWidth + self.margin) - 0))
       .attr('y', 15 + self.portraitHeight + char.pos.y * (self.portraitHeight + self.verticalMargin))
       .attr('rx', '1em')
       .attr('ry', '1em')
@@ -764,7 +785,7 @@
           .attr('dx', function(d) {
             var textWidth = this.getBBox().width;
 
-            return ((self.portraitWidth - textWidth) / 2)  + char.pos.x * (self.portraitWidth + self.margin)
+            return self.marginLeft + ((self.portraitWidth - textWidth) / 2)  + char.pos.x * (self.portraitWidth + self.margin)
           })
           .attr('dy', function(d) {
             return 18 + (n+1) *12 + self.portraitHeight + char.pos.y * (self.portraitHeight + self.verticalMargin)
