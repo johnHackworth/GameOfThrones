@@ -39,7 +39,7 @@
       uAgent.indexOf('Android') >=  0
     ) {
       this.shittyPerformance = true;
-      this.ultraShittyPerformanceWTF = true;
+      this.ultraShittyPerformanceWTF = false;
     } else if(uAgent.indexOf('WebKit') >= 0 && // android browser mobile
       uAgent.indexOf('Android') >=  0
     ) {
@@ -428,6 +428,7 @@
         .attr("height", Math.floor(this.portraitHeight / 3.5))
         .attr("class", "icon dead");
     }
+
     g.append('svg:text')
         .text(character.alias || character.name)
         .attr("class", "charLabel ")
