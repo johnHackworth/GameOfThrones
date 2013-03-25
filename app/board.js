@@ -660,14 +660,23 @@
         .attr('class', function(d) {
           return " " + relationClass + " with_" +self.tokenize(d) +" relations_" +self.tokenize(char.name)
         })
+      if(self.shittyPerformance) {
+        pathG.attr('display','none')
+      }
       if(pathG.node()) {
         var totalLength = pathG.node().getTotalLength();
-        pathG
-          .attr("stroke-dasharray",  totalLength*3 + " " + totalLength*3)
-          .attr("stroke-dashoffset", totalLength*3)
-          .transition().duration(self.animationTime).delay(self.animationTime - 100)
-          .ease("linear")
-          .attr("stroke-dashoffset", 0);
+        if(!self.shittyPerformance) {
+          pathG
+            .attr("stroke-dasharray",  Math.floor(totalLength*3) + " " + Math.floor(totalLength*3))
+            .attr("stroke-dashoffset", Math.floor(totalLength*3))
+            .transition().duration(self.animationTime).delay(self.animationTime - 100)
+            .ease("linear")
+            .attr("stroke-dashoffset", 0);
+        } else {
+          setTimeout(function() {
+            pathG.attr('display', 'block')
+          }, self.animationTime)
+        }
       }
     }, 25);
   }
