@@ -32,7 +32,8 @@
       '2_10'
     ],
     [
-      '3_1'
+      '3_1',
+      '3_2'
     ]
   ]
   casting.prototype.loadSeason = function(n) {
@@ -79,10 +80,12 @@
     var dfd = $.Deferred();
     var self = this;
     var promises = [];
+    console.log();
     $.when(this.loadBios())
     .done(function() {
       for(var n = 0, l = self.EPISODE_LIST.length; n < l; n++) {
         for(var m = 0, ll = self.EPISODE_LIST[n].length; m < ll; m++) {
+          console.log(n,m)
           promises.push(self.loadSeason(self.EPISODE_LIST[n][m]));
           self.seasons['season'+self.EPISODE_LIST[n][m]] = [];
         }
