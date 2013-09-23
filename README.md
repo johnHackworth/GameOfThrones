@@ -1,4 +1,4 @@
 GameOfThrones
 =============
 
-<a href="https://github.com/johnHackworth/GameOfThrones">https://github.com/johnHackworth/GameOfThrones</a>
+<a href="http://johnhackworth.github.io/GameOfThrones/">http://johnhackworth.github.io/GameOfThrones/s</a>
