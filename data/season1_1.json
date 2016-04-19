@@ -84,7 +84,8 @@
   },
   {
     "name": "Tywin Lannister",
-    "sons":  ["Cersei Lannister", "Tyrion Lannister", "Jaime Lannister"],
+    "sons":  ["Tyrion Lannister", "Jaime Lannister"],
+    "daughters" : ["Cersei Lannister"]
     "liege": ["Robert Baratheon"]
   },
   {
